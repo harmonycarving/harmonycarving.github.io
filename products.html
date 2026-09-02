@@ -143,20 +143,20 @@
             width: 100%;
         }
 
-        /* ===== 頁面主視覺 (Banner) - 山形曲線再現 ===== */
+        /* ===== 頁面主視覺 (Banner) - 完整保留原始山形遮罩 ===== */
         .page-hero {
             margin-top: 4px;
             position: relative;
+            /* 這就是您要的山形遮罩！完整保留 */
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
             background: #2c1f1a;
-            overflow: hidden;
-            min-height: 340px;
-            /* 山形遮罩：用偽元素製作，但不遮文字 */
+            min-height: 300px;
         }
 
         .page-hero img {
             width: 100%;
             height: 55vh;
-            min-height: 340px;
+            min-height: 300px;
             object-fit: cover;
             display: block;
             opacity: 0.8;
@@ -166,7 +166,7 @@
             transform: scale(1.02);
         }
 
-        /* --- 文字覆蓋層（永遠在最上層） --- */
+        /* --- 文字覆蓋層：關鍵修正！將文字往上移，避開下方曲線 --- */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -174,10 +174,12 @@
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: center;
-            padding: 0 6%;
-            z-index: 10;
-            /* 確保文字在所有裝飾之上 */
+            align-items: flex-start;
+            /* 改為從上方開始排列 */
+            padding-top: 12%;
+            /* 調整這個值可以微調文字高度 */
+            padding-left: 6%;
+            z-index: 2;
         }
 
         .hero-overlay .text {
@@ -199,49 +201,6 @@
             letter-spacing: 4px;
             font-weight: 300;
             margin-top: 6px;
-        }
-
-        /* --- 山形曲線裝飾（豆子），位於文字「下方」，不壓字 --- */
-        .hero-deco {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 5;
-            /* 在文字下方，圖片上方 */
-            pointer-events: none;
-            /* 讓滑鼠事件穿透 */
-        }
-
-        /* 主要山形曲線 */
-        .hero-deco::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 70%;
-            background: rgba(245, 242, 235, 0.10);
-            /* 非常淡的宣紙色 */
-            clip-path: polygon(0% 100%, 5% 60%, 12% 85%, 20% 45%, 30% 75%, 40% 30%, 52% 65%, 62% 35%, 75% 70%, 85% 40%, 93% 80%, 100% 50%, 100% 100%);
-            backdrop-filter: blur(2px);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        /* 第二層山形，增加層次感 */
-        .hero-deco::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 50%;
-            background: rgba(139, 105, 20, 0.06);
-            clip-path: polygon(0% 100%, 8% 70%, 18% 90%, 28% 55%, 40% 80%, 50% 45%, 62% 75%, 72% 50%, 85% 80%, 95% 60%, 100% 75%, 100% 100%);
-            backdrop-filter: blur(2px);
-            transition: all 0.3s ease;
         }
 
         /* ===== 分類選單 ===== */
@@ -435,16 +394,18 @@
             }
             .page-hero img {
                 height: 40vh;
-                min-height: 260px;
+                min-height: 240px;
+            }
+            .page-hero {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
+                min-height: 240px;
+            }
+            .hero-overlay {
+                padding-top: 10%;
+                padding-left: 5%;
             }
             .hero-overlay .text h1 {
                 font-size: 2.4rem;
-            }
-            .hero-deco::before {
-                height: 60%;
-            }
-            .hero-deco::after {
-                height: 40%;
             }
             .floating-contact {
                 bottom: 20px;
@@ -488,10 +449,15 @@
             }
             .page-hero img {
                 height: 32vh;
-                min-height: 200px;
+                min-height: 180px;
             }
             .page-hero {
-                min-height: 200px;
+                clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%);
+                min-height: 180px;
+            }
+            .hero-overlay {
+                padding-top: 8%;
+                padding-left: 4%;
             }
             .hero-overlay .text h1 {
                 font-size: 1.8rem;
@@ -500,13 +466,6 @@
             .hero-overlay .text .sub {
                 font-size: 0.8rem;
                 letter-spacing: 2px;
-            }
-            .hero-deco::before {
-                height: 50%;
-            }
-            .hero-deco::after {
-                display: none;
-                /* 手機上簡化層次 */
             }
             .floating-contact {
                 bottom: 14px;
@@ -567,15 +526,9 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 (Banner) - 山形曲線再現 ===== -->
-    <header class="page-hero" id="heroBanner">
-        <!-- 背景圖片 -->
+    <!-- ===== 頁面主視覺 (Banner) - 原始山形遮罩，文字上移 ===== -->
+    <header class="page-hero">
         <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
-
-        <!-- 山形曲線裝飾（豆子），位於文字下方 -->
-        <div class="hero-deco" id="heroDeco"></div>
-
-        <!-- 文字覆蓋層（永遠在最上層） -->
         <div class="hero-overlay">
             <div class="text">
                 <h1>掌心之作</h1>
@@ -689,7 +642,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('作品櫥窗已載入，山形曲線再現！');
+            console.log('作品櫥窗已載入，山形遮罩完整保留，文字已上移。');
 
             // ===== 分類篩選功能 =====
             const filterButtons = document.querySelectorAll('.filter-btn');
@@ -711,30 +664,6 @@
                         }
                     });
                 });
-            });
-
-            // ===== 滑鼠移動山形互動效果（讓曲線有生命） =====
-            const heroBanner = document.getElementById('heroBanner');
-            const heroDeco = document.getElementById('heroDeco');
-
-            heroBanner.addEventListener('mousemove', function(e) {
-                const rect = this.getBoundingClientRect();
-                const x = (e.clientX - rect.left) / rect.width;
-                const y = (e.clientY - rect.top) / rect.height;
-
-                // 讓山形曲線產生輕微的拉伸與位移，增加生命力
-                const moveX = (x - 0.5) * 30;
-                const moveY = (y - 0.5) * 15;
-                const scaleX = 1 + (x - 0.5) * 0.1;
-                const scaleY = 1 + (y - 0.5) * 0.05;
-
-                heroDeco.style.transform = `translate(${moveX}px, ${moveY}px) scale(${scaleX}, ${scaleY})`;
-                heroDeco.style.transition = 'transform 0.05s ease-out';
-            });
-
-            heroBanner.addEventListener('mouseleave', function() {
-                heroDeco.style.transition = 'transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                heroDeco.style.transform = 'translate(0, 0) scale(1, 1)';
             });
         });
     </script>

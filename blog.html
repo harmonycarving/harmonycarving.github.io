@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>木藝講堂 | 聯和刻記 · 台灣木雕知識與療癒</title>
+
+    <!-- ========== SEO 與 GEO 核心優化 ========== -->
+    <meta name="description" content="聯和刻記木藝講堂——分享台灣肖楠、檜木知識、銀髮族木作療癒、AI人機協作工藝。讓木藝溫暖每一顆心。" />
+    <meta name="keywords" content="台灣木雕,肖楠,檜木,銀髮族木作,木工教學,人機協作,木藝療癒" />
+    <link rel="canonical" href="https://harmonycarving.github.io/blog.html" />
+
+    <meta property="og:title" content="木藝講堂 | 聯和刻記 · 知識與療癒" />
+    <meta property="og:description" content="從木頭到掌心，從技術到心法——聯和刻記的木藝筆記。" />
+    <meta property="og:image" content="https://harmonycarving.github.io/images/blog-hero.webp" />
+    <meta property="og:url" content="https://harmonycarving.github.io/blog.html" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        /* ===== 全域樣式 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-cream: #F5F2EB;
+            --red-gugong: #9B1B30;
+            --gold-dark: #8B6914;
+            --brown-deep: #3E2723;
+            --text-soft: #4A3A2B;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', 'Times New Roman', serif;
+            background-color: var(--bg-cream);
+            color: var(--brown-deep);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ===== 導航欄 ===== */
+        .navbar {
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(245, 242, 235, 0.94);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        #logo-text {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--red-gugong);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+        #logo-text small {
+            font-size: 0.5em;
+            color: var(--gold-dark);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        #logo-image {
+            display: none;
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brown-deep);
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-gugong);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--red-gugong);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--red-gugong);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* ===== 頁面主視覺 ===== */
+        .page-hero {
+            margin-top: 4px;
+            position: relative;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
+            background: var(--brown-deep);
+        }
+
+        .page-hero img {
+            width: 100%;
+            height: 55vh;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            transition: transform 7s ease;
+        }
+        .page-hero img:hover {
+            transform: scale(1.02);
+        }
+
+        .page-hero .overlay {
+            position: absolute;
+            bottom: 18%;
+            left: 6%;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .page-hero .overlay h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
+
+        .page-hero .overlay .sub {
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            opacity: 0.9;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-top: 6px;
+        }
+
+        /* ===== 分類標籤 ===== */
+        .categories {
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .categories .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 16px;
+        }
+
+        .categories .tag-group a {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: var(--brown-deep);
+            border: 1px solid rgba(139, 105, 20, 0.15);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .categories .tag-group a:hover {
+            background: var(--red-gugong);
+            color: white;
+            border-color: var(--red-gugong);
+        }
+
+        /* ===== 文章列表 ===== */
+        .blog-list {
+            padding: 20px 0 70px;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: var(--border-radius-art);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.10);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-card .content {
+            padding: 22px 24px 26px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card .content .meta {
+            font-size: 0.8rem;
+            color: var(--gold-dark);
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+
+        .blog-card .content .meta .cat {
+            display: inline-block;
+            background: var(--bg-cream);
+            padding: 0 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--red-gugong);
+        }
+
+        .blog-card .content h3 {
+            font-size: 1.2rem;
+            color: var(--brown-deep);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .blog-card .content p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            flex: 1;
+        }
+
+        .blog-card .content .read-more {
+            margin-top: 14px;
+            color: var(--red-gugong);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-block;
+            align-self: flex-start;
+            border-bottom: 2px solid transparent;
+        }
+
+        .blog-card .content .read-more:hover {
+            border-bottom-color: var(--red-gugong);
+        }
+
+        /* ===== 右下角懸浮聯絡區塊 ===== */
+        .floating-contact {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .floating-contact a:hover {
+            transform: scale(1.10);
+        }
+
+        .line-btn img {
+            width: clamp(52px, 8vw, 68px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .phone-btn {
+            background: var(--red-gugong);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: background 0.3s, transform 0.25s;
+            white-space: nowrap;
+        }
+        .phone-btn:hover {
+            background: #7a1526;
+            transform: scale(1.04);
+        }
+
+        /* ===== 頁尾 ===== */
+        .footer {
+            background: #2c1f1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 36px 0 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .footer a {
+            color: #d4a373;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 響應式 ===== */
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .nav-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .logo-area {
+                justify-content: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 4px 14px;
+            }
+            .page-hero img {
+                height: 40vh;
+                min-height: 220px;
+            }
+            .page-hero .overlay {
+                bottom: 14%;
+                left: 5%;
+            }
+            .floating-contact {
+                bottom: 20px;
+                right: 20px;
+                gap: 8px;
+            }
+            .line-btn img {
+                width: 56px;
+            }
+            .phone-btn {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+            .page-hero {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .blog-card img {
+                height: 180px;
+            }
+            .page-hero img {
+                height: 32vh;
+                min-height: 180px;
+            }
+            .page-hero .overlay {
+                bottom: 12%;
+                left: 4%;
+            }
+            .floating-contact {
+                bottom: 14px;
+                right: 14px;
+                gap: 6px;
+            }
+            .line-btn img {
+                width: 48px;
+            }
+            .phone-btn {
+                padding: 5px 12px;
+                font-size: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 2px 10px;
+            }
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+            .phone-btn {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 導航欄 ===== -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-area">
+                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+                <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首頁</a>
+                <a href="about.html">關於</a>
+                <a href="products.html">作品</a>
+                <a href="blog.html" class="active">木藝講堂</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== 頁面主視覺 ===== -->
+    <header class="page-hero">
+        <img src="images/blog-hero.webp" alt="木藝講堂：知識與療癒的空間" />
+        <div class="overlay">
+            <h1>木藝講堂</h1>
+            <div class="sub">—— 從木頭到掌心，從技術到心法 ——</div>
+        </div>
+    </header>
+
+    <!-- ===== 分類標籤 ===== -->
+    <section class="categories">
+        <div class="tag-group">
+            <a href="#"># 全部</a>
+            <a href="#"># 木種知識</a>
+            <a href="#"># 療癒手作</a>
+            <a href="#"># 人機協作</a>
+            <a href="#"># 銀髮生活</a>
+            <a href="#"># 課程資訊</a>
+        </div>
+    </section>
+
+    <!-- ===== 文章列表 ===== -->
+    <section class="blog-list">
+        <div class="container blog-grid">
+
+            <!-- ========================================= -->
+            <!-- 以下為文章佔位內容，劉大哥可自行替換          -->
+            <!-- 圖片統一使用 blog-placeholder.webp 或個別設定 -->
+            <!-- ========================================= -->
+
+            <!-- 文章 1 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="台灣肖楠的療癒秘密" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">木種知識</span> 2026.08.28</div>
+                    <h3>台灣肖楠：森林中的醇厚療癒</h3>
+                    <p>肖楠木獨有的香氣，如何透過掌心溫度釋放，成為現代人最溫柔的心靈陪伴？</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+            <!-- 文章 2 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="銀髮族木作療癒" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">銀髮生活</span> 2026.08.20</div>
+                    <h3>指尖上的延緩失智：木作與大腦的對話</h3>
+                    <p>為什麼打磨一塊木頭，能讓長者找回專注力與成就感？從神經科學看手作的影響。</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+            <!-- 文章 3 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="AI人機協作木工" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">人機協作</span> 2026.08.15</div>
+                    <h3>AI 不是取代，是陪伴：人機共創的工藝新時代</h3>
+                    <p>當 CNC 與長者的雙手並肩工作，我們看見了科技與人性最美的平衡點。</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+            <!-- 文章 4 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="檜木與生活美學" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">療癒手作</span> 2026.08.08</div>
+                    <h3>將檜木香氣帶入日常：自製隨身聞香小物</h3>
+                    <p>不需複雜工具，只要一塊檜木與砂紙，就能為自己打造獨一無二的隨身香氣伴侶。</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+            <!-- 文章 5 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="魯班鎖與大腦活化" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">銀髮生活</span> 2026.08.01</div>
+                    <h3>微縮魯班鎖：在拆解與組裝之間，活化你的大腦</h3>
+                    <p>為什麼這個雞蛋大小的木結構，能讓長者與年輕人都為之著迷？</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+            <!-- 文章 6 -->
+            <article class="blog-card">
+                <img src="images/blog-placeholder.webp" alt="聯和刻記課程" loading="lazy" />
+                <div class="content">
+                    <div class="meta"><span class="cat">課程資訊</span> 2026.07.25</div>
+                    <h3>9 月「AI 療癒木作班」開放報名中</h3>
+                    <p>AI 幫你設計，你親手打磨，把台灣檜木的香氣與專屬你的掌心機器人帶回家。</p>
+                    <a href="#" class="read-more">閱讀全文 →</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ===== 右下角懸浮聯絡區塊 ===== -->
+    <div class="floating-contact">
+        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
+            <img src="images/line.png" alt="LINE 聯絡方式" />
+        </a>
+        <a href="tel:+886911938978" class="phone-btn">📞 0911-938-978</a>
+    </div>
+
+    <!-- ===== 頁尾 ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">
+                <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
+                台灣名木 · 掌心療癒 · 人機共創
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('木藝講堂已載入，願知識與木藝溫暖每一顆心。');
+        });
+    </script>
+
+</body>
+</html>

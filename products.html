@@ -143,13 +143,12 @@
             width: 100%;
         }
 
-        /* ===== 頁面主視覺 (Banner) ===== */
+        /* ===== 頁面主視覺 (Banner) - 移除遮罩，改用底部裝飾 ===== */
         .page-hero {
             margin-top: 4px;
             position: relative;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
-            background: #2c1f1a; /* 優雅深色備援 */
-            min-height: 300px;
+            background: #2c1f1a; /* 深色備援背景 */
+            overflow: hidden;
         }
 
         .page-hero img {
@@ -167,10 +166,11 @@
 
         .page-hero .overlay {
             position: absolute;
-            bottom: 18%;
+            bottom: 15%;
             left: 6%;
             color: white;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            z-index: 2;
         }
 
         .page-hero .overlay h1 {
@@ -188,10 +188,27 @@
             margin-top: 6px;
         }
 
+        /* --- 新增：底部不規則裝飾曲線（豆子精神） --- */
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: var(--bg-cream);
+            clip-path: polygon(0% 0%, 8% 100%, 22% 30%, 35% 80%, 50% 20%, 65% 70%, 78% 25%, 92% 100%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 3;
+            pointer-events: none;
+        }
+
         /* ===== 分類選單 ===== */
         .filter-section {
             padding: 30px 0 10px;
             text-align: center;
+            position: relative;
+            z-index: 4;
+            margin-top: -10px; /* 讓選單稍微上移，與曲線銜接 */
         }
 
         .filter-buttons {
@@ -202,7 +219,7 @@
         }
 
         .filter-btn {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             padding: 6px 24px;
             border-radius: 40px;
             border: 1.5px solid rgba(139, 105, 20, 0.2);
@@ -212,6 +229,7 @@
             transition: all 0.3s;
             letter-spacing: 2px;
             font-family: inherit;
+            backdrop-filter: blur(4px);
         }
 
         .filter-btn:hover {
@@ -377,11 +395,16 @@
                 min-height: 220px;
             }
             .page-hero .overlay {
-                bottom: 14%;
+                bottom: 12%;
                 left: 5%;
             }
-            .page-hero {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 88% 96%, 72% 91%, 52% 97%, 32% 92%, 14% 96%, 4% 93%, 0% 90%);
+            .page-hero::after {
+                height: 40px; /* 手機版裝飾曲線稍矮 */
+                clip-path: polygon(0% 0%, 5% 100%, 18% 40%, 32% 80%, 48% 30%, 65% 70%, 78% 20%, 92% 100%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            .filter-section {
+                padding: 20px 0 6px;
+                margin-top: -6px;
             }
             .floating-contact {
                 bottom: 20px;
@@ -428,12 +451,16 @@
                 min-height: 180px;
             }
             .page-hero .overlay {
-                bottom: 12%;
+                bottom: 10%;
                 left: 4%;
             }
-            /* 手機版遮罩修正：減少曲線幅度，避免切到文字 */
-            .page-hero {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%);
+            .page-hero::after {
+                height: 30px;
+                clip-path: polygon(0% 0%, 8% 100%, 22% 30%, 38% 80%, 52% 20%, 68% 70%, 82% 25%, 94% 100%, 100% 0%, 100% 100%, 0% 100%);
+            }
+            .filter-section {
+                padding: 16px 0 4px;
+                margin-top: -4px;
             }
             .floating-contact {
                 bottom: 14px;
@@ -454,9 +481,6 @@
                 padding: 3px 12px;
                 font-size: 0.8rem;
             }
-            .filter-section {
-                padding: 20px 0 6px;
-            }
         }
 
         @media (max-width: 380px) {
@@ -471,7 +495,10 @@
                 padding: 4px 10px;
             }
             .page-hero .overlay h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .page-hero .overlay .sub {
+                font-size: 0.8rem;
             }
         }
     </style>
@@ -494,14 +521,14 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 (Banner) ===== -->
+    <!-- ===== 頁面主視覺 (Banner) - 無遮罩，底部有裝飾曲線 ===== -->
     <header class="page-hero">
-        <!-- 請將新生成的 products-hero.webp 放入 images 資料夾 -->
         <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
         <div class="overlay">
             <h1>掌心之作</h1>
             <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
         </div>
+        <!-- 底部不規則裝飾曲線由 CSS ::after 產生 -->
     </header>
 
     <!-- ===== 分類選單 ===== -->
@@ -593,14 +620,12 @@
         <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
             <img src="images/line.png" alt="LINE 聯絡方式" />
         </a>
-        <!-- 電話號碼已移除 '-' 符號 -->
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
     <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
-            <!-- 移除年份，讓文字更簡潔 -->
             <p>© 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
             <p style="margin-top: 6px; font-size: 0.8rem;">
                 <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
@@ -618,7 +643,6 @@
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // 切換按鈕 active 狀態
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
 

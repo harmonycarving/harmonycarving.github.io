@@ -44,12 +44,6 @@
             color: var(--brown-deep);
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
-            /* ----- 背景底圖（極淡，不搶戲） ----- */
-            background-image: url('images/products-bg.webp');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            background-blend-mode: soft-light;
         }
 
         .container {
@@ -67,8 +61,8 @@
             padding: 16px 0;
             position: sticky;
             top: 0;
-            background: rgba(245, 242, 235, 0.92);
-            backdrop-filter: blur(12px);
+            background: rgba(245, 242, 235, 0.94);
+            backdrop-filter: blur(10px);
             z-index: 100;
             border-bottom: 1px solid rgba(62, 39, 35, 0.08);
         }
@@ -149,38 +143,62 @@
             width: 100%;
         }
 
-        /* ===== 頁首標題 ===== */
-        .page-header {
-            text-align: center;
-            padding: 50px 0 30px;
-        }
-
-        .page-header h1 {
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
-            color: var(--brown-deep);
-            letter-spacing: 8px;
-        }
-
-        .page-header .sub {
-            font-size: 1.1rem;
-            color: var(--gold-dark);
-            letter-spacing: 3px;
+        /* ===== 頁面主視覺 (Banner) ===== */
+        .page-hero {
             margin-top: 4px;
+            position: relative;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
+            background: var(--brown-deep);
         }
 
-        /* ===== 瀑布流相簿（核心） ===== */
+        .page-hero img {
+            width: 100%;
+            height: 55vh;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            transition: transform 7s ease;
+        }
+        .page-hero img:hover {
+            transform: scale(1.02);
+        }
+
+        .page-hero .overlay {
+            position: absolute;
+            bottom: 18%;
+            left: 6%;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .page-hero .overlay h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
+
+        .page-hero .overlay .sub {
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            opacity: 0.9;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-top: 6px;
+        }
+
+        /* ===== 瀑布流相簿 ===== */
         .gallery {
-            padding-bottom: 70px;
+            padding: 50px 0 70px;
         }
 
         .gallery-grid {
-            column-count: 4;           /* 桌面4欄 */
+            column-count: 4;
             column-gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* 每張作品卡片 */
         .gallery-item {
             break-inside: avoid;
             margin-bottom: 20px;
@@ -211,7 +229,6 @@
             transform: scale(1.02);
         }
 
-        /* 照片下方的簡易說明（可選） */
         .gallery-item .caption {
             padding: 12px 16px 16px;
             font-size: 0.85rem;
@@ -314,6 +331,17 @@
                 column-count: 2;
                 column-gap: 14px;
             }
+            .page-hero img {
+                height: 40vh;
+                min-height: 220px;
+            }
+            .page-hero .overlay {
+                bottom: 14%;
+                left: 5%;
+            }
+            .page-hero {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
+            }
             .floating-contact {
                 bottom: 20px;
                 right: 20px;
@@ -350,8 +378,13 @@
             .gallery-item {
                 border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
             }
-            .page-header {
-                padding: 30px 0 20px;
+            .page-hero img {
+                height: 32vh;
+                min-height: 180px;
+            }
+            .page-hero .overlay {
+                bottom: 12%;
+                left: 4%;
             }
             .floating-contact {
                 bottom: 14px;
@@ -402,20 +435,18 @@
         </div>
     </nav>
 
-    <!-- ===== 頁首 ===== -->
-    <header class="page-header">
-        <h1>︱ 掌心之作 ︱</h1>
-        <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+    <!-- ===== 頁面主視覺 (Banner) ===== -->
+    <header class="page-hero">
+        <img src="images/products-bg.webp" alt="聯和刻記作品櫥窗" />
+        <div class="overlay">
+            <h1>掌心之作</h1>
+            <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+        </div>
     </header>
 
     <!-- ===== 瀑布流相簿 ===== -->
     <section class="gallery">
         <div class="gallery-grid">
-
-            <!-- ========================================= -->
-            <!-- 以下為作品佔位圖，劉大哥可自行更換圖片與說明 -->
-            <!-- 圖片請放入 images/ 資料夾，並更新 src 路徑    -->
-            <!-- ========================================= -->
 
             <!-- 作品 1 -->
             <div class="gallery-item">
@@ -449,7 +480,7 @@
                 </div>
             </div>
 
-            <!-- 作品 5（重複佔位，可替換） -->
+            <!-- 作品 5 -->
             <div class="gallery-item">
                 <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
                 <div class="caption">
@@ -457,7 +488,7 @@
                 </div>
             </div>
 
-            <!-- 作品 6（重複佔位，可替換） -->
+            <!-- 作品 6 -->
             <div class="gallery-item">
                 <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
                 <div class="caption">
@@ -465,7 +496,7 @@
                 </div>
             </div>
 
-            <!-- 作品 7（重複佔位，可替換） -->
+            <!-- 作品 7 -->
             <div class="gallery-item">
                 <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
                 <div class="caption">
@@ -473,7 +504,7 @@
                 </div>
             </div>
 
-            <!-- 作品 8（重複佔位，可替換） -->
+            <!-- 作品 8 -->
             <div class="gallery-item">
                 <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
                 <div class="caption">

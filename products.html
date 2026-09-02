@@ -12,7 +12,7 @@
 
     <meta property="og:title" content="作品櫥窗 | 聯和刻記 · 掌心木藝" />
     <meta property="og:description" content="每一件掌心木雕，都是獨一無二的溫暖陪伴。" />
-    <meta property="og:image" content="https://harmonycarving.github.io/images/product-placeholder-1.webp" />
+    <meta property="og:image" content="https://harmonycarving.github.io/images/products-hero.webp" />
     <meta property="og:url" content="https://harmonycarving.github.io/products.html" />
     <meta property="og:type" content="website" />
 
@@ -148,7 +148,8 @@
             margin-top: 4px;
             position: relative;
             clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
-            background: var(--brown-deep);
+            background: #2c1f1a; /* 優雅深色備援 */
+            min-height: 300px;
         }
 
         .page-hero img {
@@ -157,7 +158,7 @@
             min-height: 300px;
             object-fit: cover;
             display: block;
-            opacity: 0.85;
+            opacity: 0.75;
             transition: transform 7s ease;
         }
         .page-hero img:hover {
@@ -187,9 +188,49 @@
             margin-top: 6px;
         }
 
+        /* ===== 分類選單 ===== */
+        .filter-section {
+            padding: 30px 0 10px;
+            text-align: center;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 14px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1.5px solid rgba(139, 105, 20, 0.2);
+            font-size: 0.95rem;
+            color: var(--brown-deep);
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            font-family: inherit;
+        }
+
+        .filter-btn:hover {
+            background: var(--red-gugong);
+            color: white;
+            border-color: var(--red-gugong);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: var(--red-gugong);
+            color: white;
+            border-color: var(--red-gugong);
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.25);
+        }
+
         /* ===== 瀑布流相簿 ===== */
         .gallery {
-            padding: 50px 0 70px;
+            padding: 20px 0 70px;
         }
 
         .gallery-grid {
@@ -340,7 +381,7 @@
                 left: 5%;
             }
             .page-hero {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
+                clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 88% 96%, 72% 91%, 52% 97%, 32% 92%, 14% 96%, 4% 93%, 0% 90%);
             }
             .floating-contact {
                 bottom: 20px;
@@ -366,6 +407,10 @@
                 justify-content: center;
                 gap: 4px 14px;
             }
+            .filter-btn {
+                padding: 4px 16px;
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -386,6 +431,10 @@
                 bottom: 12%;
                 left: 4%;
             }
+            /* 手機版遮罩修正：減少曲線幅度，避免切到文字 */
+            .page-hero {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 93%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%);
+            }
             .floating-contact {
                 bottom: 14px;
                 right: 14px;
@@ -401,6 +450,13 @@
             .nav-links a {
                 font-size: 0.85rem;
             }
+            .filter-btn {
+                padding: 3px 12px;
+                font-size: 0.8rem;
+            }
+            .filter-section {
+                padding: 20px 0 6px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -413,6 +469,9 @@
             .phone-btn {
                 font-size: 0.7rem;
                 padding: 4px 10px;
+            }
+            .page-hero .overlay h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -437,75 +496,89 @@
 
     <!-- ===== 頁面主視覺 (Banner) ===== -->
     <header class="page-hero">
-        <img src="images/products-bg.webp" alt="聯和刻記作品櫥窗" />
+        <!-- 請將新生成的 products-hero.webp 放入 images 資料夾 -->
+        <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
         <div class="overlay">
             <h1>掌心之作</h1>
             <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
         </div>
     </header>
 
+    <!-- ===== 分類選單 ===== -->
+    <section class="filter-section">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="舒壓">舒壓</button>
+            <button class="filter-btn" data-filter="益智">益智</button>
+            <button class="filter-btn" data-filter="生活">生活</button>
+            <button class="filter-btn" data-filter="藝術">藝術</button>
+            <button class="filter-btn" data-filter="飾品">飾品</button>
+            <button class="filter-btn" data-filter="療癒">療癒</button>
+        </div>
+    </section>
+
     <!-- ===== 瀑布流相簿 ===== -->
     <section class="gallery">
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="galleryGrid">
 
-            <!-- 作品 1 -->
-            <div class="gallery-item">
+            <!-- 作品 1：舒壓 -->
+            <div class="gallery-item" data-category="舒壓">
                 <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
                 <div class="caption">
                     <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
                 </div>
             </div>
 
-            <!-- 作品 2 -->
-            <div class="gallery-item">
+            <!-- 作品 2：益智 -->
+            <div class="gallery-item" data-category="益智">
                 <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
                 <div class="caption">
                     <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
                 </div>
             </div>
 
-            <!-- 作品 3 -->
-            <div class="gallery-item">
+            <!-- 作品 3：生活 -->
+            <div class="gallery-item" data-category="生活">
                 <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
                 <div class="caption">
                     <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
                 </div>
             </div>
 
-            <!-- 作品 4 -->
-            <div class="gallery-item">
+            <!-- 作品 4：藝術 -->
+            <div class="gallery-item" data-category="藝術">
                 <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
                 <div class="caption">
                     <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
                 </div>
             </div>
 
-            <!-- 作品 5 -->
-            <div class="gallery-item">
+            <!-- 作品 5：舒壓 -->
+            <div class="gallery-item" data-category="舒壓">
                 <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
                 <div class="caption">
                     <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
                 </div>
             </div>
 
-            <!-- 作品 6 -->
-            <div class="gallery-item">
+            <!-- 作品 6：飾品 -->
+            <div class="gallery-item" data-category="飾品">
                 <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
                 <div class="caption">
                     <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
                 </div>
             </div>
 
-            <!-- 作品 7 -->
-            <div class="gallery-item">
+            <!-- 作品 7：療癒 -->
+            <div class="gallery-item" data-category="療癒">
                 <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
                 <div class="caption">
                     <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
                 </div>
             </div>
 
-            <!-- 作品 8 -->
-            <div class="gallery-item">
+            <!-- 作品 8：藝術 -->
+            <div class="gallery-item" data-category="藝術">
                 <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
                 <div class="caption">
                     <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
@@ -520,13 +593,15 @@
         <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
             <img src="images/line.png" alt="LINE 聯絡方式" />
         </a>
-        <a href="tel:+886911938978" class="phone-btn">📞 0911-938-978</a>
+        <!-- 電話號碼已移除 '-' 符號 -->
+        <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
     <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
+            <!-- 移除年份，讓文字更簡潔 -->
+            <p>© 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
             <p style="margin-top: 6px; font-size: 0.8rem;">
                 <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
                 台灣名木 · 掌心療癒 · 人機共創
@@ -536,7 +611,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('作品櫥窗已載入，每一件木作都有它的故事。');
+            console.log('作品櫥窗已載入，分類篩選功能已啟動。');
+
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 切換按鈕 active 狀態
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filterValue === 'all' || category === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
     </script>
 

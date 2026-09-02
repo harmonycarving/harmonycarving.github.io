@@ -143,44 +143,61 @@
             width: 100%;
         }
 
-        /* ===== 頁面主視覺 (Banner) - 移除遮罩，改用底部裝飾 ===== */
+        /* ===== 頁面主視覺 (Banner) - 全新無壓字設計 ===== */
         .page-hero {
             margin-top: 4px;
             position: relative;
-            background: #2c1f1a; /* 深色備援背景 */
+            background: #2c1f1a;
             overflow: hidden;
+            min-height: 340px;
+            /* 讓滑鼠互動區有足夠範圍 */
         }
 
         .page-hero img {
             width: 100%;
             height: 55vh;
-            min-height: 300px;
+            min-height: 340px;
             object-fit: cover;
             display: block;
-            opacity: 0.75;
+            opacity: 0.8;
             transition: transform 7s ease;
         }
         .page-hero img:hover {
             transform: scale(1.02);
         }
 
-        .page-hero .overlay {
+        /* --- 文字覆蓋層（永遠在最上面，不會被遮罩切到） --- */
+        .hero-overlay {
             position: absolute;
-            bottom: 15%;
-            left: 6%;
-            color: white;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
-            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            /* 垂直置中 */
+            padding: 0 6%;
+            z-index: 5;
+            /* 確保在豆子裝飾之上 */
+            pointer-events: none;
+            /* 讓滑鼠事件穿透，讓豆子能感應 */
         }
 
-        .page-hero .overlay h1 {
+        .hero-overlay .text {
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+            max-width: 700px;
+            pointer-events: none;
+        }
+
+        .hero-overlay .text h1 {
             font-size: clamp(2.6rem, 6vw, 4.2rem);
             font-weight: 700;
             letter-spacing: 8px;
             line-height: 1.1;
         }
 
-        .page-hero .overlay .sub {
+        .hero-overlay .text .sub {
             font-size: clamp(1rem, 1.8vw, 1.3rem);
             opacity: 0.9;
             letter-spacing: 4px;
@@ -188,17 +205,50 @@
             margin-top: 6px;
         }
 
-        /* --- 新增：底部不規則裝飾曲線（豆子精神） --- */
-        .page-hero::after {
-            content: '';
+        /* --- 「豆子」裝飾層（純視覺，不壓字） --- */
+        .hero-deco {
             position: absolute;
-            bottom: -2px;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 60px;
-            background: var(--bg-cream);
-            clip-path: polygon(0% 0%, 8% 100%, 22% 30%, 35% 80%, 50% 20%, 65% 70%, 78% 25%, 92% 100%, 100% 0%, 100% 100%, 0% 100%);
+            height: 100%;
             z-index: 3;
+            pointer-events: none;
+            /* 讓滑鼠事件穿透，但我們要用JS追蹤滑鼠位置，所以需要 pointer-events: none; 但底下會用JS直接改 transform */
+            transition: transform 0.1s ease-out;
+            /* 讓移動更滑順 */
+            will-change: transform;
+        }
+
+        /* 用偽元素畫出豆子形狀，但只作為一個半透明裝飾層，不裁切任何東西 */
+        .hero-deco::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 70%;
+            height: 130%;
+            background: rgba(245, 242, 235, 0.08);
+            /* 極淡的宣紙色，保留質感 */
+            border-radius: 60% 20% 50% 30% / 30% 50% 20% 60%;
+            transform: rotate(-8deg);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            pointer-events: none;
+        }
+
+        /* 再加一個較小的豆子，增加層次 */
+        .hero-deco::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 50%;
+            height: 80%;
+            background: rgba(139, 105, 20, 0.06);
+            border-radius: 30% 60% 40% 70% / 50% 30% 60% 40%;
+            transform: rotate(12deg);
+            backdrop-filter: blur(2px);
             pointer-events: none;
         }
 
@@ -208,7 +258,9 @@
             text-align: center;
             position: relative;
             z-index: 4;
-            margin-top: -10px; /* 讓選單稍微上移，與曲線銜接 */
+            margin-top: -4px;
+            background: var(--bg-cream);
+            /* 遮住下方可能透出的裝飾 */
         }
 
         .filter-buttons {
@@ -392,19 +444,10 @@
             }
             .page-hero img {
                 height: 40vh;
-                min-height: 220px;
+                min-height: 260px;
             }
-            .page-hero .overlay {
-                bottom: 12%;
-                left: 5%;
-            }
-            .page-hero::after {
-                height: 40px; /* 手機版裝飾曲線稍矮 */
-                clip-path: polygon(0% 0%, 5% 100%, 18% 40%, 32% 80%, 48% 30%, 65% 70%, 78% 20%, 92% 100%, 100% 0%, 100% 100%, 0% 100%);
-            }
-            .filter-section {
-                padding: 20px 0 6px;
-                margin-top: -6px;
+            .hero-overlay .text h1 {
+                font-size: 2.4rem;
             }
             .floating-contact {
                 bottom: 20px;
@@ -434,6 +477,18 @@
                 padding: 4px 16px;
                 font-size: 0.85rem;
             }
+            .hero-deco::before {
+                width: 90%;
+                height: 100%;
+                top: 0;
+                right: -20%;
+            }
+            .hero-deco::after {
+                width: 60%;
+                height: 60%;
+                bottom: -10%;
+                left: -20%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -448,19 +503,15 @@
             }
             .page-hero img {
                 height: 32vh;
-                min-height: 180px;
+                min-height: 200px;
             }
-            .page-hero .overlay {
-                bottom: 10%;
-                left: 4%;
+            .hero-overlay .text h1 {
+                font-size: 1.8rem;
+                letter-spacing: 4px;
             }
-            .page-hero::after {
-                height: 30px;
-                clip-path: polygon(0% 0%, 8% 100%, 22% 30%, 38% 80%, 52% 20%, 68% 70%, 82% 25%, 94% 100%, 100% 0%, 100% 100%, 0% 100%);
-            }
-            .filter-section {
-                padding: 16px 0 4px;
-                margin-top: -4px;
+            .hero-overlay .text .sub {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
             }
             .floating-contact {
                 bottom: 14px;
@@ -481,6 +532,20 @@
                 padding: 3px 12px;
                 font-size: 0.8rem;
             }
+            .filter-section {
+                padding: 16px 0 6px;
+            }
+            .hero-deco::before {
+                width: 100%;
+                height: 100%;
+                top: 0;
+                right: 0;
+                border-radius: 40% 10% 30% 20% / 20% 30% 10% 40%;
+            }
+            .hero-deco::after {
+                display: none;
+                /* 手機上簡化，只留一個豆子 */
+            }
         }
 
         @media (max-width: 380px) {
@@ -494,11 +559,14 @@
                 font-size: 0.7rem;
                 padding: 4px 10px;
             }
-            .page-hero .overlay h1 {
-                font-size: 1.8rem;
+            .page-hero {
+                min-height: 160px;
             }
-            .page-hero .overlay .sub {
-                font-size: 0.8rem;
+            .page-hero img {
+                min-height: 160px;
+            }
+            .hero-overlay .text h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -521,14 +589,21 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 (Banner) - 無遮罩，底部有裝飾曲線 ===== -->
-    <header class="page-hero">
+    <!-- ===== 頁面主視覺 (Banner) - 全新無壓字設計 ===== -->
+    <header class="page-hero" id="heroBanner">
+        <!-- 背景圖片 -->
         <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
-        <div class="overlay">
-            <h1>掌心之作</h1>
-            <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+
+        <!-- 「豆子」裝飾層（純視覺，不壓字） -->
+        <div class="hero-deco" id="heroDeco"></div>
+
+        <!-- 文字覆蓋層（永遠在最上面） -->
+        <div class="hero-overlay">
+            <div class="text">
+                <h1>掌心之作</h1>
+                <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+            </div>
         </div>
-        <!-- 底部不規則裝飾曲線由 CSS ::after 產生 -->
     </header>
 
     <!-- ===== 分類選單 ===== -->
@@ -636,8 +711,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('作品櫥窗已載入，分類篩選功能已啟動。');
+            console.log('作品櫥窗已載入，豆子會跟著滑鼠輕輕移動！');
 
+            // ===== 分類篩選功能 =====
             const filterButtons = document.querySelectorAll('.filter-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -657,6 +733,34 @@
                         }
                     });
                 });
+            });
+
+            // ===== 滑鼠移動豆子效果（視差位移） =====
+            const heroBanner = document.getElementById('heroBanner');
+            const heroDeco = document.getElementById('heroDeco');
+
+            heroBanner.addEventListener('mousemove', function(e) {
+                // 計算滑鼠在 Banner 內的相對位置 (0~1)
+                const rect = this.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;  // 0~1
+                const y = (e.clientY - rect.top) / rect.height; // 0~1
+
+                // 將位移範圍設定在 -20px ~ 20px 之間，產生輕微飄動感
+                const moveX = (x - 0.5) * 40; // -20 ~ 20
+                const moveY = (y - 0.5) * 40; // -20 ~ 20
+
+                // 套用位移到豆子裝飾層
+                heroDeco.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+
+            // 滑鼠離開 Banner 時，豆子慢慢回到原位
+            heroBanner.addEventListener('mouseleave', function() {
+                heroDeco.style.transition = 'transform 0.6s ease-out';
+                heroDeco.style.transform = 'translate(0, 0)';
+                // 避免影響到下一次進入的過渡
+                setTimeout(() => {
+                    heroDeco.style.transition = 'transform 0.1s ease-out';
+                }, 700);
             });
         });
     </script>

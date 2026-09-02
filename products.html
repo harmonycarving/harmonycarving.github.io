@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品櫥窗 | 聯和刻記 · 掌心木藝</title>
+
+    <!-- ========== SEO 與 GEO ========== -->
+    <meta name="description" content="欣賞聯和刻記的掌心木藝作品——台灣肖楠、檜木手工雕刻，結合AI人機協作的療癒藝術。" />
+    <meta name="keywords" content="台灣木雕,肖楠,檜木,掌心木作,木雕作品,舒壓玩具,魯班鎖" />
+    <link rel="canonical" href="https://harmonycarving.github.io/products.html" />
+
+    <meta property="og:title" content="作品櫥窗 | 聯和刻記 · 掌心木藝" />
+    <meta property="og:description" content="每一件掌心木雕，都是獨一無二的溫暖陪伴。" />
+    <meta property="og:image" content="https://harmonycarving.github.io/images/product-placeholder-1.webp" />
+    <meta property="og:url" content="https://harmonycarving.github.io/products.html" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        /* ===== 全域樣式 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-cream: #F5F2EB;
+            --red-gugong: #9B1B30;
+            --gold-dark: #8B6914;
+            --brown-deep: #3E2723;
+            --text-soft: #4A3A2B;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif TC', 'Times New Roman', serif;
+            background-color: var(--bg-cream);
+            color: var(--brown-deep);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            /* ----- 背景底圖（極淡，不搶戲） ----- */
+            background-image: url('images/products-bg.webp');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-blend-mode: soft-light;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ===== 導航欄 ===== */
+        .navbar {
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(245, 242, 235, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        #logo-text {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--red-gugong);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+        #logo-text small {
+            font-size: 0.5em;
+            color: var(--gold-dark);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        #logo-image {
+            display: none;
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brown-deep);
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-gugong);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--red-gugong);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--red-gugong);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* ===== 頁首標題 ===== */
+        .page-header {
+            text-align: center;
+            padding: 50px 0 30px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            color: var(--brown-deep);
+            letter-spacing: 8px;
+        }
+
+        .page-header .sub {
+            font-size: 1.1rem;
+            color: var(--gold-dark);
+            letter-spacing: 3px;
+            margin-top: 4px;
+        }
+
+        /* ===== 瀑布流相簿（核心） ===== */
+        .gallery {
+            padding-bottom: 70px;
+        }
+
+        .gallery-grid {
+            column-count: 4;           /* 桌面4欄 */
+            column-gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 每張作品卡片 */
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: var(--border-radius-art);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.01) translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.02);
+        }
+
+        /* 照片下方的簡易說明（可選） */
+        .gallery-item .caption {
+            padding: 12px 16px 16px;
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(139, 105, 20, 0.1);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .gallery-item .caption .tag {
+            display: inline-block;
+            background: var(--red-gugong);
+            color: white;
+            font-size: 0.65rem;
+            padding: 1px 12px;
+            border-radius: 30px;
+            margin-right: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== 右下角懸浮聯絡區塊 ===== */
+        .floating-contact {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .floating-contact a:hover {
+            transform: scale(1.10);
+        }
+
+        .line-btn img {
+            width: clamp(52px, 8vw, 68px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .phone-btn {
+            background: var(--red-gugong);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: background 0.3s, transform 0.25s;
+            white-space: nowrap;
+        }
+        .phone-btn:hover {
+            background: #7a1526;
+            transform: scale(1.04);
+        }
+
+        /* ===== 頁尾 ===== */
+        .footer {
+            background: rgba(44, 31, 26, 0.92);
+            backdrop-filter: blur(4px);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 36px 0 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #d4a373;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 響應式調整 ===== */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                column-count: 3;
+                column-gap: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                column-count: 2;
+                column-gap: 14px;
+            }
+            .floating-contact {
+                bottom: 20px;
+                right: 20px;
+                gap: 8px;
+            }
+            .line-btn img {
+                width: 56px;
+            }
+            .phone-btn {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+            .nav-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .logo-area {
+                justify-content: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 4px 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                column-count: 1;
+                column-gap: 0;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .gallery-item {
+                border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
+            }
+            .page-header {
+                padding: 30px 0 20px;
+            }
+            .floating-contact {
+                bottom: 14px;
+                right: 14px;
+                gap: 6px;
+            }
+            .line-btn img {
+                width: 48px;
+            }
+            .phone-btn {
+                padding: 5px 12px;
+                font-size: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 2px 10px;
+            }
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+            .phone-btn {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 導航欄 ===== -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-area">
+                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+                <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
+            </a>
+            <div class="nav-links">
+                <a href="index.html">首頁</a>
+                <a href="about.html">關於</a>
+                <a href="products.html" class="active">作品</a>
+                <a href="blog.html">木藝講堂</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== 頁首 ===== -->
+    <header class="page-header">
+        <h1>︱ 掌心之作 ︱</h1>
+        <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+    </header>
+
+    <!-- ===== 瀑布流相簿 ===== -->
+    <section class="gallery">
+        <div class="gallery-grid">
+
+            <!-- ========================================= -->
+            <!-- 以下為作品佔位圖，劉大哥可自行更換圖片與說明 -->
+            <!-- 圖片請放入 images/ 資料夾，並更新 src 路徑    -->
+            <!-- ========================================= -->
+
+            <!-- 作品 1 -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
+                </div>
+            </div>
+
+            <!-- 作品 2 -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
+                </div>
+            </div>
+
+            <!-- 作品 3 -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
+                </div>
+            </div>
+
+            <!-- 作品 4 -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
+                </div>
+            </div>
+
+            <!-- 作品 5（重複佔位，可替換） -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
+                </div>
+            </div>
+
+            <!-- 作品 6（重複佔位，可替換） -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
+                </div>
+            </div>
+
+            <!-- 作品 7（重複佔位，可替換） -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
+                </div>
+            </div>
+
+            <!-- 作品 8（重複佔位，可替換） -->
+            <div class="gallery-item">
+                <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
+                <div class="caption">
+                    <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== 右下角懸浮聯絡區塊 ===== -->
+    <div class="floating-contact">
+        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
+            <img src="images/line.png" alt="LINE 聯絡方式" />
+        </a>
+        <a href="tel:+886911938978" class="phone-btn">📞 0911-938-978</a>
+    </div>
+
+    <!-- ===== 頁尾 ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">
+                <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
+                台灣名木 · 掌心療癒 · 人機共創
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('作品櫥窗已載入，每一件木作都有它的故事。');
+        });
+    </script>
+
+</body>
+</html>

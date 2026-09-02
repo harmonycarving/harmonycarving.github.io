@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯和刻記 Harmony Carving | 手工不死 藝術永存</title>
+    <!-- 引入故宮質感的思源宋體與黑體 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #F9F8F6; /* 宣紙白 */
+            --text-dark: #2C241D; /* 沉穩墨黑/深木色 */
+            --accent-red: #9B3B33; /* 印泥朱紅 */
+            --wood-light: #D4B895; /* 肖楠木淺色 */
+            --wood-dark: #8B5A2B; /* 檜木深色 */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-paper);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        /* 導覽列 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(249, 248, 246, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::after {
+            content: "和";
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: white;
+            font-size: 14px;
+            padding: 2px 6px;
+            border-radius: 6px 12px 8px 4px; /* 不規則印章邊緣 */
+        }
+
+        nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover { color: var(--accent-red); }
+
+        /* 大 Banner 區塊 (打破方正，有機流動邊緣) */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 90vh;
+            overflow: hidden;
+            /* 備援背景圖：在影片尚未載入或沒有影片時顯示 */
+            background: linear-gradient(rgba(44, 36, 29, 0.4), rgba(44, 36, 29, 0.4)), url('https://images.unsplash.com/photo-1611145372338-791c530c3453?q=80&w=2000') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* 關鍵：有機形狀切割，底部呈現不規則優雅圓弧 */
+            border-radius: 0 0 45% 55% / 0 0 15% 25%;
+            margin-bottom: 80px;
+        }
+
+        /* 影片容器：設定在最底層 */
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 隱藏控制選項，禁止點擊 */
+            z-index: -1;
+        }
+
+        .video-container iframe {
+            width: 100vw;
+            height: 56.25vw; /* 16:9 比例 */
+            min-height: 100vh;
+            min-width: 177.77vh;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .hero-content {
+            color: white;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 56px;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+
+        /* 內容區塊共用設定 */
+        section {
+            max-width: 1200px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-red);
+            margin: 20px auto 0;
+            border-radius: 5px;
+        }
+
+        /* 理念與介紹 (兩欄式，圖片有機變形) */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .concept-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--wood-dark);
+        }
+
+        .concept-text p {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #555;
+            text-align: justify;
+        }
+
+        .organic-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            /* 模擬鵝卵石/木塊的不規則形狀 */
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            box-shadow: 10px 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+
+        .organic-img:hover {
+            border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+        }
+
+        /* 產品展示區 (畫廊網格) */
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            /* 不同的有機形狀，打破方正 */
+            border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%;
+            margin-bottom: 20px;
+        }
+        
+        .product-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 底部 */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--bg-paper);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+        <a href="#" class="logo serif">聯和刻記</a>
+        <nav>
+            <a href="#about">創作理念</a>
+            <a href="#products">掌心木藝</a>
+            <a href="#workshop">AI 療癒木作班</a>
+            <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook</a>
+        </nav>
+    </header>
+
+    <!-- 滿版有機大 Banner -->
+    <section class="hero">
+        <!-- YouTube 影片背景 (自動播放、靜音、循環、無控制條) -->
+        <!-- 注意：影片ID (VIDEO_ID) 日後可替換為劉大哥實際的木作影片 -->
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ&modestbranding=1&showinfo=0" 
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+            </iframe>
+        </div>
+        
+        <div class="hero-content">
+            <h1>手工不死 藝術永存</h1>
+            <p class="serif">簡單就是美 • 掌心間的東方木藝</p>
+        </div>
+    </section>
+
+    <!-- 品牌理念區塊 -->
+    <section id="about" class="concept-grid">
+        <div class="concept-text">
+            <h3>跨越世代的人機協作</h3>
+            <p>世事紛紜、人間無常，然我們追求「簡單就是美」，期望藉著簡易線條來表現作品的特性，盼能自娛娛人，博您會心一笑。</p>
+            <p>我們結合台灣獨有的名木資產與前沿 AI 科技，打造全新的工藝生態系。由機器與 AI 處理前端開料等繁重工序，而將充滿溫度的打磨、塗裝與聞香體驗，交由長者與學員親手完成。</p>
+            <p>這不僅是一件木雕，更是一個「銀髮族心靈療癒與價值再生」的系統，讓台灣肖楠與檜木的香氣，成為安撫現代人焦慮的良藥。</p>
+        </div>
+        <div>
+            <!-- 此處圖片邊緣已被 CSS 處理為不規則形狀 -->
+            <img src="https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&w=1000" alt="木作打磨" class="organic-img">
+        </div>
+    </section>
+
+    <!-- 核心產品區塊 -->
+    <section id="products">
+        <h2 class="section-title">不超過手掌心的溫度</h2>
+        <div class="product-gallery">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1546552356-31dbfb4dd699?q=80&w=600" alt="紓壓解焦慮神器" style="border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;">
+                <h4 class="serif">感官療癒：紓壓木作</h4>
+                <p>結合精密結構與肖楠醇厚香氣，可在手掌內單手盲操。不僅活化長者指尖，亦是高壓族群的解焦慮神器。</p>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1584285418504-03f47e335272?q=80&w=600" alt="益智微縮盲盒" style="border-radius: 70% 30% 40% 60% / 50% 60% 40% 50%;">
+                <h4 class="serif">互動益智：微縮魯班鎖</h4>
+                <p>濃縮至雞蛋大小的傳統結構，利用肖楠與檜木的顏色反差，在活化大腦的同時，展現極致的幾何美學。</p>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1628157588553-5eeea00af15c?q=80&w=600" alt="生活美學" style="border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;">
+                <h4 class="serif">生活美學：香氛護照盒</h4>
+                <p>旋蓋式的極簡木筒，可作為隨身聞香瓶或實用小物收納，將天然芬多精完美融入日常。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="serif">© 2026 聯和刻記 Harmony Carving. All Rights Reserved.</p>
+        <p style="margin-top: 10px; color: #888;">台灣肖楠 • 檜木 • AI 輔助設計 • 療癒木作班</p>
+    </footer>
+
+</body>
+</html>

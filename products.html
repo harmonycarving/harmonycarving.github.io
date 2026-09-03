@@ -24,7 +24,7 @@
             --brown-deep: #3E2723;
             --text-soft: #4A3A2B;
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
+            --border-radius-art: 16px; 
         }
 
         html { scroll-behavior: smooth; }
@@ -238,7 +238,7 @@
             box-shadow: 0 4px 12px rgba(155, 27, 48, 0.25);
         }
 
-        /* ===== 瀑布流相簿 (修正遮罩問題) ===== */
+        /* ===== 瀑布流相簿 ===== */
         .gallery {
             padding: 20px 0 70px;
         }
@@ -264,12 +264,13 @@
             background: rgba(255, 255, 255, 0.6);
             border: 1px solid rgba(255, 255, 255, 0.4);
             position: relative;
+            cursor: pointer; /* 提示可點擊放大 */
         }
 
         .gallery-item:hover .img-wrap {
             transform: scale(1.02) translateY(-4px);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-            border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
+            border-radius: var(--border-radius-art);
         }
 
         .gallery-item .img-wrap img {
@@ -300,6 +301,95 @@
             border-radius: 30px;
             margin-right: 6px;
             letter-spacing: 1px;
+        }
+
+        /* ===== 圖片放大燈箱 (Lightbox) ===== */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 10000; /* 確保蓋過所有元素包含公仔 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(15, 10, 8, 0.95);
+            backdrop-filter: blur(8px);
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            margin-top: 6vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #E0DCD3;
+            padding: 15px 0;
+            height: 10vh;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif TC', serif;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 10001;
+        }
+
+        .prev-lightbox, .next-lightbox {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 20px 24px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 10001;
+        }
+
+        .next-lightbox {
+            right: 40px;
+        }
+
+        .prev-lightbox {
+            left: 40px;
+        }
+
+        .prev-lightbox:hover, .next-lightbox:hover, .close-lightbox:hover {
+            background-color: var(--red-gugong);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @keyframes zoomIn {
+            from {transform: scale(0.95); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
         }
 
         /* ===== 右下角懸浮聯絡 ===== */
@@ -359,7 +449,7 @@
         }
         .footer a { color: #d4a373; text-decoration: none; }
 
-        /* ===== AI 公仔與對話框 (左下角) - 完整移植首頁 ===== */
+        /* ===== AI 公仔與對話框 (左下角) ===== */
         #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
         #lh-mascot-container:hover { transform: scale(1.05); }
         #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
@@ -428,6 +518,11 @@
 
             #lh-mascot-container { width: 130px; height: 180px; }
             #lh-chatbox { left: 20px; right: 20px; bottom: 200px; width: auto; }
+
+            /* 燈箱手機版微調 */
+            .prev-lightbox, .next-lightbox { padding: 12px 16px; font-size: 18px; margin-top: -30px; }
+            .prev-lightbox { left: 10px; }
+            .next-lightbox { right: 10px; }
         }
 
         @media (max-width: 480px) {
@@ -453,14 +548,12 @@
                 <img id="logo-image" src="images/logo.png" alt="聯和刻記 Harmony Carving Logo" />
             </a>
             
-            <!-- 漢堡選單按鈕 (手機版顯示) -->
             <div class="menu-toggle" id="mobile-menu-btn">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
-            <!-- 主選單連結 (已加入 木作影音 選項) -->
             <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">關於</a>
@@ -500,82 +593,98 @@
     <!-- ===== 瀑布流相簿 ===== -->
     <section class="gallery">
         <div class="gallery-grid" id="galleryGrid">
-
-            <!-- 作品範例結構：圖文完全分離 -->
-            <div class="gallery-item" data-category="舒壓">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="益智">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
-                </div>
-            </div>
-
+            
+            <!-- Item 1 -->
             <div class="gallery-item" data-category="生活">
                 <div class="img-wrap">
-                    <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
+                    <img src="images/work-01.webp" alt="肖楠手作手機架" loading="lazy" />
                 </div>
                 <div class="caption">
-                    <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
+                    <span class="tag">生活</span> 肖楠手作手機架 · 融山林靈氣
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="藝術">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="舒壓">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
-                </div>
-            </div>
-
-            <div class="gallery-item" data-category="飾品">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
-                </div>
-            </div>
-
+            <!-- Item 2 -->
             <div class="gallery-item" data-category="療癒">
                 <div class="img-wrap">
-                    <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
+                    <img src="images/work-02.webp" alt="木紋裡的擁抱" loading="lazy" />
                 </div>
                 <div class="caption">
-                    <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
+                    <span class="tag">療癒</span> 木紋裡的擁抱 · 兩種年輪
                 </div>
             </div>
 
-            <div class="gallery-item" data-category="藝術">
+            <!-- Item 3 -->
+            <div class="gallery-item" data-category="療癒">
                 <div class="img-wrap">
-                    <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
+                    <img src="images/work-03.webp" alt="盪回童年" loading="lazy" />
                 </div>
                 <div class="caption">
-                    <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
+                    <span class="tag">療癒</span> 盪回童年 · 掌心大的家
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="gallery-item" data-category="藝術">
+                <div class="img-wrap">
+                    <img src="images/work-04.webp" alt="拾光森林家族" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">藝術</span> 拾光森林家族 · 貓頭鷹雕件組
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="gallery-item" data-category="舒壓">
+                <div class="img-wrap">
+                    <img src="images/work-05.webp" alt="搖晃的春天" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">舒壓</span> 搖晃的春天 · 會動的木頭
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="gallery-item" data-category="藝術">
+                <div class="img-wrap">
+                    <img src="images/work-06.webp" alt="原創流線木藝" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">藝術</span> 原創流線木藝 · 刻劃寧靜
+                </div>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="gallery-item" data-category="療癒">
+                <div class="img-wrap">
+                    <img src="images/work-07.webp" alt="掌心裡的守護者" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">療癒</span> 掌心裡的守護者 · 貓頭鷹雕件
+                </div>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="gallery-item" data-category="生活">
+                <div class="img-wrap">
+                    <img src="images/work-08.webp" alt="88發財盒" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">生活</span> 88 發財盒 · 台灣老黃檜
                 </div>
             </div>
 
         </div>
     </section>
+
+    <!-- ===== 圖片放大燈箱 (Lightbox) ===== -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <span class="prev-lightbox">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <span class="next-lightbox">&#10095;</span>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
 
     <!-- ===== 右下角懸浮聯絡區塊 ===== -->
     <div class="floating-contact">
@@ -585,7 +694,7 @@
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
-    <!-- ===== 左下角 AI 公仔與對話框 (完整移植首頁) ===== -->
+    <!-- ===== 左下角 AI 公仔與對話框 ===== -->
     <div id="lh-chatbox">
         <div id="lh-chat-header">
             <span>🪵 聯和刻記 AI 職人</span>
@@ -630,7 +739,6 @@
                 navLinks.classList.toggle('show');
             });
 
-            // 點擊選單項目後，自動收合漢堡選單
             const navItems = document.querySelectorAll('.nav-links a');
             navItems.forEach(item => {
                 item.addEventListener('click', () => {
@@ -661,7 +769,91 @@
                 });
             });
 
-            // ===== 3. AI 公仔客服邏輯 (完整移植首頁) =====
+            // ===== 3. 燈箱 (Lightbox) 放大與左右滑動切換邏輯 =====
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeLightbox = document.querySelector('.close-lightbox');
+            const prevLightbox = document.querySelector('.prev-lightbox');
+            const nextLightbox = document.querySelector('.next-lightbox');
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            let visibleImages = [];
+            let visibleCaptions = [];
+            let currentIndex = 0;
+
+            // 動態抓取當前「沒有被隱藏」的圖片清單 (支援篩選後的狀態)
+            function updateVisibleGallery() {
+                visibleImages = [];
+                visibleCaptions = [];
+                const items = document.querySelectorAll('.gallery-item');
+                items.forEach(item => {
+                    if (item.style.display !== 'none') {
+                        visibleImages.push(item.querySelector('img').src);
+                        visibleCaptions.push(item.querySelector('.caption').innerText);
+                    }
+                });
+            }
+
+            function showLightbox(index) {
+                lightbox.style.display = 'block';
+                lightboxImg.src = visibleImages[index];
+                lightboxCaption.innerText = visibleCaptions[index];
+            }
+
+            // 點擊作品圖片開啟燈箱
+            galleryGrid.addEventListener('click', function(e) {
+                if (e.target.tagName === 'IMG' && e.target.closest('.gallery-item')) {
+                    updateVisibleGallery();
+                    currentIndex = visibleImages.indexOf(e.target.src);
+                    if(currentIndex !== -1) showLightbox(currentIndex);
+                }
+            });
+
+            // 關閉燈箱
+            closeLightbox.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            // 點擊空白處關閉
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) lightbox.style.display = 'none';
+            });
+
+            // 上一張
+            prevLightbox.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+                showLightbox(currentIndex);
+            });
+
+            // 下一張
+            nextLightbox.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % visibleImages.length;
+                showLightbox(currentIndex);
+            });
+
+            // 鍵盤左右鍵切換與 Esc 關閉
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display === 'block') {
+                    if (e.key === 'ArrowLeft') prevLightbox.click();
+                    if (e.key === 'ArrowRight') nextLightbox.click();
+                    if (e.key === 'Escape') lightbox.style.display = 'none';
+                }
+            });
+
+            // 手機版觸控滑動 (Swipe) 支援
+            let touchstartX = 0;
+            let touchendX = 0;
+            lightbox.addEventListener('touchstart', e => {
+                touchstartX = e.changedTouches[0].screenX;
+            });
+            lightbox.addEventListener('touchend', e => {
+                touchendX = e.changedTouches[0].screenX;
+                if (touchendX < touchstartX - 50) nextLightbox.click(); // 向左滑，下一張
+                if (touchendX > touchstartX + 50) prevLightbox.click(); // 向右滑，上一張
+            });
+
+            // ===== 4. AI 公仔客服邏輯 =====
             const mascotContainer = document.getElementById('lh-mascot-container');
             const mascotVideo = document.getElementById('lh-mascot-video');
             const chatbox = document.getElementById('lh-chatbox');

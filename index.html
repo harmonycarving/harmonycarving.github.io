@@ -464,6 +464,35 @@
             text-decoration: underline;
         }
 
+        /* ===== AI 公仔與對話框 (左下角新增) ===== */
+        #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
+        #lh-mascot-container:hover { transform: scale(1.05); }
+        #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+
+        #lh-chatbox { position: fixed; bottom: 240px; left: 30px; width: 340px; background-color: #ffffff; border: 2px solid var(--red-gugong); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 9998; overflow: hidden; transform-origin: bottom left; animation: popUp 0.3s ease-out; }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        
+        #lh-chat-header { background-color: var(--brown-deep); color: #ffffff; padding: 15px 20px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
+        #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
+        #lh-chat-close:hover { background-color: var(--red-gugong); }
+        
+        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
+        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
+
+        #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
+        .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
+        .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
+        .lh-msg-user { background-color: var(--red-gugong); color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
+        
+        .lh-typing { font-style: italic; color: #888; font-size: 13px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        #lh-chat-input-area { display: flex; padding: 10px; background-color: #ffffff; border-top: 1px solid #e0dcd3; }
+        #lh-chat-input { flex: 1; padding: 10px 15px; border: 1px solid #cccccc; border-radius: 20px; outline: none; font-size: 14px; }
+        #lh-chat-input:focus { border-color: var(--gold-dark); }
+        #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+        #lh-chat-send:hover { background-color: var(--red-gugong); }
+
         /* ===== 響應式設計 ===== */
         @media (max-width: 820px) {
             .collab-inner {
@@ -582,6 +611,10 @@
                 padding: 5px 12px;
                 font-size: 0.8rem;
             }
+
+            /* AI 公仔手機版微調 */
+            #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
+            #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
         }
 
         @media (max-width: 380px) {
@@ -726,6 +759,31 @@
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
+    <!-- ===== 左下角 AI 公仔與對話框新增區塊 ===== -->
+    <div id="lh-chatbox">
+        <div id="lh-chat-header">
+            <span>🪵 聯和刻記 AI 職人</span>
+            <span id="lh-chat-close">✖</span>
+        </div>
+        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
+            💬 點此加 LINE 預約課程或洽詢 👉
+        </a>
+        <div id="lh-chat-messages">
+            <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
+        </div>
+        <div id="lh-chat-input-area">
+            <input type="text" id="lh-chat-input" placeholder="請輸入您的問題...">
+            <button id="lh-chat-send">發送</button>
+        </div>
+    </div>
+
+    <div id="lh-mascot-container">
+        <video id="lh-mascot-video" autoplay loop muted playsinline webkit-playsinline>
+            <source src="images/Idle.mov" type="video/quicktime">
+            <source src="images/Idle.webm" type="video/webm">
+        </video>
+    </div>
+
     <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
@@ -755,6 +813,110 @@
                     mobileBtn.classList.remove('active');
                     navLinks.classList.remove('show');
                 });
+            });
+
+            // ===== AI 公仔客服邏輯 =====
+            const mascotContainer = document.getElementById('lh-mascot-container');
+            const mascotVideo = document.getElementById('lh-mascot-video');
+            const chatbox = document.getElementById('lh-chatbox');
+            const closeBtn = document.getElementById('lh-chat-close');
+            const sendBtn = document.getElementById('lh-chat-send');
+            const chatInput = document.getElementById('lh-chat-input');
+            const messagesArea = document.getElementById('lh-chat-messages');
+
+            const videoSources = {
+                idle: { mov: "images/Idle.mov", webm: "images/Idle.webm" },
+                greeting: { mov: "images/Greeting.mov", webm: "images/Greeting.webm" },
+                thinking: { mov: "images/Thinking.mov", webm: "images/Thinking.webm" }
+            };
+
+            function playVideo(mode, loop = true) {
+                mascotVideo.innerHTML = `
+                    <source src="${videoSources[mode].mov}" type="video/quicktime">
+                    <source src="${videoSources[mode].webm}" type="video/webm">
+                `;
+                mascotVideo.loop = loop;
+                mascotVideo.load();
+                mascotVideo.play().catch(e => console.log("影片播放限制", e));
+            }
+
+            mascotContainer.addEventListener('click', function() {
+                if (chatbox.style.display === "none" || chatbox.style.display === "") {
+                    chatbox.style.display = "flex";
+                    playVideo('greeting', false);
+                    mascotVideo.onended = function() {
+                        playVideo('idle', true);
+                        mascotVideo.onended = null;
+                    };
+                }
+            });
+
+            closeBtn.addEventListener('click', function() {
+                chatbox.style.display = "none";
+                playVideo('idle', true);
+            });
+
+            function sendMessage() {
+                const text = chatInput.value.trim();
+                if (text === "") return;
+
+                const userMsg = document.createElement('div');
+                userMsg.className = 'lh-msg lh-msg-user';
+                userMsg.textContent = text;
+                messagesArea.appendChild(userMsg);
+                chatInput.value = "";
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                playVideo('thinking', true);
+                const typingMsg = document.createElement('div');
+                typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
+                typingMsg.textContent = "劉大哥思考中...";
+                typingMsg.id = "lh-typing-indicator";
+                messagesArea.appendChild(typingMsg);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+
+                // 🚀 指向您妹妹主機 Code Snippets 註冊的 REST API
+                const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
+
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                })
+                .then(async response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    const indicator = document.getElementById('lh-typing-indicator');
+                    if(indicator) indicator.remove();
+
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'lh-msg lh-msg-ai';
+                    aiMsg.innerHTML = data.reply ? data.reply.replace(/\n/g, '<br>') : "不好意思，沒聽清楚呢。";
+                    
+                    messagesArea.appendChild(aiMsg);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    
+                    playVideo('greeting', false);
+                    mascotVideo.onended = function() { playVideo('idle', true); };
+                })
+                .catch(error => {
+                    console.error("AI 報錯：", error);
+                    const indicator = document.getElementById('lh-typing-indicator');
+                    if(indicator) indicator.remove();
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'lh-msg lh-msg-ai';
+                    aiMsg.textContent = "網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！";
+                    messagesArea.appendChild(aiMsg);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    playVideo('idle', true);
+                });
+            }
+
+            sendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') sendMessage();
             });
         });
     </script>

@@ -390,6 +390,7 @@
         #lh-chat-input:focus { border-color: var(--gold-dark); }
         #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         #lh-chat-send:hover { background-color: var(--red-gugong); }
+        #lh-chat-send:disabled { opacity: 0.6; cursor: wait; }
 
         /* ===== 響應式調整 ===== */
         @media (max-width: 1024px) {
@@ -709,18 +710,44 @@
                 playVideo('idle', true);
             });
 
-            function sendMessage() {
+            let isSending = false;
+
+            function addAiMessage(text, isHtml = false) {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'lh-msg lh-msg-ai';
+
+                if (isHtml) {
+                    aiMsg.innerHTML = text;
+                } else {
+                    aiMsg.textContent = text;
+                }
+
+                messagesArea.appendChild(aiMsg);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }
+
+            async function sendMessage() {
+                if (isSending) return;
+
                 const text = chatInput.value.trim();
                 if (text === "") return;
+
+                isSending = true;
+                sendBtn.disabled = true;
+                sendBtn.style.opacity = '0.6';
+                sendBtn.style.cursor = 'wait';
 
                 const userMsg = document.createElement('div');
                 userMsg.className = 'lh-msg lh-msg-user';
                 userMsg.textContent = text;
                 messagesArea.appendChild(userMsg);
+
                 chatInput.value = "";
+                chatInput.disabled = true;
                 messagesArea.scrollTop = messagesArea.scrollHeight;
 
                 playVideo('thinking', true);
+
                 const typingMsg = document.createElement('div');
                 typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
                 typingMsg.textContent = "劉大哥思考中...";
@@ -728,49 +755,84 @@
                 messagesArea.appendChild(typingMsg);
                 messagesArea.scrollTop = messagesArea.scrollHeight;
 
+                // WordPress Code Snippets 註冊的 REST API
                 const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
 
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text })
-                })
-                .then(async response => {
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    return response.json();
-                })
-                .then(data => {
-                    const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 35000);
 
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.innerHTML = data.reply ? data.reply.replace(/\n/g, '<br>') : "不好意思，沒聽清楚呢。";
-                    
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
-                    
-                    playVideo('greeting', false);
-                    mascotVideo.onended = function() { playVideo('idle', true); };
-                })
-                .catch(error => {
-                    console.error("AI 報錯：", error);
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ message: text }),
+                        signal: controller.signal,
+                        cache: 'no-store'
+                    });
+
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                        const errorText = await response.text().catch(() => '');
+                        throw new Error(`HTTP ${response.status} ${errorText}`);
+                    }
+
+                    const data = await response.json();
+
                     const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.textContent = "網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！";
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    if (indicator) indicator.remove();
+
+                    if (data && data.reply) {
+                        // 僅在瀏覽器主控台留下目前實際使用的 AI 供除錯，不顯示給訪客
+                        if (data.provider) console.log('Harmony AI Provider:', data.provider);
+                        // PHP 已將 AI 純文字安全轉義；LINE CTA 則為伺服器產生的固定 HTML
+                        addAiMessage(data.reply, true);
+                    } else {
+                        addAiMessage("不好意思，劉大哥這次沒有收到完整訊息，請再問一次喔！");
+                    }
+
+                    playVideo('greeting', false);
+                    mascotVideo.onended = function() {
+                        playVideo('idle', true);
+                    };
+
+                } catch (error) {
+                    clearTimeout(timeoutId);
+                    console.error("AI 報錯：", error);
+
+                    const indicator = document.getElementById('lh-typing-indicator');
+                    if (indicator) indicator.remove();
+
+                    if (error.name === 'AbortError') {
+                        addAiMessage("這次 AI 回應比較久，可能是服務正在忙碌。您可以再試一次，或使用網站右下角的 LINE 聯絡劉大哥喔！");
+                    } else {
+                        addAiMessage("網路似乎有點不穩！建議您再試一次，或使用網站右下角的 LINE 找我們聊聊喔！");
+                    }
+
                     playVideo('idle', true);
-                });
+
+                } finally {
+                    isSending = false;
+                    sendBtn.disabled = false;
+                    sendBtn.style.opacity = '1';
+                    sendBtn.style.cursor = 'pointer';
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                }
             }
 
             sendBtn.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') sendMessage();
+
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
             });
-            
+
         });
     </script>
 

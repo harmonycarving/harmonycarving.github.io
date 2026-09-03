@@ -476,9 +476,6 @@
         #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
         #lh-chat-close:hover { background-color: var(--red-gugong); }
         
-        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
-        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
-
         #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
         .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
         .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
@@ -766,10 +763,7 @@
             <span>🪵 聯和刻記 AI 職人</span>
             <span id="lh-chat-close">✖</span>
         </div>
-        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
-            💬 點此加 LINE 預約課程或洽詢 👉
-        </a>
-        <div id="lh-chat-messages">
+<div id="lh-chat-messages">
             <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
         </div>
         <div id="lh-chat-input-area">
@@ -906,7 +900,7 @@
                 const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
 
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 40000);
+                const timeoutId = setTimeout(() => controller.abort(), 45000);
 
                 try {
                     const response = await fetch(apiUrl, {
@@ -952,9 +946,9 @@
                     if (indicator) indicator.remove();
 
                     if (error.name === 'AbortError') {
-                        addAiMessage("這次 AI 回應比較久，可能是服務正在忙碌。您也可以直接點擊上方 LINE 按鈕找劉大哥喔！");
+                        addAiMessage("這次 AI 回應比較久，可能是服務正在忙碌。您可以再試一次，或使用網站右下角的 LINE 聯絡劉大哥喔！");
                     } else {
-                        addAiMessage("網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！");
+                        addAiMessage("網路似乎有點不穩！建議您再試一次，或使用網站右下角的 LINE 找我們聊聊喔！");
                     }
 
                     playVideo('idle', true);

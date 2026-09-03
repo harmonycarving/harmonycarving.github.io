@@ -33,25 +33,156 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         a { text-decoration: none; }
 
-        /* ===== 導航欄 ===== */
-        .navbar { padding: 16px 0; position: sticky; top: 0; background: rgba(245, 242, 235, 0.94); backdrop-filter: blur(10px); z-index: 100; border-bottom: 1px solid rgba(62, 39, 35, 0.08); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
-        #logo-text { font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 700; color: var(--red-gugong); letter-spacing: 3px; line-height: 1.2; }
-        #logo-text small { font-size: 0.5em; color: var(--gold-dark); font-weight: normal; letter-spacing: 1px; }
-        .nav-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
-        .nav-links a { text-decoration: none; color: var(--brown-deep); font-size: clamp(0.9rem, 1.2vw, 1.05rem); font-weight: 500; position: relative; transition: color 0.3s; white-space: nowrap; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--red-gugong); transition: width 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--red-gugong); }
-        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
+        .navbar { 
+            padding: 16px 0; 
+            position: sticky; 
+            top: 0; 
+            background: rgba(245, 242, 235, 0.96); 
+            backdrop-filter: blur(10px); 
+            z-index: 1000; 
+            border-bottom: 1px solid rgba(62, 39, 35, 0.08); 
+        }
+        
+        .nav-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo-area { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            text-decoration: none; 
+        }
+        
+        #logo-text { 
+            font-size: clamp(1.3rem, 3vw, 2rem); 
+            font-weight: 700; 
+            color: var(--red-gugong); 
+            letter-spacing: 3px; 
+            line-height: 1.2; 
+        }
+        
+        #logo-text small { 
+            font-size: 0.5em; 
+            color: var(--gold-dark); 
+            font-weight: normal; 
+            letter-spacing: 1px; 
+        }
 
-        /* ===== 頁面主視覺 ===== */
-        .page-hero { margin-top: 4px; position: relative; clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%); background: var(--brown-deep); }
-        .page-hero img { width: 100%; height: 50vh; min-height: 280px; object-fit: cover; display: block; opacity: 0.85; transition: transform 7s ease; }
-        .page-hero img:hover { transform: scale(1.02); }
-        .page-hero .overlay { position: absolute; bottom: 18%; left: 6%; color: white; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7); }
-        .page-hero .overlay h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 700; letter-spacing: 8px; line-height: 1.1; }
-        .page-hero .overlay .sub { font-size: clamp(1rem, 1.8vw, 1.3rem); opacity: 0.9; letter-spacing: 4px; font-weight: 300; margin-top: 6px; }
+        /* 主選單按鈕設計 */
+        .nav-links { 
+            display: flex; 
+            gap: 8px; 
+            align-items: center; 
+        }
+        
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--brown-deep); 
+            font-size: 1rem; 
+            font-weight: 500; 
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease; 
+            white-space: nowrap; 
+        }
+        
+        .nav-links a:hover { 
+            background: rgba(139, 105, 20, 0.08);
+            border-color: rgba(139, 105, 20, 0.2);
+            color: var(--red-gugong);
+            transform: translateY(-2px);
+        }
+        
+        .nav-links a.active { 
+            background: var(--red-gugong);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
+        }
+
+        /* 漢堡選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: var(--brown-deep);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== 頁面主視覺 (圖文分離) ===== */
+        .page-hero { 
+            margin-top: 4px; 
+            position: relative; 
+            min-height: 280px; 
+        }
+        
+        .hero-bg-mask {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%); 
+            background: var(--brown-deep); 
+            position: relative;
+        }
+        
+        .hero-bg-mask img { 
+            width: 100%; 
+            height: 50vh; 
+            min-height: 280px; 
+            object-fit: cover; 
+            display: block; 
+            opacity: 0.85; 
+            transition: transform 7s ease; 
+        }
+        
+        .hero-bg-mask img:hover { 
+            transform: scale(1.02); 
+        }
+        
+        .hero-overlay { 
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 18%; 
+            padding-left: 6%; 
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .hero-overlay .text {
+            color: white; 
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            pointer-events: auto;
+        }
+        
+        .hero-overlay .text h1 { 
+            font-size: clamp(2.6rem, 6vw, 4.2rem); 
+            font-weight: 700; 
+            letter-spacing: 8px; 
+            line-height: 1.1; 
+        }
+        
+        .hero-overlay .text .sub { 
+            font-size: clamp(1rem, 1.8vw, 1.3rem); 
+            opacity: 0.9; 
+            letter-spacing: 4px; 
+            font-weight: 300; 
+            margin-top: 6px; 
+        }
 
         /* ===== 日常動態雙欄區塊 ===== */
         .dynamic-journal { padding: 60px 0 80px; }
@@ -110,23 +241,52 @@
             .fb-side { align-items: center; }
         }
         @media (max-width: 768px) {
-            .nav-content { flex-direction: column; align-items: stretch; gap: 8px; }
-            .logo-area { justify-content: center; }
-            .nav-links { justify-content: center; gap: 4px 14px; }
-            .page-hero img { height: 35vh; min-height: 220px; }
-            .page-hero .overlay { bottom: 14%; left: 5%; }
+            /* 開啟漢堡選單機制 */
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(245, 242, 235, 0.98);
+                flex-direction: column;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
+                transition: clip-path 0.4s ease-in-out;
+            }
+
+            .nav-links.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
+            }
+
+            .nav-links a {
+                padding: 12px;
+                width: 80%;
+                text-align: center;
+                margin: 4px auto;
+            }
+
+            /* 漢堡選單動畫 */
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .hero-bg-mask img { height: 35vh; min-height: 220px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
+            .hero-overlay { padding-bottom: 14%; padding-left: 5%; }
             .floating-contact { bottom: 20px; right: 20px; gap: 8px; }
             .line-btn img { width: 56px; }
             .phone-btn { padding: 6px 14px; font-size: 0.9rem; }
-            .page-hero { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
         }
         @media (max-width: 500px) {
-            .page-hero img { height: 30vh; min-height: 180px; }
-            .page-hero .overlay { bottom: 12%; left: 4%; }
+            .hero-bg-mask img { height: 30vh; min-height: 180px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
+            .hero-overlay { padding-bottom: 12%; padding-left: 4%; }
             .floating-contact { bottom: 14px; right: 14px; gap: 6px; }
             .line-btn img { width: 48px; }
             .phone-btn { padding: 5px 12px; font-size: 0.8rem; }
-            .nav-links a { font-size: 0.85rem; }
             .intro-side h2 { font-size: 1.6rem; }
             .intro-side .organic-img { height: 220px; }
             .facebook-wrapper { padding: 12px 6px; border-radius: 12px; }
@@ -141,7 +301,16 @@
             <a href="index.html" class="logo-area">
                 <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
             </a>
-            <div class="nav-links">
+            
+            <!-- 漢堡選單按鈕 (手機版顯示) -->
+            <div class="menu-toggle" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 主選單連結 -->
+            <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">關於</a>
                 <a href="products.html">作品</a>
@@ -150,12 +319,16 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 ===== -->
+    <!-- ===== 頁面主視覺 (圖文分離修正) ===== -->
     <header class="page-hero">
-        <img src="images/blog-hero.webp" alt="木藝講堂：知識與療癒的空間" />
-        <div class="overlay">
-            <h1>木藝講堂</h1>
-            <div class="sub">—— 從木頭到掌心，記錄每一天的溫度 ——</div>
+        <div class="hero-bg-mask">
+            <img src="images/blog-hero.webp" alt="木藝講堂：知識與療癒的空間" />
+        </div>
+        <div class="hero-overlay">
+            <div class="text">
+                <h1>木藝講堂</h1>
+                <div class="sub">—— 從木頭到掌心，記錄每一天的溫度 ——</div>
+            </div>
         </div>
     </header>
 
@@ -170,7 +343,6 @@
                 <p>
                     每一塊台灣肖楠的紋理，每一次掌心打磨的溫度，都是聯和刻記最珍貴的故事。在這裡，我們透過 Facebook 即時與您分享工作室的日常點滴、最新作品，以及那些在木屑飛舞中誕生的療癒時光。
                 </p>
-                <!-- 替換為上方提供的 AI 提示詞生成的配圖 -->
                 <img src="images/journal-side.webp" alt="木工桌上的療癒日常" class="organic-img" loading="lazy" />
             </div>
 
@@ -178,7 +350,6 @@
             <div class="fb-side">
                 <div class="facebook-wrapper">
                     <!-- Facebook Page Plugin 嵌入碼 -->
-                    <!-- height 調整為 800，讓動態牆顯得豐富且有份量 -->
                     <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fharmonycarving&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                         width="500"
@@ -214,6 +385,30 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ===== 手機版漢堡選單切換 =====
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            mobileBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            // 點擊選單項目後，自動收合漢堡選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileBtn.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
+            
+        });
+    </script>
 
 </body>
 </html>

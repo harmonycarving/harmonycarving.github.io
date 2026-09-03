@@ -57,22 +57,20 @@
             text-decoration: none; 
         }
         
-        #logo-text { 
-            font-size: clamp(1.3rem, 3vw, 2rem); 
-            font-weight: 700; 
-            color: var(--red-gugong); 
-            letter-spacing: 3px; 
-            line-height: 1.2; 
+        /* ===== Logo 圖片尺寸最佳化 ===== */
+        #logo-image {
+            height: clamp(38px, 5vw, 52px);
+            max-height: 52px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+            transition: transform 0.3s ease;
         }
-        
-        #logo-text small { 
-            font-size: 0.5em; 
-            color: var(--gold-dark); 
-            font-weight: normal; 
-            letter-spacing: 1px; 
-        }
+        .logo-area:hover #logo-image { transform: scale(1.02); }
 
-        /* 主選單按鈕設計 */
+        /* ===== 主選單按鈕設計 ===== */
         .nav-links { 
             display: flex; 
             gap: 8px; 
@@ -104,7 +102,7 @@
             box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
         }
 
-        /* 漢堡選單按鈕 (預設隱藏) */
+        /* ===== 漢堡選單按鈕 (預設隱藏) ===== */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -228,7 +226,7 @@
         .phone-btn { background: var(--red-gugong); color: white; padding: 8px 16px; border-radius: 40px; font-size: clamp(0.85rem, 1.2vw, 1.05rem); font-weight: 600; letter-spacing: 1px; box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35); border: 2px solid rgba(255, 255, 255, 0.5); transition: background 0.3s, transform 0.25s; white-space: nowrap; }
         .phone-btn:hover { background: #7a1526; transform: scale(1.04); }
 
-        /* ===== AI 公仔與對話框 (左下角新增) ===== */
+        /* ===== AI 公仔與對話框 (完整移植首頁) ===== */
         #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
         #lh-mascot-container:hover { transform: scale(1.05); }
         #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
@@ -240,9 +238,6 @@
         #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
         #lh-chat-close:hover { background-color: var(--red-gugong); }
         
-        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
-        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
-
         #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
         .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
         .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
@@ -256,6 +251,7 @@
         #lh-chat-input:focus { border-color: var(--gold-dark); }
         #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         #lh-chat-send:hover { background-color: var(--red-gugong); }
+        #lh-chat-send:disabled { opacity: 0.6; cursor: wait; }
 
         /* ===== 頁尾 ===== */
         .footer { background: #2c1f1a; color: rgba(255, 255, 255, 0.7); padding: 36px 0 28px; text-align: center; font-size: 0.9rem; letter-spacing: 1px; }
@@ -270,7 +266,6 @@
             .fb-side { align-items: center; }
         }
         @media (max-width: 768px) {
-            /* 開啟漢堡選單機制 */
             .menu-toggle { display: flex; }
             
             .nav-links {
@@ -282,12 +277,12 @@
                 flex-direction: column;
                 padding: 10px 0 20px;
                 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                 transition: clip-path 0.4s ease-in-out;
             }
 
             .nav-links.show {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
 
             .nav-links a {
@@ -297,7 +292,6 @@
                 margin: 4px auto;
             }
 
-            /* 漢堡選單動畫 */
             .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .menu-toggle.active span:nth-child(2) { opacity: 0; }
             .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -308,6 +302,9 @@
             .floating-contact { bottom: 20px; right: 20px; gap: 8px; }
             .line-btn img { width: 56px; }
             .phone-btn { padding: 6px 14px; font-size: 0.9rem; }
+
+            #lh-mascot-container { width: 130px; height: 180px; }
+            #lh-chatbox { left: 20px; right: 20px; bottom: 200px; width: auto; }
         }
         @media (max-width: 500px) {
             .hero-bg-mask img { height: 30vh; min-height: 180px; }
@@ -320,9 +317,12 @@
             .intro-side .organic-img { height: 220px; }
             .facebook-wrapper { padding: 12px 6px; border-radius: 12px; }
 
-            /* AI 公仔手機版微調 */
-            #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
-            #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
+            #lh-mascot-container { width: 110px; height: 150px; left: 10px; bottom: 10px; }
+            #lh-chatbox { left: 10px; right: 10px; bottom: 170px; width: auto; }
+        }
+        @media (max-width: 380px) {
+            .nav-links a { font-size: 0.78rem; padding: 10px; }
+            .phone-btn { font-size: 0.7rem; padding: 4px 10px; }
         }
     </style>
 </head>
@@ -342,11 +342,12 @@
                 <span></span>
             </div>
 
-            <!-- 主選單連結 -->
+            <!-- 主選單連結 (已加入 木作影音 選項) -->
             <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">關於</a>
                 <a href="products.html">作品</a>
+                <a href="gallery.html">木作影音</a>
                 <a href="blog.html" class="active">木藝講堂</a>
             </div>
         </div>
@@ -382,7 +383,6 @@
             <!-- 右側：Facebook 動態牆 (極大化高度 800px) -->
             <div class="fb-side">
                 <div class="facebook-wrapper">
-                    <!-- Facebook Page Plugin 嵌入碼 -->
                     <iframe
                         src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fharmonycarving&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId"
                         width="500"
@@ -408,15 +408,12 @@
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
-    <!-- ===== 左下角 AI 公仔與對話框新增區塊 ===== -->
+    <!-- ===== 左下角 AI 公仔與對話框 (完整移植首頁) ===== -->
     <div id="lh-chatbox">
         <div id="lh-chat-header">
             <span>🪵 聯和刻記 AI 職人</span>
             <span id="lh-chat-close">✖</span>
         </div>
-        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
-            💬 點此加 LINE 預約課程或洽詢 👉
-        </a>
         <div id="lh-chat-messages">
             <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
         </div>
@@ -465,7 +462,7 @@
                 });
             });
 
-            // ===== 2. AI 公仔客服邏輯 =====
+            // ===== 2. AI 公仔客服邏輯 (完整移植首頁) =====
             const mascotContainer = document.getElementById('lh-mascot-container');
             const mascotVideo = document.getElementById('lh-mascot-video');
             const chatbox = document.getElementById('lh-chatbox');
@@ -506,18 +503,40 @@
                 playVideo('idle', true);
             });
 
-            function sendMessage() {
+            let isSending = false;
+
+            function addAiMessage(text, isHtml = false) {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'lh-msg lh-msg-ai';
+                if (isHtml) {
+                    aiMsg.innerHTML = text;
+                } else {
+                    aiMsg.textContent = text;
+                }
+                messagesArea.appendChild(aiMsg);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
+            }
+
+            async function sendMessage() {
+                if (isSending) return;
                 const text = chatInput.value.trim();
                 if (text === "") return;
+
+                isSending = true;
+                sendBtn.disabled = true;
+                sendBtn.style.opacity = '0.6';
+                sendBtn.style.cursor = 'wait';
 
                 const userMsg = document.createElement('div');
                 userMsg.className = 'lh-msg lh-msg-user';
                 userMsg.textContent = text;
                 messagesArea.appendChild(userMsg);
                 chatInput.value = "";
+                chatInput.disabled = true;
                 messagesArea.scrollTop = messagesArea.scrollHeight;
 
                 playVideo('thinking', true);
+
                 const typingMsg = document.createElement('div');
                 typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
                 typingMsg.textContent = "劉大哥思考中...";
@@ -525,50 +544,71 @@
                 messagesArea.appendChild(typingMsg);
                 messagesArea.scrollTop = messagesArea.scrollHeight;
 
-                // 🚀 指向您妹妹主機 Code Snippets 註冊的 REST API
+                // 🚀 指向 WordPress Code Snippets 註冊的 REST API
                 const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 35000);
 
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text })
-                })
-                .then(async response => {
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    return response.json();
-                })
-                .then(data => {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({ message: text }),
+                        signal: controller.signal,
+                        cache: 'no-store'
+                    });
+                    clearTimeout(timeoutId);
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+
+                    const data = await response.json();
                     const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
+                    if (indicator) indicator.remove();
 
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.innerHTML = data.reply ? data.reply.replace(/\n/g, '<br>') : "不好意思，沒聽清楚呢。";
-                    
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
-                    
+                    if (data && data.reply) {
+                        addAiMessage(data.reply, true);
+                    } else {
+                        addAiMessage("不好意思，劉大哥這次沒有收到完整訊息，請再問一次喔！");
+                    }
+
                     playVideo('greeting', false);
-                    mascotVideo.onended = function() { playVideo('idle', true); };
-                })
-                .catch(error => {
+                    mascotVideo.onended = function() {
+                        playVideo('idle', true);
+                    };
+
+                } catch (error) {
+                    clearTimeout(timeoutId);
                     console.error("AI 報錯：", error);
                     const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.textContent = "網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！";
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    if (indicator) indicator.remove();
+
+                    if (error.name === 'AbortError') {
+                        addAiMessage("這次 AI 回應比較久，可能是服務正在忙碌。您可以再試一次，或使用網站右下角的 LINE 聯絡劉大哥喔！");
+                    } else {
+                        addAiMessage("網路似乎有點不穩！建議您再試一次，或使用網站右下角的 LINE 找我們聊聊喔！");
+                    }
                     playVideo('idle', true);
-                });
+
+                } finally {
+                    isSending = false;
+                    sendBtn.disabled = false;
+                    sendBtn.style.opacity = '1';
+                    sendBtn.style.cursor = 'pointer';
+                    chatInput.disabled = false;
+                    chatInput.focus();
+                }
             }
 
             sendBtn.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') sendMessage();
+            chatInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
             });
-            
+
         });
     </script>
 

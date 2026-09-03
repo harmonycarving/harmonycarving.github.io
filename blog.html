@@ -120,7 +120,7 @@
             transition: all 0.3s ease;
         }
 
-        /* ===== 頁面主視覺 (圖文分離) ===== */
+        /* ===== 頁面主視覺 (圖文分離) - 修正文字垂直置中 ===== */
         .page-hero { 
             margin-top: 4px; 
             position: relative; 
@@ -154,9 +154,9 @@
             width: 100%;
             height: 100%;
             display: flex;
-            align-items: flex-end;
-            padding-bottom: 18%; 
-            padding-left: 6%; 
+            align-items: center;           /* ✅ 改為垂直置中，不再貼頂 */
+            justify-content: flex-start;
+            padding: 0 6%;                 /* ✅ 左右留白，上下由 flex 控制 */
             z-index: 2;
             pointer-events: none;
         }
@@ -165,6 +165,7 @@
             color: white; 
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
             pointer-events: auto;
+            max-width: 700px;
         }
         
         .hero-overlay .text h1 { 
@@ -298,7 +299,7 @@
 
             .hero-bg-mask img { height: 35vh; min-height: 220px; }
             .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
-            .hero-overlay { padding-bottom: 14%; padding-left: 5%; }
+            .hero-overlay { padding: 0 5%; }  /* 手機版左右留白略縮 */
             .floating-contact { bottom: 20px; right: 20px; gap: 8px; }
             .line-btn img { width: 56px; }
             .phone-btn { padding: 6px 14px; font-size: 0.9rem; }
@@ -309,7 +310,7 @@
         @media (max-width: 500px) {
             .hero-bg-mask img { height: 30vh; min-height: 180px; }
             .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
-            .hero-overlay { padding-bottom: 12%; padding-left: 4%; }
+            .hero-overlay { padding: 0 4%; }
             .floating-contact { bottom: 14px; right: 14px; gap: 6px; }
             .line-btn img { width: 48px; }
             .phone-btn { padding: 5px 12px; font-size: 0.8rem; }

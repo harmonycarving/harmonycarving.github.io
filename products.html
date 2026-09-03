@@ -5,16 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>作品櫥窗 | 聯和刻記 · 掌心木藝</title>
 
-    <!-- ========== SEO 與 GEO ========== -->
     <meta name="description" content="欣賞聯和刻記的掌心木藝作品——台灣肖楠、檜木手工雕刻，結合AI人機協作的療癒藝術。" />
     <meta name="keywords" content="台灣木雕,肖楠,檜木,掌心木作,木雕作品,舒壓玩具,魯班鎖" />
     <link rel="canonical" href="https://harmonycarving.github.io/products.html" />
-
-    <meta property="og:title" content="作品櫥窗 | 聯和刻記 · 掌心木藝" />
-    <meta property="og:description" content="每一件掌心木雕，都是獨一無二的溫暖陪伴。" />
-    <meta property="og:image" content="https://harmonycarving.github.io/images/products-hero.webp" />
-    <meta property="og:url" content="https://harmonycarving.github.io/products.html" />
-    <meta property="og:type" content="website" />
 
     <style>
         /* ===== 全域樣式 ===== */
@@ -34,9 +27,7 @@
             --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Noto Serif TC', 'Times New Roman', serif;
@@ -52,18 +43,16 @@
             padding: 0 24px;
         }
 
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; }
 
-        /* ===== 導航欄 ===== */
+        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
         .navbar {
             padding: 16px 0;
             position: sticky;
             top: 0;
-            background: rgba(245, 242, 235, 0.94);
+            background: rgba(245, 242, 235, 0.96);
             backdrop-filter: blur(10px);
-            z-index: 100;
+            z-index: 1000; /* 提高層級，蓋過下方遮罩 */
             border-bottom: 1px solid rgba(62, 39, 35, 0.08);
         }
 
@@ -71,8 +60,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .logo-area {
@@ -80,7 +67,6 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            flex-shrink: 0;
         }
 
         #logo-text {
@@ -90,6 +76,7 @@
             letter-spacing: 3px;
             line-height: 1.2;
         }
+
         #logo-text small {
             font-size: 0.5em;
             color: var(--gold-dark);
@@ -97,60 +84,61 @@
             letter-spacing: 1px;
         }
 
-        #logo-image {
-            display: none;
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-        }
-
+        /* 主選單按鈕設計 */
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px 20px;
+            gap: 8px;
+            align-items: center;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--brown-deep);
-            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-size: 1rem;
             font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
-            white-space: nowrap;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--red-gugong);
-            transition: width 0.3s;
-        }
         .nav-links a:hover {
+            background: rgba(139, 105, 20, 0.08);
+            border-color: rgba(139, 105, 20, 0.2);
             color: var(--red-gugong);
+            transform: translateY(-2px);
         }
-        .nav-links a:hover::after {
-            width: 100%;
-        }
+
         .nav-links a.active {
-            color: var(--red-gugong);
+            background: var(--red-gugong);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
         }
-        .nav-links a.active::after {
-            width: 100%;
+
+        /* 漢堡選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: var(--brown-deep);
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
 
         /* ===== 頁面主視覺 (Banner) ===== */
         .page-hero {
             margin-top: 4px;
-            position: relative; /* 只做定位基準，不裁切 */
+            position: relative;
             min-height: 300px;
         }
 
-        /* 關鍵修正：將遮罩與背景獨立放在這個 wrapper 內 */
         .hero-bg-mask {
             clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
             background: #2c1f1a;
@@ -166,11 +154,11 @@
             opacity: 0.8;
             transition: transform 7s ease;
         }
+
         .hero-bg-mask img:hover {
             transform: scale(1.02);
         }
 
-        /* 文字覆蓋層完全跳脫遮罩，浮在上方 */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -182,14 +170,14 @@
             padding-top: 5%;
             padding-left: 6%;
             z-index: 2;
-            pointer-events: none; /* 確保滑鼠能穿透，不影響圖片 hover */
+            pointer-events: none;
         }
 
         .hero-overlay .text {
             color: white;
             text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
             max-width: 700px;
-            pointer-events: auto; /* 讓文字本身仍可被選取 */
+            pointer-events: auto;
         }
 
         .hero-overlay .text h1 {
@@ -212,7 +200,6 @@
             padding: 30px 0 10px;
             text-align: center;
             background: var(--bg-cream);
-            margin-top: -4px;
             position: relative;
             z-index: 3;
         }
@@ -235,7 +222,6 @@
             transition: all 0.3s;
             letter-spacing: 2px;
             font-family: inherit;
-            backdrop-filter: blur(4px);
         }
 
         .filter-btn:hover {
@@ -252,7 +238,7 @@
             box-shadow: 0 4px 12px rgba(155, 27, 48, 0.25);
         }
 
-        /* ===== 瀑布流相簿 ===== */
+        /* ===== 瀑布流相簿 (修正遮罩問題) ===== */
         .gallery {
             padding: 20px 0 70px;
         }
@@ -266,55 +252,60 @@
 
         .gallery-item {
             break-inside: avoid;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* 拉大卡片間距 */
+            position: relative;
+            /* 移除原先寫在這裡的 overflow: hidden 與 border-radius */
+        }
+
+        /* 將遮罩特效專注套用在圖片容器上 */
+        .gallery-item .img-wrap {
             border-radius: var(--border-radius-art);
             overflow: hidden;
             box-shadow: var(--shadow-soft);
             transition: all 0.4s ease;
             background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(2px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             position: relative;
         }
 
-        .gallery-item:hover {
-            transform: scale(1.01) translateY(-4px);
+        .gallery-item:hover .img-wrap {
+            transform: scale(1.02) translateY(-4px);
             box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
             border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
         }
 
-        .gallery-item img {
+        .gallery-item .img-wrap img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.6s ease;
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.02);
+        .gallery-item:hover .img-wrap img {
+            transform: scale(1.05);
         }
 
+        /* 標題文字置於圖片外圍，絕對不會被裁切 */
         .gallery-item .caption {
-            padding: 12px 16px 16px;
-            font-size: 0.85rem;
-            color: var(--text-soft);
+            padding: 14px 6px 4px;
+            font-size: 0.9rem;
+            color: var(--brown-deep);
             letter-spacing: 1px;
-            border-top: 1px solid rgba(139, 105, 20, 0.1);
-            background: rgba(255, 255, 255, 0.5);
+            text-align: center;
         }
 
         .gallery-item .caption .tag {
             display: inline-block;
-            background: var(--red-gugong);
-            color: white;
-            font-size: 0.65rem;
-            padding: 1px 12px;
+            background: rgba(139, 105, 20, 0.15);
+            color: var(--gold-dark);
+            font-size: 0.7rem;
+            padding: 2px 10px;
             border-radius: 30px;
             margin-right: 6px;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
 
-        /* ===== 右下角懸浮聯絡區塊 ===== */
+        /* ===== 右下角懸浮聯絡 ===== */
         .floating-contact {
             position: fixed;
             bottom: 28px;
@@ -332,6 +323,7 @@
             justify-content: center;
             transition: transform 0.25s ease;
         }
+
         .floating-contact a:hover {
             transform: scale(1.10);
         }
@@ -356,161 +348,71 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
             border: 2px solid rgba(255, 255, 255, 0.5);
-            transition: background 0.3s, transform 0.25s;
             white-space: nowrap;
-        }
-        .phone-btn:hover {
-            background: #7a1526;
-            transform: scale(1.04);
         }
 
         /* ===== 頁尾 ===== */
         .footer {
-            background: rgba(44, 31, 26, 0.92);
-            backdrop-filter: blur(4px);
+            background: #2c1f1a;
             color: rgba(255, 255, 255, 0.7);
             padding: 36px 0 28px;
             text-align: center;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            margin-top: 20px;
         }
-        .footer a {
-            color: #d4a373;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
+        .footer a { color: #d4a373; text-decoration: none; }
 
         /* ===== 響應式調整 ===== */
         @media (max-width: 1024px) {
-            .gallery-grid {
-                column-count: 3;
-                column-gap: 18px;
-            }
+            .gallery-grid { column-count: 3; }
         }
 
         @media (max-width: 768px) {
-            .gallery-grid {
-                column-count: 2;
-                column-gap: 14px;
-            }
-            .hero-bg-mask img {
-                height: 40vh;
-                min-height: 240px;
-            }
-            /* 響應式遮罩移至 mask 層 */
-            .hero-bg-mask {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
-                min-height: 240px;
-            }
-            .hero-overlay {
-                padding-top: 10%;
-                padding-left: 5%;
-            }
-            .hero-overlay .text h1 {
-                font-size: 2.4rem;
-            }
-            .floating-contact {
-                bottom: 20px;
-                right: 20px;
-                gap: 8px;
-            }
-            .line-btn img {
-                width: 56px;
-            }
-            .phone-btn {
-                padding: 6px 14px;
-                font-size: 0.9rem;
-            }
-            .nav-content {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-            .logo-area {
-                justify-content: center;
-            }
+            .gallery-grid { column-count: 2; column-gap: 14px; }
+            
+            /* 開啟漢堡選單機制 */
+            .menu-toggle { display: flex; }
+            
             .nav-links {
-                justify-content: center;
-                gap: 4px 14px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(245, 242, 235, 0.98);
+                flex-direction: column;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
+                transition: clip-path 0.4s ease-in-out;
             }
-            .filter-btn {
-                padding: 4px 16px;
-                font-size: 0.85rem;
+
+            .nav-links.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
             }
+
+            .nav-links a {
+                padding: 12px;
+                width: 80%;
+                text-align: center;
+            }
+
+            /* 漢堡選單動畫 */
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .hero-bg-mask img { height: 40vh; min-height: 240px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
         }
 
         @media (max-width: 480px) {
-            .gallery-grid {
-                column-count: 1;
-                column-gap: 0;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-            .gallery-item {
-                border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
-            }
-            .hero-bg-mask img {
-                height: 32vh;
-                min-height: 180px;
-            }
-            /* 響應式遮罩移至 mask 層 */
-            .hero-bg-mask {
-                clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%);
-                min-height: 180px;
-            }
-            .hero-overlay {
-                padding-top: 8%;
-                padding-left: 4%;
-            }
-            .hero-overlay .text h1 {
-                font-size: 1.8rem;
-                letter-spacing: 4px;
-            }
-            .hero-overlay .text .sub {
-                font-size: 0.8rem;
-                letter-spacing: 2px;
-            }
-            .floating-contact {
-                bottom: 14px;
-                right: 14px;
-                gap: 6px;
-            }
-            .line-btn img {
-                width: 48px;
-            }
-            .phone-btn {
-                padding: 5px 12px;
-                font-size: 0.8rem;
-            }
-            .nav-links a {
-                font-size: 0.85rem;
-            }
-            .filter-btn {
-                padding: 3px 12px;
-                font-size: 0.8rem;
-            }
-            .filter-section {
-                padding: 16px 0 6px;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .nav-links {
-                gap: 2px 10px;
-            }
-            .nav-links a {
-                font-size: 0.78rem;
-            }
-            .phone-btn {
-                font-size: 0.7rem;
-                padding: 4px 10px;
-            }
-            .hero-overlay .text h1 {
-                font-size: 1.5rem;
-            }
+            .gallery-grid { column-count: 1; max-width: 360px; }
+            .hero-bg-mask img { height: 32vh; min-height: 180px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
+            .hero-overlay .text h1 { font-size: 1.8rem; letter-spacing: 4px; }
+            .floating-contact { bottom: 14px; right: 14px; }
+            .line-btn img { width: 48px; }
+            .phone-btn { padding: 5px 12px; font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -521,9 +423,17 @@
         <div class="container nav-content">
             <a href="index.html" class="logo-area">
                 <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
-                <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
             </a>
-            <div class="nav-links">
+            
+            <!-- 漢堡選單按鈕 (手機版顯示) -->
+            <div class="menu-toggle" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 主選單連結 -->
+            <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">關於</a>
                 <a href="products.html" class="active">作品</a>
@@ -532,7 +442,7 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 (Banner) - 將遮罩與文字分離 ===== -->
+    <!-- ===== 頁面主視覺 (Banner) ===== -->
     <header class="page-hero">
         <div class="hero-bg-mask">
             <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
@@ -562,65 +472,74 @@
     <section class="gallery">
         <div class="gallery-grid" id="galleryGrid">
 
-            <!-- 作品 1：舒壓 -->
+            <!-- 作品範例結構：圖文完全分離 -->
             <div class="gallery-item" data-category="舒壓">
-                <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
                 </div>
             </div>
 
-            <!-- 作品 2：益智 -->
             <div class="gallery-item" data-category="益智">
-                <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
                 </div>
             </div>
 
-            <!-- 作品 3：生活 -->
             <div class="gallery-item" data-category="生活">
-                <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
                 </div>
             </div>
 
-            <!-- 作品 4：藝術 -->
             <div class="gallery-item" data-category="藝術">
-                <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
                 </div>
             </div>
 
-            <!-- 作品 5：舒壓 -->
             <div class="gallery-item" data-category="舒壓">
-                <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
                 </div>
             </div>
 
-            <!-- 作品 6：飾品 -->
             <div class="gallery-item" data-category="飾品">
-                <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
                 </div>
             </div>
 
-            <!-- 作品 7：療癒 -->
             <div class="gallery-item" data-category="療癒">
-                <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
                 </div>
             </div>
 
-            <!-- 作品 8：藝術 -->
             <div class="gallery-item" data-category="藝術">
-                <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
+                </div>
                 <div class="caption">
                     <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
                 </div>
@@ -650,7 +569,26 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== 分類篩選功能 =====
+            
+            // ===== 1. 手機版漢堡選單切換 =====
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            mobileBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            // 點擊選單項目後，自動收合漢堡選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileBtn.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
+
+            // ===== 2. 分類篩選功能 =====
             const filterButtons = document.querySelectorAll('.filter-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -671,6 +609,7 @@
                     });
                 });
             });
+            
         });
     </script>
 

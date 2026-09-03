@@ -17,26 +17,6 @@
     <meta property="og:url" content="https://harmonycarving.github.io/" />
     <meta property="og:type" content="website" />
 
-    <!-- 結構化資料 (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "聯和刻記",
-      "url": "https://harmonycarving.github.io/",
-      "logo": "https://harmonycarving.github.io/images/logo-main.webp",
-      "description": "台灣名木掌心藝品，結合手工溫度與AI科技，提供銀髮族心靈療癒與木作教學。",
-      "address": { "@type": "PostalAddress", "addressCountry": "TW" },
-      "sameAs": [ "https://www.facebook.com/harmonycarving" ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+886911938978",
-        "contactType": "Customer Service",
-        "areaServed": "TW"
-      }
-    }
-    </script>
-
     <style>
         /* ===== 全局樣式 ===== */
         * {
@@ -77,14 +57,14 @@
             text-decoration: none;
         }
 
-        /* ===== 導航欄 ===== */
+        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
         .navbar {
             padding: 16px 0;
             position: sticky;
             top: 0;
-            background: rgba(245, 242, 235, 0.94);
+            background: rgba(245, 242, 235, 0.96);
             backdrop-filter: blur(10px);
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 1px solid rgba(62, 39, 35, 0.08);
         }
 
@@ -92,8 +72,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .logo-area {
@@ -101,7 +79,6 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            flex-shrink: 0;
         }
 
         #logo-text {
@@ -118,44 +95,52 @@
             letter-spacing: 1px;
         }
 
-        #logo-image {
-            display: none;
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-        }
-
+        /* 主選單按鈕設計 */
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px 20px;
+            gap: 8px;
+            align-items: center;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--brown-deep);
-            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-size: 1rem;
             font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
-            white-space: nowrap;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--red-gugong);
-            transition: width 0.3s;
-        }
         .nav-links a:hover {
+            background: rgba(139, 105, 20, 0.08);
+            border-color: rgba(139, 105, 20, 0.2);
             color: var(--red-gugong);
+            transform: translateY(-2px);
         }
-        .nav-links a:hover::after {
-            width: 100%;
+
+        .nav-links a.active {
+            background: var(--red-gugong);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
+        }
+
+        /* 漢堡選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: var(--brown-deep);
+            border-radius: 3px;
+            transition: all 0.3s ease;
         }
 
         /* ===== Hero 區塊 ===== */
@@ -287,33 +272,44 @@
             gap: 35px 25px;
         }
 
-        /* ===== 修正：讓文字區塊在最上層 ===== */
+        /* ===== 修正：讓文字區塊在最上層且不被裁切 ===== */
         .product-card {
-            position: relative;          /* 新增 */
-            background: white;
+            position: relative;
+            text-align: center;
+        }
+
+        /* 將遮罩與變形專注套用在圖片容器上 */
+        .product-card .img-wrap {
             border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
             overflow: hidden;
             box-shadow: var(--shadow-soft);
             transition: all 0.4s ease;
+            background: white;
             border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+            position: relative;
         }
-        .product-card:hover {
+
+        .product-card:hover .img-wrap {
             transform: scale(1.02) translateY(-5px);
             border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
         }
 
-        .product-card img {
+        .product-card .img-wrap img {
             width: 100%;
             height: 240px;
             object-fit: cover;
             display: block;
+            transition: transform 0.6s ease;
         }
 
+        .product-card:hover .img-wrap img {
+            transform: scale(1.05);
+        }
+
+        /* 文字區塊安穩放在下方，不會被遮罩切到 */
         .product-info {
-            position: relative;          /* 新增 */
-            z-index: 2;                  /* 新增 */
-            background: white;           /* 新增，確保文字背景不透明 */
-            padding: 20px 20px 24px;
+            padding: 0 10px;
         }
 
         .product-info h3 {
@@ -324,7 +320,7 @@
 
         .product-info .tag {
             display: inline-block;
-            background: var(--bg-cream);
+            background: rgba(139, 105, 20, 0.1);
             color: var(--gold-dark);
             font-size: 0.7rem;
             padding: 2px 14px;
@@ -336,6 +332,7 @@
         .product-info p {
             color: var(--text-soft);
             font-size: 0.92rem;
+            text-align: left;
         }
 
         /* ===== 人機協作精神 ===== */
@@ -484,24 +481,40 @@
                 padding: 6px 14px;
                 font-size: 0.9rem;
             }
+            
+            /* 開啟漢堡選單機制 */
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(245, 242, 235, 0.98);
+                flex-direction: column;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+
+            .nav-links.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            .nav-links a {
+                padding: 12px;
+                width: 80%;
+                text-align: center;
+            }
+
+            /* 漢堡選單動畫 */
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
         @media (max-width: 500px) {
-            .nav-content {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-            .logo-area {
-                justify-content: center;
-            }
-            .nav-links {
-                justify-content: center;
-                gap: 4px 14px;
-            }
-            .nav-links a {
-                font-size: 0.9rem;
-            }
             .hero {
                 clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
             }
@@ -529,7 +542,7 @@
                 grid-template-columns: 1fr;
                 gap: 28px;
             }
-            .product-card img {
+            .product-card .img-wrap img {
                 height: 200px;
             }
 
@@ -555,12 +568,6 @@
         }
 
         @media (max-width: 380px) {
-            .nav-links {
-                gap: 2px 10px;
-            }
-            .nav-links a {
-                font-size: 0.78rem;
-            }
             .hero-image {
                 height: 40vh;
                 min-height: 200px;
@@ -581,8 +588,17 @@
                 <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
                 <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
             </a>
-            <div class="nav-links">
-                <a href="index.html">首頁</a>
+            
+            <!-- 漢堡選單按鈕 (手機版顯示) -->
+            <div class="menu-toggle" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 主選單連結 -->
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="active">首頁</a>
                 <a href="about.html">關於</a>
                 <a href="products.html">作品</a>
                 <a href="blog.html">木藝講堂</a>
@@ -629,24 +645,35 @@
             <p class="section-sub">—— 不超過手掌心，卻裝得下整個世界的溫柔 ——</p>
 
             <div class="product-grid">
+                <!-- 商品 1 -->
                 <div class="product-card">
-                    <img src="images/product-fidget.webp" alt="肖楠木紓壓解焦慮神器" loading="lazy" />
+                    <div class="img-wrap">
+                        <img src="images/product-fidget.webp" alt="肖楠木紓壓解焦慮神器" loading="lazy" />
+                    </div>
                     <div class="product-info">
                         <span class="tag">感官療癒</span>
                         <h3>紓壓解焦慮神器</h3>
                         <p>結合精密結構與肖楠醇厚香氣，單手盲操即可釋放壓力。長者活化指尖，上班族尋得片刻寧靜。</p>
                     </div>
                 </div>
+                
+                <!-- 商品 2 -->
                 <div class="product-card">
-                    <img src="images/product-luban.webp" alt="微縮魯班鎖 肖楠x檜木" loading="lazy" />
+                    <div class="img-wrap" style="border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;">
+                        <img src="images/product-luban.webp" alt="微縮魯班鎖 肖楠x檜木" loading="lazy" />
+                    </div>
                     <div class="product-info">
                         <span class="tag">互動益智</span>
                         <h3>微縮魯班鎖</h3>
                         <p>雞蛋大小的經典結構，以肖楠與檜木的色差交織出幾何之美。在拆解與組裝間，活化大腦，連結世代。</p>
                     </div>
                 </div>
+                
+                <!-- 商品 3 -->
                 <div class="product-card">
-                    <img src="images/product-aroma.webp" alt="香氛護照盒 檜木隨身筒" loading="lazy" />
+                    <div class="img-wrap" style="border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;">
+                        <img src="images/product-aroma.webp" alt="香氛護照盒 檜木隨身筒" loading="lazy" />
+                    </div>
                     <div class="product-info">
                         <span class="tag">生活美學</span>
                         <h3>香氛護照盒</h3>
@@ -679,11 +706,10 @@
         <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
             <img src="images/line.png" alt="LINE 聯絡方式" />
         </a>
-        <!-- 電話號碼已移除 '-' 符號 -->
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
-    <!-- ===== 頁尾（已移除年份 2026） ===== -->
+    <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
             <p>聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
@@ -696,7 +722,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('聯和刻記 首頁已載入，願木藝溫暖每一顆心。');
+            // ===== 手機版漢堡選單切換 =====
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            mobileBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            // 點擊選單項目後，自動收合漢堡選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileBtn.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
         });
     </script>
 

@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>影音藝廊 | 聯和刻記 · 動態木藝展示</title>
+    <title>木作影音藝廊 | 聯和刻記 · 台灣木雕</title>
 
-    <meta name="description" content="欣賞聯和刻記的動態機關木藝。結合台灣名木與巧妙機械結構，鋸出新興趣與快樂，體驗乘風破浪的掌心生命力。" />
-    <meta name="keywords" content="動態木藝, 微縮機關, 台灣亞杉, 木工機關, 聯和刻記, 療癒木作, 搖搖胖貓" />
+    <!-- ========== SEO 與 GEO 核心優化 ========== -->
+    <meta name="description" content="聯和刻記木作影音藝廊——劉大哥的台灣木雕作品影片，從搖搖胖貓、跳跳木、大猩猩到飛鳥與乘風破浪，感受木作的快樂與療癒。" />
+    <meta name="keywords" content="聯和刻記,劉大哥,台灣木雕,肖楠,檜木,亞杉,木作影片,影音藝廊" />
     <link rel="canonical" href="https://harmonycarving.github.io/gallery.html" />
+
+    <meta property="og:title" content="木作影音藝廊 | 聯和刻記 · 台灣木雕" />
+    <meta property="og:description" content="從木料到掌心，看見每一件作品的誕生。劉大哥的木作影片精選。" />
+    <meta property="og:image" content="https://harmonycarving.github.io/images/gallery-hero.webp" />
+    <meta property="og:url" content="https://harmonycarving.github.io/gallery.html" />
+    <meta property="og:type" content="website" />
 
     <style>
         /* ===== 全域樣式 ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         :root {
             --bg-cream: #F5F2EB;
             --red-gugong: #9B1B30;
@@ -21,124 +33,498 @@
             --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
             --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Noto Serif TC', 'Times New Roman', serif; background-color: var(--bg-cream); color: var(--brown-deep); line-height: 1.7; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        a { text-decoration: none; }
 
-        /* ===== 導航欄 ===== */
-        .navbar { padding: 16px 0; position: sticky; top: 0; background: rgba(245, 242, 235, 0.96); backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid rgba(62, 39, 35, 0.08); }
-        .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .logo-area { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        #logo-text { font-size: clamp(1.3rem, 3vw, 2rem); font-weight: 700; color: var(--red-gugong); letter-spacing: 3px; line-height: 1.2; }
-        #logo-text small { font-size: 0.5em; color: var(--gold-dark); font-weight: normal; letter-spacing: 1px; }
-
-        /* 主選單按鈕設計 */
-        .nav-links { display: flex; gap: 8px; align-items: center; }
-        .nav-links a { color: var(--brown-deep); font-size: 1rem; font-weight: 500; padding: 6px 14px; border-radius: 30px; border: 1px solid transparent; transition: all 0.3s ease; white-space: nowrap; }
-        .nav-links a:hover { background: rgba(139, 105, 20, 0.08); border-color: rgba(139, 105, 20, 0.2); color: var(--red-gugong); transform: translateY(-2px); }
-        .nav-links a.active { background: var(--red-gugong); color: white; box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2); }
-
-        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
-        .menu-toggle span { display: block; width: 24px; height: 3px; background-color: var(--brown-deep); border-radius: 3px; transition: all 0.3s ease; }
-
-        /* ===== 頁面主視覺 (圖文分離) ===== */
-        .page-hero { margin-top: 4px; position: relative; min-height: 340px; }
-        .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%); background: var(--brown-deep); position: relative; }
-        .hero-bg-mask img { width: 100%; height: 50vh; min-height: 340px; object-fit: cover; display: block; opacity: 0.85; transition: transform 7s ease; }
-        .hero-bg-mask img:hover { transform: scale(1.02); }
-        
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: flex-end; padding-bottom: 18%; padding-left: 6%; z-index: 2; pointer-events: none; }
-        .hero-overlay .text { color: white; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7); pointer-events: auto; }
-        .hero-overlay .text h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 700; letter-spacing: 8px; line-height: 1.1; }
-        .hero-overlay .text .sub { font-size: clamp(1rem, 1.8vw, 1.3rem); opacity: 0.9; letter-spacing: 4px; font-weight: 300; margin-top: 6px; }
-
-        /* ===== 影音網格設計 ===== */
-        .video-gallery { padding: 60px 0 80px; }
-        .video-gallery-header { text-align: center; margin-bottom: 50px; }
-        .video-gallery-header h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); letter-spacing: 6px; color: var(--brown-deep); margin-bottom: 6px; }
-        .video-gallery-header p { color: var(--gold-dark); letter-spacing: 2px; font-size: 1rem; }
-
-        .video-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        /* 讓第一支影片橫跨兩欄，作為視覺焦點 */
-        .video-grid .video-card:first-child { grid-column: 1 / -1; max-width: 800px; margin: 0 auto; }
-
-        .video-card { background: white; border-radius: var(--border-radius-art); box-shadow: var(--shadow-soft); padding: 25px; border: 1px solid rgba(139, 105, 20, 0.08); transition: transform 0.4s ease; display: flex; flex-direction: column; align-items: center; }
-        .video-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12); }
-        
-        /* 確保 iframe 容器維持 16:9 或 1:1 彈性且不超出卡片 */
-        .iframe-container { width: 100%; display: flex; justify-content: center; border-radius: 12px; overflow: hidden; background: #000; margin-bottom: 20px; }
-        .iframe-container iframe { width: 100%; max-width: 500px; height: 350px; border: none; }
-
-        .video-info { text-align: center; padding: 0 10px; }
-        .video-info h3 { font-size: 1.3rem; color: var(--red-gugong); margin-bottom: 10px; }
-        .video-info p { color: var(--text-soft); font-size: 0.95rem; line-height: 1.8; }
-
-        /* ===== 右下角懸浮聯絡 ===== */
-        .floating-contact { position: fixed; bottom: 28px; right: 28px; display: flex; flex-direction: column; align-items: center; gap: 10px; z-index: 999; }
-        .floating-contact a { display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease; }
-        .floating-contact a:hover { transform: scale(1.10); }
-        .line-btn img { width: clamp(52px, 8vw, 68px); height: auto; display: block; filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18)); border-radius: 50%; background: #fff; padding: 2px; }
-        .phone-btn { background: var(--red-gugong); color: white; padding: 8px 16px; border-radius: 40px; font-size: clamp(0.85rem, 1.2vw, 1.05rem); font-weight: 600; letter-spacing: 1px; box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35); border: 2px solid rgba(255, 255, 255, 0.5); white-space: nowrap; }
-
-        /* ===== AI 公仔與對話框 (左下角) ===== */
-        #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
-        #lh-mascot-container:hover { transform: scale(1.05); }
-        #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-        #lh-chatbox { position: fixed; bottom: 240px; left: 30px; width: 340px; background-color: #ffffff; border: 2px solid var(--red-gugong); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 9998; overflow: hidden; transform-origin: bottom left; animation: popUp 0.3s ease-out; }
-        @keyframes popUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        #lh-chat-header { background-color: var(--brown-deep); color: #ffffff; padding: 15px 20px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
-        #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
-        #lh-chat-close:hover { background-color: var(--red-gugong); }
-        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
-        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
-        #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
-        .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
-        .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
-        .lh-msg-user { background-color: var(--red-gugong); color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
-        .lh-typing { font-style: italic; color: #888; font-size: 13px; animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-        #lh-chat-input-area { display: flex; padding: 10px; background-color: #ffffff; border-top: 1px solid #e0dcd3; }
-        #lh-chat-input { flex: 1; padding: 10px 15px; border: 1px solid #cccccc; border-radius: 20px; outline: none; font-size: 14px; }
-        #lh-chat-input:focus { border-color: var(--gold-dark); }
-        #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        #lh-chat-send:hover { background-color: var(--red-gugong); }
-        #lh-chat-send:disabled { opacity: 0.6; cursor: wait; }
-
-        /* ===== 頁尾 ===== */
-        .footer { background: #2c1f1a; color: rgba(255, 255, 255, 0.7); padding: 36px 0 28px; text-align: center; font-size: 0.9rem; letter-spacing: 1px; }
-        .footer a { color: #d4a373; text-decoration: none; }
-
-        /* ===== 響應式調整 ===== */
-        @media (max-width: 992px) {
-            .video-grid { grid-template-columns: 1fr; }
-            .video-grid .video-card:first-child { max-width: 100%; }
+        html {
+            scroll-behavior: smooth;
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
-            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: rgba(245, 242, 235, 0.98); flex-direction: column; padding: 10px 0 20px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08); clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); transition: clip-path 0.4s ease-in-out; }
-            .nav-links.show { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            .nav-links a { padding: 12px; width: 80%; text-align: center; margin: 4px auto; }
-            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .menu-toggle.active span:nth-child(2) { opacity: 0; }
-            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        body {
+            font-family: 'Noto Serif TC', 'Times New Roman', serif;
+            background-color: var(--bg-cream);
+            color: var(--brown-deep);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-            .hero-bg-mask img { height: 40vh; min-height: 240px; }
-            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
-            .hero-overlay { padding-bottom: 14%; padding-left: 5%; }
-            .floating-contact { bottom: 20px; right: 20px; gap: 8px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ===== 導航欄 ===== */
+        .navbar {
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(245, 242, 235, 0.94);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        #logo-text {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--red-gugong);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+        #logo-text small {
+            font-size: 0.5em;
+            color: var(--gold-dark);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        #logo-image {
+            display: none;
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--brown-deep);
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--red-gugong);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--red-gugong);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: var(--red-gugong);
+        }
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* ===== Hero Banner ===== */
+        .gallery-hero {
+            position: relative;
+            margin-top: 4px;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
+            background: var(--brown-deep);
+        }
+
+        .gallery-hero img {
+            width: 100%;
+            height: 55vh;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.88;
+            transition: transform 7s ease;
+        }
+        .gallery-hero img:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-hero .overlay {
+            position: absolute;
+            bottom: 18%;
+            left: 6%;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            max-width: 80%;
+        }
+
+        .gallery-hero .overlay h1 {
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
+
+        .gallery-hero .overlay .sub {
+            font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+            opacity: 0.92;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-top: 4px;
+        }
+
+        .gallery-hero .overlay .intro {
+            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            opacity: 0.85;
+            letter-spacing: 1px;
+            margin-top: 12px;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* ===== 頁面標題區 ===== */
+        .page-header {
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .page-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            color: var(--red-gugong);
+            letter-spacing: 6px;
+            margin-bottom: 4px;
+        }
+
+        .page-header .sub {
+            font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+            color: var(--gold-dark);
+            letter-spacing: 3px;
+        }
+
+        /* ===== 分隔裝飾圖 ===== */
+        .divider-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 30px;
+        }
+
+        .divider-wrap img {
+            max-width: 200px;
+            width: 60%;
+            height: auto;
+            opacity: 0.6;
+        }
+
+        /* ===== 影片網格 ===== */
+        .video-grid-section {
+            padding: 10px 0 60px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px 30px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: var(--border-radius-art);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+        }
+
+        .video-card .thumbnail {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 */
+            overflow: hidden;
+            background: var(--brown-deep);
+        }
+
+        .video-card .thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .video-card:hover .thumbnail img {
+            transform: scale(1.04);
+        }
+
+        /* 播放圖示 */
+        .video-card .thumbnail .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(155, 27, 48, 0.85);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .video-card:hover .thumbnail .play-icon {
+            background: var(--red-gugong);
+            transform: translate(-50%, -50%) scale(1.08);
+        }
+
+        .video-card .content {
+            position: relative;
+            z-index: 2;
+            background: white;
+            padding: 20px 22px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .video-card .content .tag {
+            display: inline-block;
+            background: var(--bg-cream);
+            color: var(--gold-dark);
+            font-size: 0.7rem;
+            padding: 2px 14px;
+            border-radius: 40px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .video-card .content h3 {
+            font-size: 1.2rem;
+            color: var(--brown-deep);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .video-card .content p {
+            color: var(--text-soft);
+            font-size: 0.95rem;
+            flex: 1;
+            line-height: 1.7;
+        }
+
+        .video-card .content .watch-link {
+            margin-top: 14px;
+            color: var(--red-gugong);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            border-bottom: 2px solid transparent;
+        }
+
+        .video-card .content .watch-link:hover {
+            border-bottom-color: var(--red-gugong);
+        }
+
+        /* ===== 右下角懸浮聯絡區塊 ===== */
+        .floating-contact {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        .floating-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
+        .floating-contact a:hover {
+            transform: scale(1.10);
+        }
+
+        .line-btn img {
+            width: clamp(52px, 8vw, 68px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .phone-btn {
+            background: var(--red-gugong);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: background 0.3s, transform 0.25s;
+            white-space: nowrap;
+        }
+        .phone-btn:hover {
+            background: #7a1526;
+            transform: scale(1.04);
+        }
+
+        /* ===== 頁尾 ===== */
+        .footer {
+            background: #2c1f1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 36px 0 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .footer a {
+            color: #d4a373;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 響應式 ===== */
+        @media (max-width: 820px) {
+            .gallery-hero img {
+                height: 45vh;
+                min-height: 240px;
+            }
+            .gallery-hero .overlay {
+                bottom: 14%;
+                left: 5%;
+            }
+            .nav-content {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .logo-area {
+                justify-content: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 4px 14px;
+            }
+            .floating-contact {
+                bottom: 20px;
+                right: 20px;
+                gap: 8px;
+            }
+            .line-btn img {
+                width: 56px;
+            }
+            .phone-btn {
+                padding: 6px 14px;
+                font-size: 0.9rem;
+            }
+            .gallery-hero {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
+            }
         }
 
         @media (max-width: 500px) {
-            .hero-bg-mask img { height: 32vh; min-height: 180px; }
-            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
-            .hero-overlay { padding-bottom: 12%; padding-left: 4%; }
-            .hero-overlay .text h1 { font-size: 1.8rem; letter-spacing: 4px; }
-            .floating-contact { bottom: 14px; right: 14px; }
-            
-            #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
-            #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .gallery-hero img {
+                height: 35vh;
+                min-height: 200px;
+            }
+            .gallery-hero .overlay {
+                bottom: 12%;
+                left: 4%;
+                max-width: 92%;
+            }
+            .gallery-hero .overlay .intro {
+                font-size: 0.85rem;
+                margin-top: 8px;
+            }
+            .page-header {
+                padding: 30px 0 12px;
+            }
+            .divider-wrap {
+                padding: 4px 0 20px;
+            }
+            .divider-wrap img {
+                max-width: 140px;
+            }
+            .floating-contact {
+                bottom: 14px;
+                right: 14px;
+                gap: 6px;
+            }
+            .line-btn img {
+                width: 48px;
+            }
+            .phone-btn {
+                padding: 5px 12px;
+                font-size: 0.8rem;
+            }
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+            .video-card .thumbnail .play-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .nav-links {
+                gap: 2px 10px;
+            }
+            .nav-links a {
+                font-size: 0.78rem;
+            }
+            .phone-btn {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
         }
     </style>
 </head>
@@ -147,108 +533,125 @@
     <!-- ===== 導航欄 ===== -->
     <nav class="navbar">
         <div class="container nav-content">
-            <a href="https://harmonycarving.github.io/" class="logo-area" title="聯和刻記 Harmony Carving - 台灣名木掌心木藝 | 回首頁">
-                <img id="logo-image" src="images/logo.png" alt="聯和刻記 Harmony Carving 台灣新北木雕品牌 Logo" />
+            <a href="index.html" class="logo-area">
+                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+                <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
             </a>
-            
-            <div class="menu-toggle" id="mobile-menu-btn">
-                <span></span><span></span><span></span>
-            </div>
-
-            <!-- 主選單：加入影音藝廊 -->
-            <div class="nav-links" id="nav-links">
+            <div class="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">關於</a>
                 <a href="products.html">作品</a>
-                <a href="gallery.html" class="active">影音藝廊</a>
+                <a href="gallery.html" class="active">木作影音</a>
                 <a href="blog.html">木藝講堂</a>
             </div>
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 ===== -->
-    <header class="page-hero">
-        <div class="hero-bg-mask">
-            <img src="images/gallery-hero.webp" alt="聯和刻記動態木藝展示" />
-        </div>
-        <div class="hero-overlay">
-            <div class="text">
-                <h1>影音藝廊</h1>
-                <div class="sub">—— 鋸出新的作品、興趣與快樂 ——</div>
+    <!-- ===== Hero Banner ===== -->
+    <header class="gallery-hero">
+        <img src="images/gallery-hero.webp" alt="聯和刻記木作影音藝廊：從木料到掌心，看見每一件作品的誕生" />
+        <div class="overlay">
+            <h1>木作影音藝廊</h1>
+            <div class="sub">—— 從木料到掌心，看見每一件作品的誕生 ——</div>
+            <div class="intro">
+                在聯和刻記，每一塊木頭都有自己的故事。<br />
+                劉大哥用雙手與創意，將台灣名木化作充滿生命力的作品。<br />
+                點擊下方影片，一起感受木作帶來的快樂與療癒！
             </div>
         </div>
     </header>
 
-    <!-- ===== 動態影音網格 ===== -->
-    <section class="video-gallery">
+    <!-- ===== 頁面標題區 ===== -->
+    <section class="page-header">
         <div class="container">
-            <div class="video-gallery-header">
-                <h2>︱ 掌心間的躍動 ︱</h2>
-                <p>—— 觀看劉大哥的巧手如何賦予木頭生命 ——</p>
-            </div>
-
-            <div class="video-grid">
-                
-                <!-- 影片 1：搖搖胖貓 -->
-                <div class="video-card">
-                    <div class="iframe-container">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D339972205834188&show_text=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>【搖搖胖貓】</h3>
-                        <p>客製化訂購的專屬木作，充滿童趣的搖擺動態，為生活帶來會心一笑的療癒感。</p>
-                    </div>
-                </div>
-
-                <!-- 影片 2：跳跳跳跳出生命力 -->
-                <div class="video-card">
-                    <div class="iframe-container">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1055175325387982&show_text=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>【跳出生命力】</h3>
-                        <p>採用帶有淡淡清香與獨特彩虹木紋的台灣亞杉（台灣杉）製作，搭配松木底座，用木材的原色展現躍動的生命力。</p>
-                    </div>
-                </div>
-
-                <!-- 影片 3：大猩猩來運動 -->
-                <div class="video-card">
-                    <div class="iframe-container">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D239257245280737&show_text=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>【大猩猩來運動】</h3>
-                        <p>充滿動態感的手作機關，讓粗獷的大猩猩展現靈活的運動姿態，是案頭上最吸睛的微型裝置。</p>
-                    </div>
-                </div>
-
-                <!-- 影片 4：飛向未來 -->
-                <div class="video-card">
-                    <div class="iframe-container">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1069936944369485&show_text=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>【飛向未來】</h3>
-                        <p>飛鳥主體由色彩豐富的台灣亞杉雕刻而成，搭配沉穩的櫸木底座。每一次展翅，都是對木作的熱愛與期許。</p>
-                    </div>
-                </div>
-
-                <!-- 影片 5：乘風破浪最快樂 -->
-                <div class="video-card">
-                    <div class="iframe-container">
-                        <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwatch%2F%3Fv%3D1033741704320043&show_text=0" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-                    </div>
-                    <div class="video-info">
-                        <h3>【乘風破浪最快樂】</h3>
-                        <p>巧妙的木製連動機關，重現乘風破浪的暢快感。在搖柄的轉動間，感受手工藝術與機械結構的完美結合。</p>
-                    </div>
-                </div>
-
-            </div>
+            <h2>︱ 影音作品精選 ︱</h2>
+            <div class="sub">—— 戴上耳機，感受木作的快樂與療癒 ——</div>
         </div>
     </section>
 
-    <!-- ===== 右下角懸浮聯絡 ===== -->
+    <!-- ===== 分隔裝飾圖 ===== -->
+    <div class="divider-wrap">
+        <img src="images/gallery-divider.webp" alt="木紋年輪裝飾" loading="lazy" />
+    </div>
+
+    <!-- ===== 影片網格 ===== -->
+    <section class="video-grid-section">
+        <div class="container video-grid">
+
+            <!-- ===== 影片 1：搖搖胖貓 ===== -->
+            <div class="video-card">
+                <a href="https://www.facebook.com/watch/?v=339972205834188" target="_blank" class="thumbnail">
+                    <img src="images/video-01.webp" alt="搖搖胖貓木雕作品" loading="lazy" />
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="content">
+                    <span class="tag">🐱 療癒小物</span>
+                    <h3>搖搖胖貓</h3>
+                    <p>人客訂購的「搖搖胖貓」，搖啊搖搖到外婆橋！圓潤討喜的造型，輕輕一推就左右搖擺，是大人小孩都愛的療癒小物。</p>
+                    <a href="https://www.facebook.com/watch/?v=339972205834188" target="_blank" class="watch-link">觀看影片 →</a>
+                </div>
+            </div>
+
+            <!-- ===== 影片 2：跳跳跳跳出生命力 ===== -->
+            <div class="video-card">
+                <a href="https://www.facebook.com/watch/?v=1055175325387982" target="_blank" class="thumbnail">
+                    <img src="images/video-02.webp" alt="跳跳跳跳出生命力 台灣杉木雕" loading="lazy" />
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="content">
+                    <span class="tag">🪵 台灣名木</span>
+                    <h3>跳跳跳跳出生命力！</h3>
+                    <p>「鋸出新的作品、興趣與快樂！」作品名稱：跳跳跳跳出生命力！木料選用台灣杉（亞杉），淡淡清香伴隨多彩的彩虹木紋，底座為松木，讓作品充滿彈跳的活力。</p>
+                    <a href="https://www.facebook.com/watch/?v=1055175325387982" target="_blank" class="watch-link">觀看影片 →</a>
+                </div>
+            </div>
+
+            <!-- ===== 影片 3：大猩猩來運動 ===== -->
+            <div class="video-card">
+                <a href="https://www.facebook.com/watch/?v=239257245280737" target="_blank" class="thumbnail">
+                    <img src="images/video-03.webp" alt="大猩猩來運動 木雕作品" loading="lazy" />
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="content">
+                    <span class="tag">🦍 動感木作</span>
+                    <h3>大猩猩來運動！</h3>
+                    <p>嘿嘿嘿！大猩猩來運動！粗獷中帶著俏皮，展現木作有趣又充滿動感的一面。</p>
+                    <a href="https://www.facebook.com/watch/?v=239257245280737" target="_blank" class="watch-link">觀看影片 →</a>
+                </div>
+            </div>
+
+            <!-- ===== 影片 4：飛向未來 ===== -->
+            <div class="video-card">
+                <a href="https://www.facebook.com/watch/?v=1069936944369485" target="_blank" class="thumbnail">
+                    <img src="images/video-04.webp" alt="飛向未來 亞杉木雕飛鳥" loading="lazy" />
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="content">
+                    <span class="tag">🕊️ 展翅高飛</span>
+                    <h3>飛向未來！</h3>
+                    <p>「鋸出您的作品、興趣與快樂！」作品名稱：飛向未來！飛鳥以台灣名木亞杉（彩虹木）雕成，底座為櫸木，象徵夢想與希望展翅高飛。</p>
+                    <a href="https://www.facebook.com/watch/?v=1069936944369485" target="_blank" class="watch-link">觀看影片 →</a>
+                </div>
+            </div>
+
+            <!-- ===== 影片 5：乘風破浪最快樂 ===== -->
+            <div class="video-card">
+                <a href="https://www.facebook.com/watch/?v=1033741704320043" target="_blank" class="thumbnail">
+                    <img src="images/video-05.webp" alt="乘風破浪 木雕作品" loading="lazy" />
+                    <div class="play-icon">▶</div>
+                </a>
+                <div class="content">
+                    <span class="tag">🌊 正向力量</span>
+                    <h3>乘風破浪最快樂！</h3>
+                    <p>乘風破浪最快樂！以木雕呈現乘風破浪的律動感，傳遞面對生活不畏挑戰的正面態度。</p>
+                    <a href="https://www.facebook.com/watch/?v=1033741704320043" target="_blank" class="watch-link">觀看影片 →</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== 右下角懸浮聯絡區塊 ===== -->
     <div class="floating-contact">
         <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
             <img src="images/line.png" alt="LINE 聯絡方式" />
@@ -256,35 +659,10 @@
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
-    <!-- ===== 左下角 AI 公仔與對話框 ===== -->
-    <div id="lh-chatbox">
-        <div id="lh-chat-header">
-            <span>🪵 聯和刻記 AI 職人</span>
-            <span id="lh-chat-close">✖</span>
-        </div>
-        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
-            💬 點此加 LINE 預約課程或洽詢 👉
-        </a>
-        <div id="lh-chat-messages">
-            <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
-        </div>
-        <div id="lh-chat-input-area">
-            <input type="text" id="lh-chat-input" placeholder="請輸入您的問題...">
-            <button id="lh-chat-send">發送</button>
-        </div>
-    </div>
-
-    <div id="lh-mascot-container">
-        <video id="lh-mascot-video" autoplay loop muted playsinline webkit-playsinline>
-            <source src="images/Idle.mov" type="video/quicktime">
-            <source src="images/Idle.webm" type="video/webm">
-        </video>
-    </div>
-
     <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
-            <p>© 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
+            <p>聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
             <p style="margin-top: 6px; font-size: 0.8rem;">
                 <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
                 台灣名木 · 掌心療癒 · 人機共創
@@ -294,183 +672,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            
-            // 手機版漢堡選單切換
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const navLinks = document.getElementById('nav-links');
-
-            mobileBtn.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('show');
-            });
-
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    mobileBtn.classList.remove('active');
-                    navLinks.classList.remove('show');
-                });
-            });
-
-            // AI 公仔客服邏輯
-            const mascotContainer = document.getElementById('lh-mascot-container');
-            const mascotVideo = document.getElementById('lh-mascot-video');
-            const chatbox = document.getElementById('lh-chatbox');
-            const closeBtn = document.getElementById('lh-chat-close');
-            const sendBtn = document.getElementById('lh-chat-send');
-            const chatInput = document.getElementById('lh-chat-input');
-            const messagesArea = document.getElementById('lh-chat-messages');
-
-            const videoSources = {
-                idle: { mov: "images/Idle.mov", webm: "images/Idle.webm" },
-                greeting: { mov: "images/Greeting.mov", webm: "images/Greeting.webm" },
-                thinking: { mov: "images/Thinking.mov", webm: "images/Thinking.webm" }
-            };
-
-            function playVideo(mode, loop = true) {
-                mascotVideo.innerHTML = `
-                    <source src="${videoSources[mode].mov}" type="video/quicktime">
-                    <source src="${videoSources[mode].webm}" type="video/webm">
-                `;
-                mascotVideo.loop = loop;
-                mascotVideo.load();
-                mascotVideo.play().catch(e => console.log("影片播放限制", e));
-            }
-
-            mascotContainer.addEventListener('click', function() {
-                if (chatbox.style.display === "none" || chatbox.style.display === "") {
-                    chatbox.style.display = "flex";
-                    playVideo('greeting', false);
-                    mascotVideo.onended = function() {
-                        playVideo('idle', true);
-                        mascotVideo.onended = null;
-                    };
-                }
-            });
-
-            closeBtn.addEventListener('click', function() {
-                chatbox.style.display = "none";
-                playVideo('idle', true);
-            });
-
-            let isSending = false;
-
-            function addAiMessage(text, isHtml = false) {
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'lh-msg lh-msg-ai';
-
-                if (isHtml) {
-                    aiMsg.innerHTML = text;
-                } else {
-                    aiMsg.textContent = text;
-                }
-
-                messagesArea.appendChild(aiMsg);
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-            }
-
-            async function sendMessage() {
-                if (isSending) return;
-
-                const text = chatInput.value.trim();
-                if (text === "") return;
-
-                isSending = true;
-                sendBtn.disabled = true;
-                sendBtn.style.opacity = '0.6';
-                sendBtn.style.cursor = 'wait';
-
-                const userMsg = document.createElement('div');
-                userMsg.className = 'lh-msg lh-msg-user';
-                userMsg.textContent = text;
-                messagesArea.appendChild(userMsg);
-
-                chatInput.value = "";
-                chatInput.disabled = true;
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-
-                playVideo('thinking', true);
-
-                const typingMsg = document.createElement('div');
-                typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
-                typingMsg.textContent = "劉大哥思考中...";
-                typingMsg.id = "lh-typing-indicator";
-                messagesArea.appendChild(typingMsg);
-                messagesArea.scrollTop = messagesArea.scrollHeight;
-
-                const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 35000);
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({ message: text }),
-                        signal: controller.signal,
-                        cache: 'no-store'
-                    });
-
-                    clearTimeout(timeoutId);
-
-                    if (!response.ok) {
-                        const errorText = await response.text().catch(() => '');
-                        throw new Error(`HTTP ${response.status} ${errorText}`);
-                    }
-
-                    const data = await response.json();
-
-                    const indicator = document.getElementById('lh-typing-indicator');
-                    if (indicator) indicator.remove();
-
-                    if (data && data.reply) {
-                        addAiMessage(data.reply, true);
-                    } else {
-                        addAiMessage("不好意思，劉大哥這次沒有收到完整訊息，請再問一次喔！");
-                    }
-
-                    playVideo('greeting', false);
-                    mascotVideo.onended = function() {
-                        playVideo('idle', true);
-                    };
-
-                } catch (error) {
-                    clearTimeout(timeoutId);
-                    console.error("AI 報錯：", error);
-
-                    const indicator = document.getElementById('lh-typing-indicator');
-                    if (indicator) indicator.remove();
-
-                    if (error.name === 'AbortError') {
-                        addAiMessage("這次 AI 回應比較久，可能是服務正在忙碌。您可以再試一次，或使用網站右下角的 LINE 聯絡劉大哥喔！");
-                    } else {
-                        addAiMessage("網路似乎有點不穩！建議您再試一次，或使用網站右下角的 LINE 找我們聊聊喔！");
-                    }
-
-                    playVideo('idle', true);
-
-                } finally {
-                    isSending = false;
-                    sendBtn.disabled = false;
-                    sendBtn.style.opacity = '1';
-                    sendBtn.style.cursor = 'pointer';
-                    chatInput.disabled = false;
-                    chatInput.focus();
-                }
-            }
-
-            sendBtn.addEventListener('click', sendMessage);
-
-            chatInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-
+            console.log('木作影音藝廊已載入 — 願每一件作品都帶給您快樂。');
         });
     </script>
 

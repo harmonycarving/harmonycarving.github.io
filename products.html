@@ -1,778 +1,778 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>作品櫥窗 | 聯和刻記 · 掌心木藝</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>作品櫥窗 | 聯和刻記 · 掌心木藝</title>
 
-    <meta name="description" content="欣賞聯和刻記的掌心木藝作品——台灣肖楠、檜木手工雕刻，結合AI人機協作的療癒藝術。" />
-    <meta name="keywords" content="台灣木雕,肖楠,檜木,掌心木作,木雕作品,舒壓玩具,魯班鎖" />
-    <link rel="canonical" href="https://harmonycarving.github.io/products.html" />
+    <meta name="description" content="欣賞聯和刻記的掌心木藝作品——台灣肖楠、檜木手工雕刻，結合AI人機協作的療癒藝術。" />
+    <meta name="keywords" content="台灣木雕,肖楠,檜木,掌心木作,木雕作品,舒壓玩具,魯班鎖" />
+    <link rel="canonical" href="https://harmonycarving.github.io/products.html" />
 
-    <style>
-        /* ===== 全域樣式 ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <style>
+        /* ===== 全域樣式 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        :root {
-            --bg-cream: #F5F2EB;
-            --red-gugong: #9B1B30;
-            --gold-dark: #8B6914;
-            --brown-deep: #3E2723;
-            --text-soft: #4A3A2B;
-            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
-            --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
-        }
+        :root {
+            --bg-cream: #F5F2EB;
+            --red-gugong: #9B1B30;
+            --gold-dark: #8B6914;
+            --brown-deep: #3E2723;
+            --text-soft: #4A3A2B;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius-art: 40% 60% 30% 70% / 50% 40% 60% 50%;
+        }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Noto Serif TC', 'Times New Roman', serif;
-            background-color: var(--bg-cream);
-            color: var(--brown-deep);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+        body {
+            font-family: 'Noto Serif TC', 'Times New Roman', serif;
+            background-color: var(--bg-cream);
+            color: var(--brown-deep);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-        a { text-decoration: none; }
+        a { text-decoration: none; }
 
-        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
-        .navbar {
-            padding: 16px 0;
-            position: sticky;
-            top: 0;
-            background: rgba(245, 242, 235, 0.96);
-            backdrop-filter: blur(10px);
-            z-index: 1000; /* 提高層級，蓋過下方遮罩 */
-            border-bottom: 1px solid rgba(62, 39, 35, 0.08);
-        }
+        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
+        .navbar {
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(245, 242, 235, 0.96);
+            backdrop-filter: blur(10px);
+            z-index: 1000; /* 提高層級，蓋過下方遮罩 */
+            border-bottom: 1px solid rgba(62, 39, 35, 0.08);
+        }
 
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-        #logo-text {
-            font-size: clamp(1.3rem, 3vw, 2rem);
-            font-weight: 700;
-            color: var(--red-gugong);
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
+        #logo-text {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--red-gugong);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
 
-        #logo-text small {
-            font-size: 0.5em;
-            color: var(--gold-dark);
-            font-weight: normal;
-            letter-spacing: 1px;
-        }
+        #logo-text small {
+            font-size: 0.5em;
+            color: var(--gold-dark);
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
 
-        /* 主選單按鈕設計 */
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
+        /* 主選單按鈕設計 */
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
 
-        .nav-links a {
-            color: var(--brown-deep);
-            font-size: 1rem;
-            font-weight: 500;
-            padding: 6px 18px;
-            border-radius: 30px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
+        .nav-links a {
+            color: var(--brown-deep);
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
 
-        .nav-links a:hover {
-            background: rgba(139, 105, 20, 0.08);
-            border-color: rgba(139, 105, 20, 0.2);
-            color: var(--red-gugong);
-            transform: translateY(-2px);
-        }
+        .nav-links a:hover {
+            background: rgba(139, 105, 20, 0.08);
+            border-color: rgba(139, 105, 20, 0.2);
+            color: var(--red-gugong);
+            transform: translateY(-2px);
+        }
 
-        .nav-links a.active {
-            background: var(--red-gugong);
-            color: white;
-            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
-        }
+        .nav-links a.active {
+            background: var(--red-gugong);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
+        }
 
-        /* 漢堡選單按鈕 (預設隱藏) */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
+        /* 漢堡選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
 
-        .menu-toggle span {
-            display: block;
-            width: 24px;
-            height: 3px;
-            background-color: var(--brown-deep);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: var(--brown-deep);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
 
-        /* ===== 頁面主視覺 (Banner) ===== */
-        .page-hero {
-            margin-top: 4px;
-            position: relative;
-            min-height: 300px;
-        }
+        /* ===== 頁面主視覺 (Banner) ===== */
+        .page-hero {
+            margin-top: 4px;
+            position: relative;
+            min-height: 300px;
+        }
 
-        .hero-bg-mask {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
-            background: #2c1f1a;
-            position: relative; 
-        }
+        .hero-bg-mask {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
+            background: #2c1f1a;
+            position: relative; 
+        }
 
-        .hero-bg-mask img {
-            width: 100%;
-            height: 55vh;
-            min-height: 300px;
-            object-fit: cover;
-            display: block;
-            opacity: 0.8;
-            transition: transform 7s ease;
-        }
+        .hero-bg-mask img {
+            width: 100%;
+            height: 55vh;
+            min-height: 300px;
+            object-fit: cover;
+            display: block;
+            opacity: 0.8;
+            transition: transform 7s ease;
+        }
 
-        .hero-bg-mask img:hover {
-            transform: scale(1.02);
-        }
+        .hero-bg-mask img:hover {
+            transform: scale(1.02);
+        }
 
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: flex-start;
-            padding-top: 5%;
-            padding-left: 6%;
-            z-index: 2;
-            pointer-events: none;
-        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 5%;
+            padding-left: 6%;
+            z-index: 2;
+            pointer-events: none;
+        }
 
-        .hero-overlay .text {
-            color: white;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-            max-width: 700px;
-            pointer-events: auto;
-        }
+        .hero-overlay .text {
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+            max-width: 700px;
+            pointer-events: auto;
+        }
 
-        .hero-overlay .text h1 {
-            font-size: clamp(2.6rem, 6vw, 4.2rem);
-            font-weight: 700;
-            letter-spacing: 8px;
-            line-height: 1.1;
-        }
+        .hero-overlay .text h1 {
+            font-size: clamp(2.6rem, 6vw, 4.2rem);
+            font-weight: 700;
+            letter-spacing: 8px;
+            line-height: 1.1;
+        }
 
-        .hero-overlay .text .sub {
-            font-size: clamp(1rem, 1.8vw, 1.3rem);
-            opacity: 0.9;
-            letter-spacing: 4px;
-            font-weight: 300;
-            margin-top: 6px;
-        }
+        .hero-overlay .text .sub {
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            opacity: 0.9;
+            letter-spacing: 4px;
+            font-weight: 300;
+            margin-top: 6px;
+        }
 
-        /* ===== 分類選單 ===== */
-        .filter-section {
-            padding: 30px 0 10px;
-            text-align: center;
-            background: var(--bg-cream);
-            position: relative;
-            z-index: 3;
-        }
+        /* ===== 分類選單 ===== */
+        .filter-section {
+            padding: 30px 0 10px;
+            text-align: center;
+            background: var(--bg-cream);
+            position: relative;
+            z-index: 3;
+        }
 
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px 14px;
-        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 14px;
+        }
 
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 6px 24px;
-            border-radius: 40px;
-            border: 1.5px solid rgba(139, 105, 20, 0.2);
-            font-size: 0.95rem;
-            color: var(--brown-deep);
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: 2px;
-            font-family: inherit;
-        }
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 6px 24px;
+            border-radius: 40px;
+            border: 1.5px solid rgba(139, 105, 20, 0.2);
+            font-size: 0.95rem;
+            color: var(--brown-deep);
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+            font-family: inherit;
+        }
 
-        .filter-btn:hover {
-            background: var(--red-gugong);
-            color: white;
-            border-color: var(--red-gugong);
-            transform: translateY(-2px);
-        }
+        .filter-btn:hover {
+            background: var(--red-gugong);
+            color: white;
+            border-color: var(--red-gugong);
+            transform: translateY(-2px);
+        }
 
-        .filter-btn.active {
-            background: var(--red-gugong);
-            color: white;
-            border-color: var(--red-gugong);
-            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.25);
-        }
+        .filter-btn.active {
+            background: var(--red-gugong);
+            color: white;
+            border-color: var(--red-gugong);
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.25);
+        }
 
-        /* ===== 瀑布流相簿 (修正遮罩問題) ===== */
-        .gallery {
-            padding: 20px 0 70px;
-        }
+        /* ===== 瀑布流相簿 (修正遮罩問題) ===== */
+        .gallery {
+            padding: 20px 0 70px;
+        }
 
-        .gallery-grid {
-            column-count: 4;
-            column-gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .gallery-grid {
+            column-count: 4;
+            column-gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-        .gallery-item {
-            break-inside: avoid;
-            margin-bottom: 30px; /* 拉大卡片間距 */
-            position: relative;
-            /* 移除原先寫在這裡的 overflow: hidden 與 border-radius */
-        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 30px; /* 拉大卡片間距 */
+            position: relative;
+            /* 移除原先寫在這裡的 overflow: hidden 與 border-radius */
+        }
 
-        /* 將遮罩特效專注套用在圖片容器上 */
-        .gallery-item .img-wrap {
-            border-radius: var(--border-radius-art);
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: all 0.4s ease;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            position: relative;
-        }
+        /* 將遮罩特效專注套用在圖片容器上 */
+        .gallery-item .img-wrap {
+            border-radius: var(--border-radius-art);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            position: relative;
+        }
 
-        .gallery-item:hover .img-wrap {
-            transform: scale(1.02) translateY(-4px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-            border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
-        }
+        .gallery-item:hover .img-wrap {
+            transform: scale(1.02) translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+            border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
+        }
 
-        .gallery-item .img-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s ease;
-        }
+        .gallery-item .img-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
 
-        .gallery-item:hover .img-wrap img {
-            transform: scale(1.05);
-        }
+        .gallery-item:hover .img-wrap img {
+            transform: scale(1.05);
+        }
 
-        /* 標題文字置於圖片外圍，絕對不會被裁切 */
-        .gallery-item .caption {
-            padding: 14px 6px 4px;
-            font-size: 0.9rem;
-            color: var(--brown-deep);
-            letter-spacing: 1px;
-            text-align: center;
-        }
+        /* 標題文字置於圖片外圍，絕對不會被裁切 */
+        .gallery-item .caption {
+            padding: 14px 6px 4px;
+            font-size: 0.9rem;
+            color: var(--brown-deep);
+            letter-spacing: 1px;
+            text-align: center;
+        }
 
-        .gallery-item .caption .tag {
-            display: inline-block;
-            background: rgba(139, 105, 20, 0.15);
-            color: var(--gold-dark);
-            font-size: 0.7rem;
-            padding: 2px 10px;
-            border-radius: 30px;
-            margin-right: 6px;
-            letter-spacing: 1px;
-        }
+        .gallery-item .caption .tag {
+            display: inline-block;
+            background: rgba(139, 105, 20, 0.15);
+            color: var(--gold-dark);
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border-radius: 30px;
+            margin-right: 6px;
+            letter-spacing: 1px;
+        }
 
-        /* ===== 右下角懸浮聯絡 ===== */
-        .floating-contact {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            z-index: 999;
-        }
+        /* ===== 右下角懸浮聯絡 ===== */
+        .floating-contact {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
 
-        .floating-contact a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.25s ease;
-        }
+        .floating-contact a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.25s ease;
+        }
 
-        .floating-contact a:hover {
-            transform: scale(1.10);
-        }
+        .floating-contact a:hover {
+            transform: scale(1.10);
+        }
 
-        .line-btn img {
-            width: clamp(52px, 8vw, 68px);
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
-            border-radius: 50%;
-            background: #fff;
-            padding: 2px;
-        }
+        .line-btn img {
+            width: clamp(52px, 8vw, 68px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.18));
+            border-radius: 50%;
+            background: #fff;
+            padding: 2px;
+        }
 
-        .phone-btn {
-            background: var(--red-gugong);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-size: clamp(0.85rem, 1.2vw, 1.05rem);
-            font-weight: 600;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            white-space: nowrap;
-        }
+        .phone-btn {
+            background: var(--red-gugong);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 16px rgba(155, 27, 48, 0.35);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            white-space: nowrap;
+        }
 
-        /* ===== 頁尾 ===== */
-        .footer {
-            background: #2c1f1a;
-            color: rgba(255, 255, 255, 0.7);
-            padding: 36px 0 28px;
-            text-align: center;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        .footer a { color: #d4a373; text-decoration: none; }
+        /* ===== 頁尾 ===== */
+        .footer {
+            background: #2c1f1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 36px 0 28px;
+            text-align: center;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .footer a { color: #d4a373; text-decoration: none; }
 
-        /* ===== AI 公仔與對話框 (左下角) ===== */
-        #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
-        #lh-mascot-container:hover { transform: scale(1.05); }
-        #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+        /* ===== AI 公仔與對話框 (左下角) ===== */
+        #lh-mascot-container { position: fixed; bottom: 20px; left: 20px; width: 160px; height: 220px; z-index: 9999; cursor: pointer; transition: transform 0.3s ease; }
+        #lh-mascot-container:hover { transform: scale(1.05); }
+        #lh-mascot-video { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 
-        #lh-chatbox { position: fixed; bottom: 240px; left: 30px; width: 340px; background-color: #ffffff; border: 2px solid var(--red-gugong); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 9998; overflow: hidden; transform-origin: bottom left; animation: popUp 0.3s ease-out; }
-        @keyframes popUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        
-        #lh-chat-header { background-color: var(--brown-deep); color: #ffffff; padding: 15px 20px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
-        #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
-        #lh-chat-close:hover { background-color: var(--red-gugong); }
-        
-        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
-        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
+        #lh-chatbox { position: fixed; bottom: 240px; left: 30px; width: 340px; background-color: #ffffff; border: 2px solid var(--red-gugong); border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); display: none; flex-direction: column; z-index: 9998; overflow: hidden; transform-origin: bottom left; animation: popUp 0.3s ease-out; }
+        @keyframes popUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        
+        #lh-chat-header { background-color: var(--brown-deep); color: #ffffff; padding: 15px 20px; font-size: 16px; font-weight: bold; display: flex; justify-content: space-between; align-items: center; letter-spacing: 1px; }
+        #lh-chat-close { cursor: pointer; font-size: 16px; color: #ffffff; background-color: rgba(255, 255, 255, 0.2); width: 28px; height: 28px; display: flex; justify-content: center; align-items: center; border-radius: 50%; transition: background 0.3s; }
+        #lh-chat-close:hover { background-color: var(--red-gugong); }
+        
+        .lh-line-cta-btn { display: block; background: linear-gradient(135deg, var(--red-gugong), #7a1526); color: #fff !important; text-align: center; padding: 12px; margin: 10px 15px; border-radius: 20px; font-weight: bold; text-decoration: none; font-size: 14px; box-shadow: 0 4px 10px rgba(155, 27, 48, 0.3); transition: transform 0.2s ease; border: none; cursor: pointer; }
+        .lh-line-cta-btn:hover { transform: scale(1.03); color: #fff !important; }
 
-        #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
-        .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
-        .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
-        .lh-msg-user { background-color: var(--red-gugong); color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
-        
-        .lh-typing { font-style: italic; color: #888; font-size: 13px; animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        #lh-chat-messages { height: 300px; padding: 15px 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background-color: var(--bg-cream); }
+        .lh-msg { max-width: 85%; padding: 12px 15px; border-radius: 15px; font-size: 14px; line-height: 1.6; }
+        .lh-msg-ai { background-color: #ffffff; color: var(--brown-deep); align-self: flex-start; border-bottom-left-radius: 2px; border: 1px solid #e0dcd3; }
+        .lh-msg-user { background-color: var(--red-gugong); color: #ffffff; align-self: flex-end; border-bottom-right-radius: 2px; }
+        
+        .lh-typing { font-style: italic; color: #888; font-size: 13px; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-        #lh-chat-input-area { display: flex; padding: 10px; background-color: #ffffff; border-top: 1px solid #e0dcd3; }
-        #lh-chat-input { flex: 1; padding: 10px 15px; border: 1px solid #cccccc; border-radius: 20px; outline: none; font-size: 14px; }
-        #lh-chat-input:focus { border-color: var(--gold-dark); }
-        #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        #lh-chat-send:hover { background-color: var(--red-gugong); }
+        #lh-chat-input-area { display: flex; padding: 10px; background-color: #ffffff; border-top: 1px solid #e0dcd3; }
+        #lh-chat-input { flex: 1; padding: 10px 15px; border: 1px solid #cccccc; border-radius: 20px; outline: none; font-size: 14px; }
+        #lh-chat-input:focus { border-color: var(--gold-dark); }
+        #lh-chat-send { background-color: var(--brown-deep); color: #ffffff; border: none; padding: 0 15px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
+        #lh-chat-send:hover { background-color: var(--red-gugong); }
 
-        /* ===== 響應式調整 ===== */
-        @media (max-width: 1024px) {
-            .gallery-grid { column-count: 3; }
-        }
+        /* ===== 響應式調整 ===== */
+        @media (max-width: 1024px) {
+            .gallery-grid { column-count: 3; }
+        }
 
-        @media (max-width: 768px) {
-            .gallery-grid { column-count: 2; column-gap: 14px; }
-            
-            /* 開啟漢堡選單機制 */
-            .menu-toggle { display: flex; }
-            
-            .nav-links {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: rgba(245, 242, 235, 0.98);
-                flex-direction: column;
-                padding: 10px 0 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
-                transition: clip-path 0.4s ease-in-out;
-            }
+        @media (max-width: 768px) {
+            .gallery-grid { column-count: 2; column-gap: 14px; }
+            
+            /* 開啟漢堡選單機制 */
+            .menu-toggle { display: flex; }
+            
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(245, 242, 235, 0.98);
+                flex-direction: column;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
+                transition: clip-path 0.4s ease-in-out;
+            }
 
-            .nav-links.show {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
-            }
+            .nav-links.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
+            }
 
-            .nav-links a {
-                padding: 12px;
-                width: 80%;
-                text-align: center;
-            }
+            .nav-links a {
+                padding: 12px;
+                width: 80%;
+                text-align: center;
+            }
 
-            /* 漢堡選單動畫 */
-            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            .menu-toggle.active span:nth-child(2) { opacity: 0; }
-            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            /* 漢堡選單動畫 */
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-            .hero-bg-mask img { height: 40vh; min-height: 240px; }
-            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
-        }
+            .hero-bg-mask img { height: 40vh; min-height: 240px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%); }
+        }
 
-        @media (max-width: 480px) {
-            .gallery-grid { column-count: 1; max-width: 360px; }
-            .hero-bg-mask img { height: 32vh; min-height: 180px; }
-            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
-            .hero-overlay .text h1 { font-size: 1.8rem; letter-spacing: 4px; }
-            .floating-contact { bottom: 14px; right: 14px; }
-            .line-btn img { width: 48px; }
-            .phone-btn { padding: 5px 12px; font-size: 0.8rem; }
+        @media (max-width: 480px) {
+            .gallery-grid { column-count: 1; max-width: 360px; }
+            .hero-bg-mask img { height: 32vh; min-height: 180px; }
+            .hero-bg-mask { clip-path: polygon(0% 0%, 100% 0%, 100% 92%, 90% 97%, 75% 92%, 55% 98%, 35% 93%, 15% 97%, 5% 94%, 0% 92%); }
+            .hero-overlay .text h1 { font-size: 1.8rem; letter-spacing: 4px; }
+            .floating-contact { bottom: 14px; right: 14px; }
+            .line-btn img { width: 48px; }
+            .phone-btn { padding: 5px 12px; font-size: 0.8rem; }
 
-            /* AI 公仔手機版微調 */
-            #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
-            #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
-        }
-    </style>
+            /* AI 公仔手機版微調 */
+            #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
+            #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ===== 導航欄 ===== -->
-    <nav class="navbar">
-        <div class="container nav-content">
-            <a href="index.html" class="logo-area">
-                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
-            </a>
-            
-            <!-- 漢堡選單按鈕 (手機版顯示) -->
-            <div class="menu-toggle" id="mobile-menu-btn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <!-- ===== 導航欄 ===== -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo-area">
+                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+            </a>
+            
+            <!-- 漢堡選單按鈕 (手機版顯示) -->
+            <div class="menu-toggle" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
 
-            <!-- 主選單連結 -->
-            <div class="nav-links" id="nav-links">
-                <a href="index.html">首頁</a>
-                <a href="about.html">關於</a>
-                <a href="products.html" class="active">作品</a>
-                <a href="blog.html">木藝講堂</a>
-            </div>
-        </div>
-    </nav>
+            <!-- 主選單連結 -->
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">首頁</a>
+                <a href="about.html">關於</a>
+                <a href="products.html" class="active">作品</a>
+                <a href="blog.html">木藝講堂</a>
+            </div>
+        </div>
+    </nav>
 
-    <!-- ===== 頁面主視覺 (Banner) ===== -->
-    <header class="page-hero">
-        <div class="hero-bg-mask">
-            <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
-        </div>
-        <div class="hero-overlay">
-            <div class="text">
-                <h1>掌心之作</h1>
-                <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
-            </div>
-        </div>
-    </header>
+    <!-- ===== 頁面主視覺 (Banner) ===== -->
+    <header class="page-hero">
+        <div class="hero-bg-mask">
+            <img src="images/products-hero.webp" alt="聯和刻記作品櫥窗" />
+        </div>
+        <div class="hero-overlay">
+            <div class="text">
+                <h1>掌心之作</h1>
+                <div class="sub">—— 每一件，都是獨一無二的溫度 ——</div>
+            </div>
+        </div>
+    </header>
 
-    <!-- ===== 分類選單 ===== -->
-    <section class="filter-section">
-        <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">全部</button>
-            <button class="filter-btn" data-filter="舒壓">舒壓</button>
-            <button class="filter-btn" data-filter="益智">益智</button>
-            <button class="filter-btn" data-filter="生活">生活</button>
-            <button class="filter-btn" data-filter="藝術">藝術</button>
-            <button class="filter-btn" data-filter="飾品">飾品</button>
-            <button class="filter-btn" data-filter="療癒">療癒</button>
-        </div>
-    </section>
+    <!-- ===== 分類選單 ===== -->
+    <section class="filter-section">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="舒壓">舒壓</button>
+            <button class="filter-btn" data-filter="益智">益智</button>
+            <button class="filter-btn" data-filter="生活">生活</button>
+            <button class="filter-btn" data-filter="藝術">藝術</button>
+            <button class="filter-btn" data-filter="飾品">飾品</button>
+            <button class="filter-btn" data-filter="療癒">療癒</button>
+        </div>
+    </section>
 
-    <!-- ===== 瀑布流相簿 ===== -->
-    <section class="gallery">
-        <div class="gallery-grid" id="galleryGrid">
+    <!-- ===== 瀑布流相簿 ===== -->
+    <section class="gallery">
+        <div class="gallery-grid" id="galleryGrid">
 
-            <!-- 作品範例結構：圖文完全分離 -->
-            <div class="gallery-item" data-category="舒壓">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
-                </div>
-            </div>
+            <!-- 作品範例結構：圖文完全分離 -->
+            <div class="gallery-item" data-category="舒壓">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-1.webp" alt="肖楠木掌心舒壓玩具" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">舒壓</span> 肖楠木掌心玩具 · 溫潤手感
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="益智">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
-                </div>
-            </div>
+            <div class="gallery-item" data-category="益智">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-2.webp" alt="檜木微縮魯班鎖" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">益智</span> 檜木x肖楠 魯班鎖 · 幾何美學
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="生活">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
-                </div>
-            </div>
+            <div class="gallery-item" data-category="生活">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-3.webp" alt="香氛護照盒 隨身木筒" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">生活</span> 香氛護照盒 · 隨身聞香
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="藝術">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
-                </div>
-            </div>
+            <div class="gallery-item" data-category="藝術">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-4.webp" alt="肖楠木手工雕刻 抽象造型" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">藝術</span> 肖楠木抽象雕塑 · 簡約線條
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="舒壓">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
-                </div>
-            </div>
+            <div class="gallery-item" data-category="舒壓">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-1.webp" alt="檜木紓壓方塊" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">舒壓</span> 檜木紓壓方塊 · 單手盲操
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="飾品">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
-                </div>
-            </div>
+            <div class="gallery-item" data-category="飾品">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-2.webp" alt="肖楠木幾何吊飾" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">飾品</span> 肖楠木幾何吊飾 · 隨身陪伴
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="療癒">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
-                </div>
-            </div>
+            <div class="gallery-item" data-category="療癒">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-3.webp" alt="木質刮痧按摩器" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">療癒</span> 木質刮痧器 · 經絡舒緩
+                </div>
+            </div>
 
-            <div class="gallery-item" data-category="藝術">
-                <div class="img-wrap">
-                    <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
-                </div>
-                <div class="caption">
-                    <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
-                </div>
-            </div>
+            <div class="gallery-item" data-category="藝術">
+                <div class="img-wrap">
+                    <img src="images/product-placeholder-4.webp" alt="掌心木鳥 手工雕刻" loading="lazy" />
+                </div>
+                <div class="caption">
+                    <span class="tag">藝術</span> 掌心木鳥 · 手工雕刻
+                </div>
+            </div>
 
-        </div>
-    </section>
+        </div>
+    </section>
 
-    <!-- ===== 右下角懸浮聯絡區塊 ===== -->
-    <div class="floating-contact">
-        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
-            <img src="images/line.png" alt="LINE 聯絡方式" />
-        </a>
-        <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
-    </div>
+    <!-- ===== 右下角懸浮聯絡區塊 ===== -->
+    <div class="floating-contact">
+        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
+            <img src="images/line.png" alt="LINE 聯絡方式" />
+        </a>
+        <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
+    </div>
 
-    <!-- ===== 左下角 AI 公仔與對話框新增區塊 ===== -->
-    <div id="lh-chatbox">
-        <div id="lh-chat-header">
-            <span>🪵 聯和刻記 AI 職人</span>
-            <span id="lh-chat-close">✖</span>
-        </div>
-        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
-            💬 點此加 LINE 預約課程或洽詢 👉
-        </a>
-        <div id="lh-chat-messages">
-            <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
-        </div>
-        <div id="lh-chat-input-area">
-            <input type="text" id="lh-chat-input" placeholder="請輸入您的問題...">
-            <button id="lh-chat-send">發送</button>
-        </div>
-    </div>
+    <!-- ===== 左下角 AI 公仔與對話框新增區塊 ===== -->
+    <div id="lh-chatbox">
+        <div id="lh-chat-header">
+            <span>🪵 聯和刻記 AI 職人</span>
+            <span id="lh-chat-close">✖</span>
+        </div>
+        <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="lh-line-cta-btn">
+            💬 點此加 LINE 預約課程或洽詢 👉
+        </a>
+        <div id="lh-chat-messages">
+            <div class="lh-msg lh-msg-ai">您好！我是劉大哥的 3D 數位分身✨<br><br>不論是想了解台灣肖楠的香氣、掌心雷紓壓玩具，或是報名「AI 療癒木作班」，都可以直接問我喔！</div>
+        </div>
+        <div id="lh-chat-input-area">
+            <input type="text" id="lh-chat-input" placeholder="請輸入您的問題...">
+            <button id="lh-chat-send">發送</button>
+        </div>
+    </div>
 
-    <div id="lh-mascot-container">
-        <video id="lh-mascot-video" autoplay loop muted playsinline webkit-playsinline>
-            <source src="images/Idle.mov" type="video/quicktime">
-            <source src="images/Idle.webm" type="video/webm">
-        </video>
-    </div>
+    <div id="lh-mascot-container">
+        <video id="lh-mascot-video" autoplay loop muted playsinline webkit-playsinline>
+            <source src="images/Idle.mov" type="video/quicktime">
+            <source src="images/Idle.webm" type="video/webm">
+        </video>
+    </div>
 
-    <!-- ===== 頁尾 ===== -->
-    <footer class="footer">
-        <div class="container">
-            <p>© 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
-            <p style="margin-top: 6px; font-size: 0.8rem;">
-                <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
-                台灣名木 · 掌心療癒 · 人機共創
-            </p>
-        </div>
-    </footer>
+    <!-- ===== 頁尾 ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">
+                <a href="https://www.facebook.com/harmonycarving" target="_blank">Facebook 粉絲專頁</a> ｜
+                台灣名木 · 掌心療癒 · 人機共創
+            </p>
+        </div>
+    </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // ===== 1. 手機版漢堡選單切換 =====
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const navLinks = document.getElementById('nav-links');
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ===== 1. 手機版漢堡選單切換 =====
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
 
-            mobileBtn.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('show');
-            });
+            mobileBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
 
-            // 點擊選單項目後，自動收合漢堡選單
-            const navItems = document.querySelectorAll('.nav-links a');
-            navItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    mobileBtn.classList.remove('active');
-                    navLinks.classList.remove('show');
-                });
-            });
+            // 點擊選單項目後，自動收合漢堡選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileBtn.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
 
-            // ===== 2. 分類篩選功能 =====
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const galleryItems = document.querySelectorAll('.gallery-item');
+            // ===== 2. 分類篩選功能 =====
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
 
-                    const filterValue = this.getAttribute('data-filter');
+                    const filterValue = this.getAttribute('data-filter');
 
-                    galleryItems.forEach(item => {
-                        const category = item.getAttribute('data-category');
-                        if (filterValue === 'all' || category === filterValue) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
+                    galleryItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (filterValue === 'all' || category === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
 
-            // ===== 3. AI 公仔客服邏輯 =====
-            const mascotContainer = document.getElementById('lh-mascot-container');
-            const mascotVideo = document.getElementById('lh-mascot-video');
-            const chatbox = document.getElementById('lh-chatbox');
-            const closeBtn = document.getElementById('lh-chat-close');
-            const sendBtn = document.getElementById('lh-chat-send');
-            const chatInput = document.getElementById('lh-chat-input');
-            const messagesArea = document.getElementById('lh-chat-messages');
+            // ===== 3. AI 公仔客服邏輯 =====
+            const mascotContainer = document.getElementById('lh-mascot-container');
+            const mascotVideo = document.getElementById('lh-mascot-video');
+            const chatbox = document.getElementById('lh-chatbox');
+            const closeBtn = document.getElementById('lh-chat-close');
+            const sendBtn = document.getElementById('lh-chat-send');
+            const chatInput = document.getElementById('lh-chat-input');
+            const messagesArea = document.getElementById('lh-chat-messages');
 
-            const videoSources = {
-                idle: { mov: "images/Idle.mov", webm: "images/Idle.webm" },
-                greeting: { mov: "images/Greeting.mov", webm: "images/Greeting.webm" },
-                thinking: { mov: "images/Thinking.mov", webm: "images/Thinking.webm" }
-            };
+            const videoSources = {
+                idle: { mov: "images/Idle.mov", webm: "images/Idle.webm" },
+                greeting: { mov: "images/Greeting.mov", webm: "images/Greeting.webm" },
+                thinking: { mov: "images/Thinking.mov", webm: "images/Thinking.webm" }
+            };
 
-            function playVideo(mode, loop = true) {
-                mascotVideo.innerHTML = `
-                    <source src="${videoSources[mode].mov}" type="video/quicktime">
-                    <source src="${videoSources[mode].webm}" type="video/webm">
-                `;
-                mascotVideo.loop = loop;
-                mascotVideo.load();
-                mascotVideo.play().catch(e => console.log("影片播放限制", e));
-            }
+            function playVideo(mode, loop = true) {
+                mascotVideo.innerHTML = `
+                    <source src="${videoSources[mode].mov}" type="video/quicktime">
+                    <source src="${videoSources[mode].webm}" type="video/webm">
+                `;
+                mascotVideo.loop = loop;
+                mascotVideo.load();
+                mascotVideo.play().catch(e => console.log("影片播放限制", e));
+            }
 
-            mascotContainer.addEventListener('click', function() {
-                if (chatbox.style.display === "none" || chatbox.style.display === "") {
-                    chatbox.style.display = "flex";
-                    playVideo('greeting', false);
-                    mascotVideo.onended = function() {
-                        playVideo('idle', true);
-                        mascotVideo.onended = null;
-                    };
-                }
-            });
+            mascotContainer.addEventListener('click', function() {
+                if (chatbox.style.display === "none" || chatbox.style.display === "") {
+                    chatbox.style.display = "flex";
+                    playVideo('greeting', false);
+                    mascotVideo.onended = function() {
+                        playVideo('idle', true);
+                        mascotVideo.onended = null;
+                    };
+                }
+            });
 
-            closeBtn.addEventListener('click', function() {
-                chatbox.style.display = "none";
-                playVideo('idle', true);
-            });
+            closeBtn.addEventListener('click', function() {
+                chatbox.style.display = "none";
+                playVideo('idle', true);
+            });
 
-            function sendMessage() {
-                const text = chatInput.value.trim();
-                if (text === "") return;
+            function sendMessage() {
+                const text = chatInput.value.trim();
+                if (text === "") return;
 
-                const userMsg = document.createElement('div');
-                userMsg.className = 'lh-msg lh-msg-user';
-                userMsg.textContent = text;
-                messagesArea.appendChild(userMsg);
-                chatInput.value = "";
-                messagesArea.scrollTop = messagesArea.scrollHeight;
+                const userMsg = document.createElement('div');
+                userMsg.className = 'lh-msg lh-msg-user';
+                userMsg.textContent = text;
+                messagesArea.appendChild(userMsg);
+                chatInput.value = "";
+                messagesArea.scrollTop = messagesArea.scrollHeight;
 
-                playVideo('thinking', true);
-                const typingMsg = document.createElement('div');
-                typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
-                typingMsg.textContent = "劉大哥思考中...";
-                typingMsg.id = "lh-typing-indicator";
-                messagesArea.appendChild(typingMsg);
-                messagesArea.scrollTop = messagesArea.scrollHeight;
+                playVideo('thinking', true);
+                const typingMsg = document.createElement('div');
+                typingMsg.className = 'lh-msg lh-msg-ai lh-typing';
+                typingMsg.textContent = "劉大哥思考中...";
+                typingMsg.id = "lh-typing-indicator";
+                messagesArea.appendChild(typingMsg);
+                messagesArea.scrollTop = messagesArea.scrollHeight;
 
-                const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
+                const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
 
-                fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ message: text })
-                })
-                .then(async response => {
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    return response.json();
-                })
-                .then(data => {
-                    const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text })
+                })
+                .then(async response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    const indicator = document.getElementById('lh-typing-indicator');
+                    if(indicator) indicator.remove();
 
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.innerHTML = data.reply ? data.reply.replace(/\n/g, '<br>') : "不好意思，沒聽清楚呢。";
-                    
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
-                    
-                    playVideo('greeting', false);
-                    mascotVideo.onended = function() { playVideo('idle', true); };
-                })
-                .catch(error => {
-                    console.error("AI 報錯：", error);
-                    const indicator = document.getElementById('lh-typing-indicator');
-                    if(indicator) indicator.remove();
-                    const aiMsg = document.createElement('div');
-                    aiMsg.className = 'lh-msg lh-msg-ai';
-                    aiMsg.textContent = "網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！";
-                    messagesArea.appendChild(aiMsg);
-                    messagesArea.scrollTop = messagesArea.scrollHeight;
-                    playVideo('idle', true);
-                });
-            }
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'lh-msg lh-msg-ai';
+                    aiMsg.innerHTML = data.reply ? data.reply.replace(/\n/g, '<br>') : "不好意思，沒聽清楚呢。";
+                    
+                    messagesArea.appendChild(aiMsg);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    
+                    playVideo('greeting', false);
+                    mascotVideo.onended = function() { playVideo('idle', true); };
+                })
+                .catch(error => {
+                    console.error("AI 報錯：", error);
+                    const indicator = document.getElementById('lh-typing-indicator');
+                    if(indicator) indicator.remove();
+                    const aiMsg = document.createElement('div');
+                    aiMsg.className = 'lh-msg lh-msg-ai';
+                    aiMsg.textContent = "網路似乎有點不穩！建議您直接點擊上方按鈕加 LINE 找我們聊聊喔！";
+                    messagesArea.appendChild(aiMsg);
+                    messagesArea.scrollTop = messagesArea.scrollHeight;
+                    playVideo('idle', true);
+                });
+            }
 
-            sendBtn.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') sendMessage();
-            });
-            
-        });
-    </script>
+            sendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+            
+        });
+    </script>
 
 </body>
 </html>

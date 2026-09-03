@@ -389,6 +389,7 @@
                 padding: 12px;
                 width: 80%;
                 text-align: center;
+                /* 保持字體大小為 1rem，與其他頁面一致 */
             }
             .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .menu-toggle.active span:nth-child(2) { opacity: 0; }
@@ -443,13 +444,13 @@
             .floating-contact { bottom: 14px; right: 14px; gap: 6px; }
             .line-btn img { width: 48px; }
             .phone-btn { padding: 5px 12px; font-size: 0.8rem; }
-            .nav-links a { font-size: 0.85rem; }
+            /* 移除對 .nav-links a 的字體大小覆蓋，使其繼承 1rem */
         }
 
         @media (max-width: 380px) {
-            .nav-links a { font-size: 0.78rem; }
             .phone-btn { font-size: 0.7rem; padding: 4px 10px; }
             .video-wrapper { height: 160px; }
+            /* 同樣移除對 .nav-links a 的字體大小覆蓋 */
         }
     </style>
 </head>

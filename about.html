@@ -18,7 +18,7 @@
     <meta property="og:type" content="website" />
 
     <style>
-        /* ===== 全域樣式（與首頁一致） ===== */
+        /* ===== 全域樣式 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -57,14 +57,14 @@
             text-decoration: none;
         }
 
-        /* ===== 導航欄（與首頁一致） ===== */
+        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
         .navbar {
             padding: 16px 0;
             position: sticky;
             top: 0;
-            background: rgba(245, 242, 235, 0.94);
+            background: rgba(245, 242, 235, 0.96);
             backdrop-filter: blur(10px);
-            z-index: 100;
+            z-index: 1000;
             border-bottom: 1px solid rgba(62, 39, 35, 0.08);
         }
 
@@ -72,8 +72,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .logo-area {
@@ -81,7 +79,6 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
-            flex-shrink: 0;
         }
 
         #logo-text {
@@ -105,55 +102,69 @@
             object-fit: contain;
         }
 
+        /* 主選單按鈕設計 */
         .nav-links {
             display: flex;
-            flex-wrap: wrap;
-            gap: 6px 20px;
+            gap: 8px;
+            align-items: center;
         }
 
         .nav-links a {
-            text-decoration: none;
             color: var(--brown-deep);
-            font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+            font-size: 1rem;
             font-weight: 500;
-            position: relative;
-            transition: color 0.3s;
+            padding: 6px 18px;
+            border-radius: 30px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
             white-space: nowrap;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--red-gugong);
-            transition: width 0.3s;
-        }
         .nav-links a:hover {
+            background: rgba(139, 105, 20, 0.08);
+            border-color: rgba(139, 105, 20, 0.2);
             color: var(--red-gugong);
-        }
-        .nav-links a:hover::after {
-            width: 100%;
+            transform: translateY(-2px);
         }
 
         .nav-links a.active {
-            color: var(--red-gugong);
-        }
-        .nav-links a.active::after {
-            width: 100%;
+            background: var(--red-gugong);
+            color: white;
+            box-shadow: 0 4px 12px rgba(155, 27, 48, 0.2);
         }
 
-        /* ===== 頁面主視覺（不規則藝術邊框） ===== */
+        /* 漢堡選單按鈕 (預設隱藏) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: var(--brown-deep);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== 頁面主視覺 (圖文分離) ===== */
         .page-hero {
             margin-top: 4px;
             position: relative;
-            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
-            background: var(--brown-deep);
+            min-height: 340px;
         }
 
-        .page-hero img {
+        .hero-bg-mask {
+            clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 95%, 78% 90%, 60% 97%, 40% 91%, 22% 96%, 8% 92%, 0% 86%);
+            background: var(--brown-deep);
+            position: relative;
+        }
+
+        .hero-bg-mask img {
             width: 100%;
             height: 60vh;
             min-height: 340px;
@@ -162,26 +173,39 @@
             opacity: 0.85;
             transition: transform 7s ease;
         }
-        .page-hero img:hover {
+        
+        .hero-bg-mask img:hover {
             transform: scale(1.02);
         }
 
-        .page-hero .overlay {
+        .hero-overlay {
             position: absolute;
-            bottom: 18%;
-            left: 6%;
-            color: white;
-            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: flex-end; /* 讓文字靠下對齊 */
+            padding-bottom: 18%; /* 預留與底部的距離 */
+            padding-left: 6%;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        .page-hero .overlay h1 {
+        .hero-overlay .text {
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            pointer-events: auto;
+        }
+
+        .hero-overlay .text h1 {
             font-size: clamp(2.6rem, 6vw, 4.2rem);
             font-weight: 700;
             letter-spacing: 8px;
             line-height: 1.1;
         }
 
-        .page-hero .overlay .sub {
+        .hero-overlay .text .sub {
             font-size: clamp(1rem, 1.8vw, 1.3rem);
             opacity: 0.9;
             letter-spacing: 4px;
@@ -330,7 +354,7 @@
             letter-spacing: 2px;
         }
 
-        /* ===== 人機協作展示（圖片＋文字） ===== */
+        /* ===== 人機協作展示 ===== */
         .collab-showcase {
             padding: 70px 0 60px;
         }
@@ -461,13 +485,16 @@
             .collab-showcase .image-wrap img {
                 min-height: 200px;
             }
-            .page-hero img {
+            .hero-bg-mask {
+                clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 92% 96%, 78% 90%, 60% 98%, 40% 91%, 22% 97%, 8% 93%, 0% 88%);
+            }
+            .hero-bg-mask img {
                 height: 45vh;
                 min-height: 260px;
             }
-            .page-hero .overlay {
-                bottom: 14%;
-                left: 5%;
+            .hero-overlay {
+                padding-bottom: 14%;
+                padding-left: 5%;
             }
             .floating-contact {
                 bottom: 20px;
@@ -486,33 +513,51 @@
             }
         }
 
-        @media (max-width: 500px) {
-            .nav-content {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 8px;
-            }
-            .logo-area {
-                justify-content: center;
-            }
+        @media (max-width: 768px) {
+            /* 開啟漢堡選單機制 */
+            .menu-toggle { display: flex; }
+            
             .nav-links {
-                justify-content: center;
-                gap: 4px 14px;
-            }
-            .nav-links a {
-                font-size: 0.9rem;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(245, 242, 235, 0.98);
+                flex-direction: column;
+                padding: 10px 0 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* 預設收合 */
+                transition: clip-path 0.4s ease-in-out;
             }
 
-            .page-hero {
+            .nav-links.show {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* 展開 */
+            }
+
+            .nav-links a {
+                padding: 12px;
+                width: 80%;
+                text-align: center;
+                margin: 4px auto;
+            }
+
+            /* 漢堡選單動畫 */
+            .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        @media (max-width: 500px) {
+            .hero-bg-mask {
                 clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 88% 96%, 72% 90%, 52% 98%, 32% 91%, 14% 97%, 4% 92%, 0% 88%);
             }
-            .page-hero img {
+            .hero-bg-mask img {
                 height: 35vh;
                 min-height: 200px;
             }
-            .page-hero .overlay {
-                bottom: 12%;
-                left: 4%;
+            .hero-overlay {
+                padding-bottom: 12%;
+                padding-left: 4%;
             }
 
             .values-grid {
@@ -546,12 +591,6 @@
         }
 
         @media (max-width: 380px) {
-            .nav-links {
-                gap: 2px 10px;
-            }
-            .nav-links a {
-                font-size: 0.78rem;
-            }
             .phone-btn {
                 font-size: 0.7rem;
                 padding: 4px 10px;
@@ -568,7 +607,16 @@
                 <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
                 <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
             </a>
-            <div class="nav-links">
+            
+            <!-- 漢堡選單按鈕 (手機版顯示) -->
+            <div class="menu-toggle" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- 主選單連結 -->
+            <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html" class="active">關於</a>
                 <a href="products.html">作品</a>
@@ -577,12 +625,16 @@
         </div>
     </nav>
 
-    <!-- ===== 頁面主視覺 ===== -->
+    <!-- ===== 頁面主視覺 (圖文分離修正) ===== -->
     <header class="page-hero">
-        <img src="images/about-hero.webp" alt="聯和刻記創辦人劉大哥專注於木雕創作" />
-        <div class="overlay">
-            <h1>關於我們</h1>
-            <div class="sub">—— 以木為心，以手傳情 ——</div>
+        <div class="hero-bg-mask">
+            <img src="images/about-hero.webp" alt="聯和刻記創辦人劉大哥專注於木雕創作" />
+        </div>
+        <div class="hero-overlay">
+            <div class="text">
+                <h1>關於我們</h1>
+                <div class="sub">—— 以木為心，以手傳情 ——</div>
+            </div>
         </div>
     </header>
 
@@ -674,11 +726,10 @@
         <a href="https://line.me/ti/p/Tx-YdMGMSY" target="_blank" class="line-btn" aria-label="加入劉大哥的LINE">
             <img src="images/line.png" alt="LINE 聯絡方式" />
         </a>
-        <!-- 電話號碼已移除 '-' 符號 -->
         <a href="tel:+886911938978" class="phone-btn">📞 0911938978</a>
     </div>
 
-    <!-- ===== 頁尾（已移除年份 2026） ===== -->
+    <!-- ===== 頁尾 ===== -->
     <footer class="footer">
         <div class="container">
             <p>聯和刻記 Harmony Carving · 手工不死 藝術永存</p>
@@ -691,7 +742,25 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('關於我們頁面已載入，願木藝溫暖每一顆心。');
+            
+            // ===== 手機版漢堡選單切換 =====
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+
+            mobileBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navLinks.classList.toggle('show');
+            });
+
+            // 點擊選單項目後，自動收合漢堡選單
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    mobileBtn.classList.remove('active');
+                    navLinks.classList.remove('show');
+                });
+            });
+            
         });
     </script>
 

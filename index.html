@@ -900,7 +900,7 @@
                 const apiUrl = 'https://soeyemei.com/wp-json/harmony/v1/chat';
 
                 const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 45000);
+                const timeoutId = setTimeout(() => controller.abort(), 35000);
 
                 try {
                     const response = await fetch(apiUrl, {
@@ -927,6 +927,8 @@
                     if (indicator) indicator.remove();
 
                     if (data && data.reply) {
+                        // 僅在瀏覽器主控台留下目前實際使用的 AI 供除錯，不顯示給訪客
+                        if (data.provider) console.log('Harmony AI Provider:', data.provider);
                         // PHP 已將 AI 純文字安全轉義；LINE CTA 則為伺服器產生的固定 HTML
                         addAiMessage(data.reply, true);
                     } else {

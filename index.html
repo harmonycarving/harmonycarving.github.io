@@ -17,6 +17,26 @@
     <meta property="og:url" content="https://harmonycarving.github.io/" />
     <meta property="og:type" content="website" />
 
+    <!-- 結構化資料 (JSON-LD) - 已更新 Logo 絕對路徑強化 SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "聯和刻記",
+      "url": "https://harmonycarving.github.io/",
+      "logo": "https://harmonycarving.github.io/images/logo.png",
+      "description": "台灣名木掌心藝品，結合手工溫度與AI科技，提供銀髮族心靈療癒與木作教學。",
+      "address": { "@type": "PostalAddress", "addressCountry": "TW", "addressRegion": "New Taipei City" },
+      "sameAs": [ "https://www.facebook.com/harmonycarving" ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+886911938978",
+        "contactType": "Customer Service",
+        "areaServed": "TW"
+      }
+    }
+    </script>
+
     <style>
         /* ===== 全局樣式 ===== */
         * {
@@ -57,7 +77,7 @@
             text-decoration: none;
         }
 
-        /* ===== 導航欄 (升級為按鈕樣式與漢堡選單) ===== */
+        /* ===== 導航欄 ===== */
         .navbar {
             padding: 16px 0;
             position: sticky;
@@ -74,25 +94,24 @@
             align-items: center;
         }
 
+        /* Logo 區域設計 */
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
             text-decoration: none;
+            transition: transform 0.3s ease;
         }
 
-        #logo-text {
-            font-size: clamp(1.3rem, 3vw, 2rem);
-            font-weight: 700;
-            color: var(--red-gugong);
-            letter-spacing: 3px;
-            line-height: 1.2;
+        .logo-area:hover {
+            transform: scale(1.02);
         }
-        #logo-text small {
-            font-size: 0.5em;
-            color: var(--gold-dark);
-            font-weight: normal;
-            letter-spacing: 1px;
+
+        #logo-image {
+            height: clamp(48px, 6vw, 62px);
+            width: auto;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
         }
 
         /* 主選單按鈕設計 */
@@ -110,6 +129,7 @@
             border-radius: 30px;
             border: 1px solid transparent;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -272,13 +292,11 @@
             gap: 35px 25px;
         }
 
-        /* ===== 修正：讓文字區塊在最上層且不被裁切 ===== */
         .product-card {
             position: relative;
             text-align: center;
         }
 
-        /* 將遮罩與變形專注套用在圖片容器上 */
         .product-card .img-wrap {
             border-radius: 30% 70% 40% 60% / 60% 40% 60% 40%;
             overflow: hidden;
@@ -307,7 +325,6 @@
             transform: scale(1.05);
         }
 
-        /* 文字區塊安穩放在下方，不會被遮罩切到 */
         .product-info {
             padding: 0 10px;
         }
@@ -584,9 +601,9 @@
     <!-- ===== 導航欄 ===== -->
     <nav class="navbar">
         <div class="container nav-content">
-            <a href="index.html" class="logo-area">
-                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
-                <img id="logo-image" src="images/logo-main.webp" alt="聯和刻記 Logo" />
+            <!-- 強化 GEO 與 SEO：使用絕對路徑與完整 Title 描述 -->
+            <a href="https://harmonycarving.github.io/" class="logo-area" title="聯和刻記 Harmony Carving - 台灣名木掌心木藝 | 回首頁">
+                <img id="logo-image" src="images/logo.png" alt="聯和刻記 Harmony Carving 台灣新北木雕品牌 Logo" />
             </a>
             
             <!-- 漢堡選單按鈕 (手機版顯示) -->

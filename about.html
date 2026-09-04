@@ -81,23 +81,14 @@
             text-decoration: none;
         }
 
+        /* 移除文字標誌，改為圖片 */
         #logo-text {
-            font-size: clamp(1.3rem, 3vw, 2rem);
-            font-weight: 700;
-            color: var(--red-gugong);
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
-        #logo-text small {
-            font-size: 0.5em;
-            color: var(--gold-dark);
-            font-weight: normal;
-            letter-spacing: 1px;
+            display: none;
         }
 
         #logo-image {
-            display: none;
-            height: 48px;
+            display: block;
+            height: 48px;  /* 與 gallery.html 的影片縮圖尺寸呼應，視覺舒適 */
             width: auto;
             object-fit: contain;
         }
@@ -571,6 +562,11 @@
             .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .menu-toggle.active span:nth-child(2) { opacity: 0; }
             .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            /* 手機版 Logo 稍微縮小 */
+            #logo-image {
+                height: 40px;
+            }
         }
 
         @media (max-width: 500px) {
@@ -618,6 +614,11 @@
             /* AI 公仔手機版微調 */
             #lh-mascot-container { width: 120px; height: 160px; left: 10px; bottom: 10px; }
             #lh-chatbox { left: 10px; right: 10px; bottom: 180px; width: auto; }
+
+            /* 手機版 Logo 再縮小 */
+            #logo-image {
+                height: 34px;
+            }
         }
 
         @media (max-width: 380px) {
@@ -634,7 +635,8 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo-area">
-                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+                <!-- 改用 logo.png 圖片 -->
+                <img id="logo-image" src="https://harmonycarving.github.io/images/logo.png" alt="聯和刻記 Logo" />
             </a>
             
             <!-- 漢堡選單按鈕 (手機版顯示) -->

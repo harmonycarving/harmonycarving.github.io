@@ -87,10 +87,11 @@
         }
 
         #logo-image {
-            display: block;
-            height: 48px;  /* 與 gallery.html 的影片縮圖尺寸呼應，視覺舒適 */
+            height: clamp(48px, 6vw, 62px);
             width: auto;
             object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
         }
 
         /* 主選單按鈕設計 */

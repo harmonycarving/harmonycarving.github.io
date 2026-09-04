@@ -67,11 +67,13 @@
             gap: 12px;
             text-decoration: none;
         }
+
         #logo-image {
-            height: 48px;
+            height: clamp(48px, 6vw, 62px);
             width: auto;
             object-fit: contain;
             display: block;
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
         }
 
         .nav-links {

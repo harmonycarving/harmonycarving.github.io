@@ -18,7 +18,7 @@
     <meta property="og:type" content="website" />
 
     <style>
-        /* ===== 全域樣式 (完全繼承 about.html 風格) ===== */
+        /* ===== 全域樣式 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -46,9 +46,9 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
         a { text-decoration: none; }
 
-        /* ===== 導航欄 (更新選單，加入 愛木十三境) ===== */
+        /* ===== 導航欄 ===== */
         .navbar {
-            padding: 16px 0;
+            padding: 12px 0;
             position: sticky;
             top: 0;
             background: rgba(245, 242, 235, 0.96);
@@ -67,18 +67,11 @@
             gap: 12px;
             text-decoration: none;
         }
-        #logo-text {
-            font-size: clamp(1.3rem, 3vw, 2rem);
-            font-weight: 700;
-            color: var(--red-gugong);
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
-        #logo-text small {
-            font-size: 0.5em;
-            color: var(--gold-dark);
-            font-weight: normal;
-            letter-spacing: 1px;
+        #logo-image {
+            height: 48px;
+            width: auto;
+            object-fit: contain;
+            display: block;
         }
 
         .nav-links {
@@ -298,7 +291,7 @@
             opacity: 0.9;
         }
 
-        /* ===== 頁尾 & 懸浮元件 (複製 about 樣式) ===== */
+        /* ===== 頁尾 & 懸浮元件 ===== */
         .floating-contact {
             position: fixed;
             bottom: 28px;
@@ -407,11 +400,11 @@
 </head>
 <body>
 
-    <!-- ===== 導航欄 (更新選單) ===== -->
+    <!-- ===== 導航欄 (Logo 改為圖片) ===== -->
     <nav class="navbar">
         <div class="container nav-content">
             <a href="index.html" class="logo-area">
-                <span id="logo-text">聯和刻記<small> · 掌心木藝</small></span>
+                <img id="logo-image" src="https://harmonycarving.github.io/images/logo.png" alt="聯和刻記 Logo" />
             </a>
             <div class="menu-toggle" id="mobile-menu-btn">
                 <span></span><span></span><span></span>
@@ -419,7 +412,7 @@
             <div class="nav-links" id="nav-links">
                 <a href="index.html">首頁</a>
                 <a href="about.html">品牌故事</a>
-                <a href="love-wood.html" class="active">愛木十三境</a> <!-- 新選單 -->
+                <a href="love-wood.html" class="active">愛木十三境</a>
                 <a href="products.html">作品</a>
                 <a href="gallery.html">木作影音</a>
                 <a href="blog.html">木藝講堂</a>
@@ -450,7 +443,7 @@
         <div class="source">—— 劉大哥 ・ 聯和刻記創辦人</div>
     </section>
 
-    <!-- ===== 第一境：五感甦醒 ===== -->
+    <!-- ===== 第一境：五感甦醒（編號 1~5） ===== -->
     <section class="realm-section">
         <div class="container">
             <div class="realm-header">
@@ -478,21 +471,21 @@
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">4</div>
+                        <div class="num">3</div>
                         <div class="content">
                             <h4><span>溫潤如玉</span></h4>
                             <p>介於剛硬與柔軟之間的絕佳平衡，握在掌心，木質的毛細孔彷彿會呼吸。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">7</div>
+                        <div class="num">4</div>
                         <div class="content">
                             <h4><span>天然調節</span></h4>
                             <p>木頭懂得體貼人體，無論酷暑或寒冬，它總能以最適宜的溫度回應肌膚。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">13</div>
+                        <div class="num">5</div>
                         <div class="content">
                             <h4><span>記憶載體</span></h4>
                             <p>木頭能吸附手上的微光與歲月的痕跡，隨著時間推移，養出屬於主人的溫潤包漿。</p>
@@ -503,7 +496,7 @@
         </div>
     </section>
 
-    <!-- ===== 第二境：匠心傳承 ===== -->
+    <!-- ===== 第二境：匠心傳承（編號 6~9） ===== -->
     <section class="realm-section">
         <div class="container">
             <div class="realm-header">
@@ -517,28 +510,28 @@
                 </div>
                 <div class="realm-list">
                     <div class="realm-item">
-                        <div class="num">3</div>
+                        <div class="num">6</div>
                         <div class="content">
                             <h4><span>順從刀意</span></h4>
                             <p>軟硬適中的物理特性，讓創作者的靈感能毫無阻礙地通過刀鋒傳遞至木心。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">5</div>
+                        <div class="num">7</div>
                         <div class="content">
                             <h4><span>文化續命</span></h4>
                             <p>在機器大量複製的年代，堅持手工修飾，讓漸趨式微的傳統木作技法得以延續。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">6</div>
+                        <div class="num">8</div>
                         <div class="content">
                             <h4><span>二次新生</span></h4>
                             <p>樹木在泥土中茁壯，離開泥土後化為家具、藝品，以另一種姿態陪伴人類開啟新旅程。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">8</div>
+                        <div class="num">9</div>
                         <div class="content">
                             <h4><span>萬用良伴</span></h4>
                             <p>從古至今，木頭從未缺席人類文明。是橋樑、是屋簷、是食器，也是最包容的生活夥伴。</p>
@@ -549,7 +542,7 @@
         </div>
     </section>
 
-    <!-- ===== 第三境：靜心療癒 ===== -->
+    <!-- ===== 第三境：靜心療癒（編號 10~13） ===== -->
     <section class="realm-section">
         <div class="container">
             <div class="realm-header">
@@ -563,28 +556,28 @@
                 </div>
                 <div class="realm-list">
                     <div class="realm-item">
-                        <div class="num">9</div>
+                        <div class="num">10</div>
                         <div class="content">
                             <h4><span>精神按摩</span></h4>
                             <p>透過削、鑿、磨的節奏，大腦釋放壓力，這是最原始、最純粹的正念冥想。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">10</div>
+                        <div class="num">11</div>
                         <div class="content">
                             <h4><span>自我實現</span></h4>
                             <p>將平凡木頭變成獨特的形狀，建立巨大的成就感，特別適合退休後尋找新價值的銀髮族。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">11</div>
+                        <div class="num">12</div>
                         <div class="content">
                             <h4><span>與己對話</span></h4>
                             <p>遠離 3C 干擾，在一個人的工作檯前，刀起刀落，是沉澱思緒的最佳儀式。</p>
                         </div>
                     </div>
                     <div class="realm-item">
-                        <div class="num">12</div>
+                        <div class="num">13</div>
                         <div class="content">
                             <h4><span>回歸質樸</span></h4>
                             <p>擁抱木頭的結疤與色差，那是不完美中的完美，是對自然最深的敬意，拒絕化學的偽裝。</p>
@@ -595,7 +588,7 @@
         </div>
     </section>
 
-    <!-- ===== 結尾 CTA（可選） ===== -->
+    <!-- ===== 結尾 CTA ===== -->
     <section style="padding: 20px 0 70px; text-align: center;">
         <div class="container">
             <p style="font-size: 1.2rem; color: var(--brown-deep); letter-spacing: 2px;">
@@ -650,7 +643,7 @@
         </div>
     </footer>
 
-    <!-- ===== JS 腳本（漢堡選單 + AI 對話，完全移植 about 邏輯） ===== -->
+    <!-- ===== JS 腳本 ===== -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 漢堡選單

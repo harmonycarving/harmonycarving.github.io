@@ -17,6 +17,33 @@
     <meta property="og:type" content="website" />
 
     <style>
+/* ===== 自訂捲軸樣式 (滑動式滑桿) ===== */
+        /* 針對 Webkit 核心瀏覽器 (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 10px;  /* 直向捲軸的寬度 */
+            height: 10px; /* 橫向捲軸的高度 */
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--bg-cream); /* 軌道背景色：奶油白 */
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark); /* 滑塊預設顏色：暗金色 */
+            border-radius: 5px;
+            border: 2px solid var(--bg-cream); /* 增加邊框留白，看起來更精緻 */
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--red-gugong); /* 滑鼠移過去變色：故宮紅 */
+        }
+
+        /* 針對 Firefox 瀏覽器 */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-dark) var(--bg-cream);
+        }
         /* ===== 全域樣式 ===== */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
